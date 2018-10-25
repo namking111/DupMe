@@ -3,7 +3,7 @@ var socket = require('socket.io');
 
 //App seetup
 var app = express();
-var server = app.listen(4000, function(){
+var server = app.listen(4000, function () {
     console.log('listening to requests on port 4000');
 });
 
@@ -13,7 +13,15 @@ app.use(express.static('public'));
 //Socket setup
 var io = socket(server);
 
+var numUser = 0;
 //listen for conn event
-io.on('connection', function(socket){
-    console.log('made socket connection')
+io.on('connection', function (socket) {
+    console.log('someone joins the game');
+    numUser++;
+    console.log('Number of users: ' + numUser);
+    socket.on('disconnect', function () {
+        console.log('someone disconnected');
+        numUser--;
+        console.log('Number of users: ' + numUser);
+    });
 });

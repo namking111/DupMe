@@ -29,6 +29,8 @@ io.on('connection', function (socket) {
     });
 });
 
+
+var PLAYER_LIST = {};
 //player object;
 var Player = function(id, nickname){
 	var self = {
@@ -40,3 +42,4 @@ var Player = function(id, nickname){
 
 	return self;
 }
+var 

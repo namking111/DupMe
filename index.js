@@ -27,10 +27,10 @@ io.on('connection', function (socket) {
 });
 
 //player object;
-var Player = function(id, name){
+var Player = function(id, nickname){
 	var self = {
 		id: id,
-		name: name,
+		nickname: nickname,
 		score: 0,
 		timer: null,
 	}

@@ -1,10 +1,13 @@
 var express = require('express');
 var socket = require('socket.io');
+var myip = require('quick-local-ip');
 
-//App seetup
+//App setup
 var app = express();
-var server = app.listen(4000, function () {
+var server = require('http').createServer(app);
+server.listen(4000, '0.0.0.0', function () {
     console.log('listening to requests on port 4000');
+    console.log('IP address', myip.getLocalIP4())
 });
 
 //Static files

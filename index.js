@@ -25,3 +25,15 @@ io.on('connection', function (socket) {
         console.log('Number of users: ' + numUser);
     });
 });
+
+//player object;
+var Player = function(id, nickname){
+	var self = {
+		id: id,
+		nickname: nickname,
+		score: 0,
+		timer: null,
+	}
+
+	return self;
+}

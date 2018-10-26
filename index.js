@@ -42,4 +42,3 @@ var Player = function(id, nickname){
 
 	return self;
 }
-var 

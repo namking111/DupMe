@@ -1,147 +1,117 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-
-
-  <title>DupMe</title>
-</head>
-
-<body>
-  <div class="container-fluid">
-    </p>
-    <center>
-      <h1>Scoreboard</h1>
-    </center>
-    </p>
-
-    <script>
-      //player1 name
-      var queryString = decodeURIComponent(window.location.search);
-      queryString = queryString.substring(1);
-      var queries = queryString.split("&");
-      for (var i = 0; i < queries.length; i++) { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
-        //document.write(queries[i] + "<br>");
-        var name1 = queries[i] + "<br>";
-      }
-
-    </script>
+    <title>DupMe</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+    </p> 
+    <center><h1>Scoreboard</h1></center>
+    </p> 
+    
+      <script>
+        //player1 name
+        var queryString = decodeURIComponent(window.location.search);
+        queryString = queryString.substring(1);
+        var queries = queryString.split("&");
+        for (var i = 0; i < queries.length; i++)
+        { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
+          //document.write(queries[i] + "<br>");
+          var name1 = queries[i] + "<br>";
+        }
+         
+        </script>
     <div class="container">
-
-      <div class="row">
-        <div class="col" id="player1"></div>
-        <div class="col" id="player2"></div>
-        <div class="w-100"></div>
-        <div class="col" id="score1_p1"></div>
-        <div class="col" id="score1_p2"></div>
-        <div class="w-100"></div>
-        <div class="col" id="score2_p1"></div>
-        <div class="col" id="score2_p2"></div>
-        <div class="w-100"></div>
-        <div class="col" id="score3_p1"></div>
-        <div class="col" id="score3_p2"></div>
-        <div class="w-100"></div>
-        <div class="col" id="score4_p1"></div>
-        <div class="col" id="score4_p2"></div>
-        <div class="w-100"></div>
-        <div class="col" id="total_p1"></div>
-        <div class="col" id="total_p2"></div>
-      </div>
+          
+            <div class="row">
+              <div class="col" id="player1"></div> 
+              <div class="col" id="player2"></div>
+              <div class="w-100"></div>
+              <div class="col"id="score1_p1"></div>
+              <div class="col"id="score1_p2"></div>
+              <div class="w-100"></div>
+              <div class="col"id="score2_p1"></div>
+              <div class="col"id="score2_p2"></div>
+              <div class="w-100"></div>
+              <div class="col"id="score3_p1"></div>
+              <div class="col"id="score3_p2"></div>
+              <div class="w-100"></div>
+              <div class="col"id="score4_p1"></div>
+              <div class="col"id="score4_p2"></div>
+              <div class="w-100"></div>
+              <div class="col"id="total_p1"></div>
+              <div class="col"id="total_p2"></div> 
+            </div>
     </div>
 
+
+  </p> 
     <center>
-      <p id="endingword" style="font-size: 16px" />
+        <button type="button" class="btn btn-info btn-lg "><a href="game.html" style="color:aliceblue">Restart</a></button>
     </center>
-
-
-
-    </p>
-
-    <center>
-      <button type="button" class="btn btn-info btn-lg ">
-        <a href="game.html" style="color:aliceblue">Restart</a>
-      </button>
-    </center>
-    </p>
-
+  </p> 
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
     <script>
-      document.getElementById("player1").innerHTML = name1;
-      document.getElementById("player2").innerHTML = "Sew";
+        document.getElementById("player1").innerHTML= name1;
+        document.getElementById("player2").innerHTML= "Sew";
 
-      document.getElementById("score1_p1").innerHTML = "Score";
-      document.getElementById("score1_p2").innerHTML = "Score";
-      document.getElementById("score2_p1").innerHTML = "Score";
-      document.getElementById("score2_p2").innerHTML = "Score";
-      document.getElementById("score3_p1").innerHTML = "Score";
-      document.getElementById("score3_p2").innerHTML = "Score";
-      document.getElementById("score4_p1").innerHTML = "Score";
-      document.getElementById("score4_p2").innerHTML = "Score";
+        document.getElementById("score1_p1").innerHTML= "Score";
+        document.getElementById("score1_p2").innerHTML= "Score";
+        document.getElementById("score2_p1").innerHTML= "Score";
+        document.getElementById("score2_p2").innerHTML= "Score";
+        document.getElementById("score3_p1").innerHTML= "Score";
+        document.getElementById("score3_p2").innerHTML= "Score";
+        document.getElementById("score4_p1").innerHTML= "Score";
+        document.getElementById("score4_p2").innerHTML= "Score";
 
-      var totalscore_p1 = 10;
-      var totalscore_p2 = 20;
-      document.getElementById("total_p1").innerHTML = "Total score:  " + totalscore_p1;
-      document.getElementById("total_p2").innerHTML = "Total score:  " + totalscore_p2;
-
-      var endingword = ""
-
-      if (totalscore_p1 > totalscore_p2) {
-        endingword = "You Win";
-      } if (totalscore_p1 == totalscore_p2) {
-        endingword = "It is a tie.";
-      } else {
-        endingword = "You Lose";
-      }
-      document.getElementById("endingword").innerHTML = endingword;
-
+        document.getElementById("total_p1").innerHTML= "Total score:  " + "total";
+        document.getElementById("total_p2").innerHTML= "Total score:  " + "total";
+    
     </script>
     <center>
-      <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
+        <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
 
-      <p id="demo"></p>
-
-      <script>
-        function myFunction1() {
-          //click แล้วแสดงข้อมูลที่หน้าถัดไป
-          // window.location = "first.html";
-          location.reload();
-        }
-      </script>
-
-
+        <p id="demo"></p>
+    
+        <script>
+          function myFunction1() {
+            //click แล้วแสดงข้อมูลที่หน้าถัดไป
+           // window.location = "first.html";
+            location.reload();
+          }
+        </script>
+    
+     
     </center>
     <center>
+      
+        <button type="button" class="btn btn-info btn-lg " onclick="myFunction2()">menu</button>
 
-      <button type="button" class="btn btn-info btn-lg " onclick="myFunction2()">menu</button>
-
-      <p id="demo"></p>
-
-      <script>
-        function myFunction2() {
-          //click แล้วแสดงข้อมูลที่หน้าถัดไป
-          window.location = "first.html";
-          //location.reload();
-        }
-      </script>
-
-
+        <p id="demo"></p>
+    
+        <script>
+          function myFunction2() {
+            //click แล้วแสดงข้อมูลที่หน้าถัดไป
+            window.location = "index.html";
+            //location.reload();
+          }
+        </script>
+    
+     
     </center>
-  </div>
+    </div>
 </body>
-
 </html>

@@ -1,4 +1,5 @@
-var player = 1;
+/*var player = Math.floor(Math.random() * 2) + 1;
+console.log(player);
 if (player == 1) {
     startGameFirst();
 } else {
@@ -10,13 +11,14 @@ if (player == 1) {
 //wait for 20 sec
 function startGameFirst() {
     countDown(10, "status");
-
 }
+*/
+
 //play for 10 sec
 //wait for 20 sec
-function waitToPlay() {
-}
-
+//function waitToPlay() {
+//}
+countDown(10, "status");
 function countDown(secs, elem) {
     var element = document.getElementById(elem);
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
@@ -49,6 +51,7 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
+gameEnd();
 function gameEnd() {
     window.onload = function () {
         var fiveMinutes = 10,

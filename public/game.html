@@ -30,9 +30,26 @@
   </head>
   <body>
     <center><h1>DupMe</h1></center>
+    </p>
     <center>
+        <script>
+            function countDown(secs,elem) {
+                    var element = document.getElementById(elem);
+                    element.innerHTML = '<button type="button" class="btn btn-info">'+secs+'</button>';
+                    
+                    if(secs < 1) {
+                            clearTimeout(timer);
+                            element.innerHTML = '<p>Time up!</p>';
+                            //ไว้เปลี่ยนหน้า
+                    }
+                    secs--;
+                    var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+            }
+            </script>
+            <div id="status"></div>
+            <script>countDown(10,"status");</script>
             
-            
+    </p>      
     <button class="button" onclick="myFunction()" id="A">A</button>
     <button class="button" onclick="myFunction()" id="B">B</button>
     <button class="button" onclick="myFunction()" id="C">C</button>

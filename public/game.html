@@ -29,7 +29,23 @@
     <title>DupMe</title>
   </head>
   <body>
-    <center><h1>DupMe</h1></center>
+    <h1><center><h1>DupMe</h1>
+     
+          
+          <script>
+           
+          var queryString = decodeURIComponent(window.location.search);
+          queryString = queryString.substring(1);
+          var queries = queryString.split("&");
+          for (var i = 0; i < queries.length; i++)
+          {
+            document.write(queries[i] + "<br>");
+          }
+           
+          </script> 
+          </center></h1>
+    <!DOCTYPE html>
+
     </p>
     <center>
         <script>
@@ -54,6 +70,7 @@
     </p>
     <script>
         function startTimer(duration, display) {
+          //timer chage page
             var timer = duration, minutes, seconds;
             var end =setInterval(function () {
                 minutes = parseInt(timer / 60, 10)

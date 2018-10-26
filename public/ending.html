@@ -36,9 +36,7 @@
     </div>
 
 
-    <center>
-        <button type="button" class="btn btn-info btn-lg "><a href="welcome.html" style="color:aliceblue">Home</a></button>
-    </center>
+    
     <center>
         <button type="button" class="btn btn-info btn-lg "><a href="game.html" style="color:aliceblue">Restart</a></button>
     </center>
@@ -64,5 +62,36 @@
         document.getElementById("total_p2").innerHTML= "Total score:  " + "total";
     
     </script>
+    <center>
+        <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
+
+        <p id="demo"></p>
+    
+        <script>
+          function myFunction1() {
+            //click แล้วแสดงข้อมูลที่หน้าถัดไป
+           // window.location = "first.html";
+            location.reload();
+          }
+        </script>
+    
+     
+    </center>
+    <center>
+        <button type="button" class="btn btn-info btn-lg " onclick="myFunction2()">menu</button>
+
+        <p id="demo"></p>
+    
+        <script>
+          function myFunction2() {
+            //click แล้วแสดงข้อมูลที่หน้าถัดไป
+            window.location = "first.html";
+            //location.reload();
+          }
+        </script>
+    
+     
+    </center>
+    
 </body>
 </html>

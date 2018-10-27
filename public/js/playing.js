@@ -62,30 +62,79 @@ function gameEnd() {
 
 
 
+
+
+
+//array name data
+//check with new data player clicking
+var dataTemp = ["A","B","C","D","E","A","B"];
+
+var showdataTemp = dataTemp.toString();
+document.getElementById("showdataTemp").innerHTML = showdataTemp;
+
+var score = 0;
+var i = 0;  //index
+
+function calculateScore(data){
+    if(dataTemp[i]== data[i]){
+         score = score+1;
+    }else{
+        document.getElementById("A").disabled = true;
+        document.getElementById("B").disabled = true;
+        document.getElementById("C").disabled = true;
+        document.getElementById("D").disabled = true;
+        document.getElementById("E").disabled = true;
+    }
+    i++;
+    return score;
+}
+// calculateScore(dataTemp,score);
+// document.getElementById("showScore").innerHTML = score;
+
+
+
 //save value into array
 var data = [];
 function myFunctionA() {
     data.push("A");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    document.getElementById("showScore").innerHTML = score;
+
 }
 function myFunctionB() {
     data.push("B");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    document.getElementById("showScore").innerHTML = score;
+
 }
 function myFunctionC() {
     data.push("C");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    document.getElementById("showScore").innerHTML = score;
+
 }
 function myFunctionD() {
     data.push("D");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    document.getElementById("showScore").innerHTML = score;
+
 }
 function myFunctionE() {
     data.push("E");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    document.getElementById("showScore").innerHTML = score;
+
 }
+
+
+

@@ -26,6 +26,7 @@ function countDown(secs, elem) {
     if (secs < 1) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
+        //window.location.href = "ending.html" + queryString;
         //window.location = "ending.html";
         //ไว้เปลี่ยนหน้า      
     }
@@ -46,7 +47,8 @@ function startTimer(duration, display) {
         //display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            window.location = "ending.html";
+            //window.location = "ending.html";
+            window.location.href = "ending.html" + queryString;
             clearInterval(end);
         }
     }, 1000);

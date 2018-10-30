@@ -3,9 +3,6 @@ var socket = require('socket.io');
 var myip = require('quick-local-ip');
 var path = require('path');
 
-
-
-
 //App setup
 var app = express();
 var server = require('http').createServer(app);
@@ -26,6 +23,7 @@ app.get('/', function (req, res) {
 var io = socket(server);
 
 var numUser = 0;
+var username =[];
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -35,7 +33,14 @@ io.on('connection', function (socket) {
         console.log('someone disconnected');
         numUser--;
         console.log('Number of users: ' + numUser);
+        console.log(username);
     });
+
+    socket.on('username', function(data){
+        
+        username.push(data);
+    })
+    
 });
 
 

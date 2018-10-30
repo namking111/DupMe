@@ -1,6 +1,3 @@
-//Make socket connection
-var socket = io();
-
 /*var player = Math.floor(Math.random() * 2) + 1;
 console.log(player);
 if (player == 1) {
@@ -76,7 +73,7 @@ function gameEnd() {
 
 //array name data
 //check with new data player clicking
-var dataTemp = ["A", "B", "C", "D", "E", "A", "B"];
+var dataTemp = ["A","B","C","D","E","A","B"];
 
 var showdataTemp = dataTemp.toString();
 document.getElementById("showdataTemp").innerHTML = showdataTemp;
@@ -84,10 +81,10 @@ document.getElementById("showdataTemp").innerHTML = showdataTemp;
 var score = 0;
 var i = 0;  //index
 
-function calculateScore(data) {
-    if (dataTemp[i] == data[i]) {
-        score = score + 1;
-    } else {
+function calculateScore(data){
+    if(dataTemp[i]== data[i]){
+         score = score+1;
+    }else{
         alert("Game Over");
         show('endingPage', 'game');
         // document.getElementById("A").disabled = true;
@@ -111,14 +108,17 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-
+    
 
 }
-function getUsername() {
-    var username = document.getElementById('username');
+function othername()
+{
+    var input = document.getElementById('userInput');
     var div = document.getElementById('name1');
-    div.innerHTML = div.innerHTML + username.value;
-    socket.emit("username", username.value);
+    alert("Hello "+input.value+"!");
+    document.getElementById("name1").innerHTML="<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: "+input.value+"</div>";
+    //div.innerHTML = div.innerHTML + input.value;
+    
 }
 
 
@@ -155,4 +155,6 @@ function myFunctionE() {
     document.getElementById("showScore").innerHTML = score;
 
 }
+
+
 

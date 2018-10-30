@@ -2,6 +2,9 @@ var express = require('express');
 var socket = require('socket.io');
 var myip = require('quick-local-ip');
 
+
+
+
 //App setup
 var app = express();
 var server = require('http').createServer(app);
@@ -28,6 +31,7 @@ io.on('connection', function (socket) {
         console.log('Number of users: ' + numUser);
     });
 });
+
 
 
 

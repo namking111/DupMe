@@ -26,6 +26,10 @@ app.get('/', function (req, res) {
 var io = socket(server);
 
 var numUser = 0;
+<<<<<<< HEAD
+=======
+var users = [];
+>>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -36,6 +40,7 @@ io.on('connection', function (socket) {
         numUser--;
         console.log('Number of users: ' + numUser);
     });
+<<<<<<< HEAD
 });
 
 
@@ -51,3 +56,27 @@ var Player = function(id, nickname){
 
 	return self;
 }
+=======
+
+    socket.on('username', function (data) {
+        user = new User(data, socket);
+        users.push(user);
+        console.log(users[0].name)
+    });
+
+    // socket.on('isClicked', function(data){
+    //     users[1].socket.emit('sendPattern', data)
+    // });
+
+});
+
+class User {
+    constructor(name, socket) {
+        this.name = name;
+        this.socket = socket;
+        var score =0;
+    }
+}
+var randomItem = users[Math.floor(Math.random()*users.length)];
+console.log(randomItem);
+>>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e

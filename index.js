@@ -42,16 +42,6 @@ io.on('connection', function (socket) {
     
 });
 
-
-var PLAYER_LIST = {};
-//player object;
-var Player = function(id, nickname){
-	var self = {
-		id: id,
-		nickname: nickname,
-		score: 0,
-		timer: null,
-	}
-
-	return self;
-}
+function randomm(){
+    
+} 

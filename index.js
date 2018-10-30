@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 var io = socket(server);
 
 var numUser = 0;
-var Users = [];
+var users = [];
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -37,12 +37,12 @@ io.on('connection', function (socket) {
 
     socket.on('username', function (data) {
         user = new User(data, socket);
-        Users.push(user);
-        console.log(Users[0].name)
+        users.push(user);
+        console.log(users[0].name)
     });
 
     // socket.on('isClicked', function(data){
-    //     Users[1].socket.emit('sendPattern', data)
+    //     users[1].socket.emit('sendPattern', data)
     // });
 
 });
@@ -54,3 +54,5 @@ class User {
         var score =0;
     }
 }
+var randomItem = users[Math.floor(Math.random()*users.length)];
+console.log(randomItem);

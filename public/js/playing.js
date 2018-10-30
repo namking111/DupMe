@@ -53,6 +53,7 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
+
 gameEnd();
 function gameEnd() {
     window.onload = function () {

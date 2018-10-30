@@ -41,3 +41,6 @@ io.on('connection', function (socket) {
     })
     
 });
+
+var randomItem = username[Math.floor(Math.random()*myArray.length)];
+console.log(randomItem);

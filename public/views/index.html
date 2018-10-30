@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-        
+
 <style>
-    
+
     .button {
         background-color: #4CAF50;
         border: none;
@@ -25,11 +25,8 @@
     <title>DupMe Project</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-<<<<<<< HEAD
-=======
     <script src="/socket.io/socket.io.js"></script>
 
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
 </head>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -37,22 +34,15 @@
     var socket = io();
 </script>
 <script>
-        function show(shown, hidden) {
-          document.getElementById(shown).style.display='block';
-          document.getElementById(hidden).style.display='none';
-          return false;
-        }
+    function show(shown, hidden) {
+        document.getElementById(shown).style.display = 'block';
+        document.getElementById(hidden).style.display = 'none';
+        return false;
+    }
 </script>
 
 <body>
 
-<<<<<<< HEAD
-<div id="indexPage">
-    <div class="container-fluid">
-        <center>
-            </p>
-            <h2>Dup me</h2>
-=======
     <div id="indexPage">
         <div class="container-fluid">
             <center>
@@ -64,28 +54,14 @@
                 <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
                 </p>
                 <h6>Please enter your nickname.</h6>
-                <form id="form" onsubmit="return show('game','indexPage');">Show page 2</a>
+                <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
                     <input type="text" id="username" />
                     <input type="submit" onclick="getUsername()" />
                 </form>
 
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
 
-            </p>
-            <img src="img/alien.jpeg" alt="alien" width="180" height="156">
-            <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
-            </p>
-            <h6>Please enter your nickname.</h6>
-            <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
-                <input  type="text" id="userInput" />
-                <input  type="submit" onclick="othername();" />
-            </form>
-            
-            
-            <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
-
-            <!-- <form form action="welcome.html" method="GET">
+                <!-- <form form action="welcome.html" method="GET">
                 Name:
                 <input type="text" name="name" style="font-family: Arial,Helvetica,sans-serif;">
                 <input type="submit" value="Submit " style="background-color:rgb(118, 175, 135);font-family: Arial,Helvetica,sans-serif;
@@ -93,41 +69,28 @@
             height: 2.5em;">
             </form> -->
 
+                <center>
+        </div>
+    </div>
+    <div id="name1">
+        <div class="container-fluid">
+
             <center>
-<<<<<<< HEAD
-=======
                 <p id="name1" style="font-size: 16px">
             </center>
 
         </div>
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
     </div>
-</div>
-<div id="name1" class="a" style=\"color:#ff8080";>
-    <div class="container-fluid">
-        
-                <center>
-                    <script>function getName1() {
-                            //othername();
-                            return document.getElementById('name1').value;
-                        }
-                        //getName1();
-                       </script>
-                        
-                        
-                </center>
-            
-            
-             
 
-    </div>
-</div>
-
-<div id="welcomePage" style="display:none">
-<div class="container-fluid">
-    </p>
     
-    <h1><center><script>
+
+    <div id="welcomePage" style="display:none">
+        <div class="container-fluid">
+            </p>
+
+            <h1>
+                <center>
+                    <script>
         // function getParams(){
         //     var idx = document.URL.indexOf('?');
         //     var params = new Array();
@@ -142,86 +105,78 @@
         // }
         // params = getParams();
         // name = unescape(params["input"]);
-        
-        
+
+
         //document.write("<span style=\"color:#ff8080;font-size: 1em; font-family:arial, helvetica, sans-serif;\">Hello!<\/span>");
-    </script></center></h1>
-    </p>
-    <center>
-        <img src="img/alien3.jpeg" alt="alien">
-        <img src="img/alien4.jpeg" alt="alien">
-        
-    </center>
-  </p>
- 
-    
-
-    <center>
-        <button type="button" class="btn btn-info btn-lg " onclick="myFunction()">Start</button>
-
-        <p id="demo"></p>
-    
-        <script>
-          function myFunction() {
-            //click แล้วแสดงข้อมูลที่หน้าถัดไป
-            var queryString = "?" + name ;
-            show('game','welcomePage');
-            countDown(10, "status");
-            //window.location.href = "game.html" + queryString;
-    
-          }
-        </script>
-    
-     
-    </center>
-    <!DOCTYPE html>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </div>
-</div>
-
-
-<div id="game" style="display:none">
-    <h1>
+                    </script>
+                </center>
+            </h1>
+            </p>
             <center>
-                <h1>DupMe</h1>
-<<<<<<< HEAD
-                
+                <img src="img/alien3.jpeg" alt="alien">
+                <img src="img/alien4.jpeg" alt="alien">
+
+            </center>
+            </p>
+
+
+
+            <center>
+                <button type="button" class="btn btn-info btn-lg " onclick="myFunction()">Start</button>
+
+                <p id="demo"></p>
+
                 <script>
-                    var queryString = decodeURIComponent(window.location.search);
-                    queryString = queryString.substring(1);
-                    var queries = queryString.split("&");
-                    for (var i = 0; i < queries.length; i++) {
-    
-                        document.write(queries[i] + "<br>");
+                    function myFunction() {
+                        //click แล้วแสดงข้อมูลที่หน้าถัดไป
+                        var queryString = "?" + name;
+                        show('game', 'welcomePage');
+                        countDown(10, "status");
+                        //window.location.href = "game.html" + queryString;
+
                     }
                 </script>
-=======
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
+
+
+            </center>
+            <!DOCTYPE html>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+        </div>
+    </div>
+
+
+    <div id="game" style="display:none">
+        <h1>
+            <center>
+                <h1>DupMe</h1>
             </center>
         </h1>
         <script>
             //send player1 name from input 
-              var queryString = "?Player 1 : " + name;
-              
-              </script>
+            var queryString = "?Player 1 : " + name;
+
+        </script>
         <!DOCTYPE html>
-    
+
         </p>
         <center>
             <div id="status"></div>
             </p>
-    
+
             </head>
-    
+
             <body>
-    
+
                 <form id="form1" runat="server">
-    
+
                 </form>
                 <button class="button" onclick="myFunctionA()" id="A">A</button>
                 <button class="button" onclick="myFunctionB()" id="B">B</button>
@@ -229,18 +184,18 @@
                 <button class="button" onclick="myFunctionD()" id="D">D</button>
                 <button class="button" onclick="myFunctionE()" id="E">E</button>
         </center>
-    
-    
+
+
         <center>
-                <p id="showdataTemp" style="font-size: 16px" />
+            <p id="showdataTemp" style="font-size: 16px" />
         </center>
         <center>
-                <p id="showdata" style="font-size: 16px" />
+            <p id="showdata" style="font-size: 16px" />
         </center>
         <center>
-                <p id="showScore" style="font-size: 16px" />
+            <p id="showScore" style="font-size: 16px" />
         </center>
-    
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -253,95 +208,82 @@
     </div>
 
 
-<div id="endingPage" style="display:none">
-    <div class="container-fluid">
-        </p> 
-        <center><h1>Scoreboard</h1></center>
-        </p> 
-        
-          <script>
-            //player1 name
-            var queryString = decodeURIComponent(window.location.search);
-            queryString = queryString.substring(1);
-            var queries = queryString.split("&");
-            for (var i = 0; i < queries.length; i++)
-            { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
-              //document.write(queries[i] + "<br>");
-              var name1 = queries[i] + "<br>";
-            }
-             
-            </script>
-        <div class="container">
-              
-                <div class="row">
-                  <div class="col" id="player1"></div> 
-                  <div class="col" id="player2"></div>
-                  <div class="w-100"></div>
-                  <div class="col"id="score1_p1"></div>
-                  <div class="col"id="score1_p2"></div>
-                  <div class="w-100"></div>
-                  <div class="col"id="score2_p1"></div>
-                  <div class="col"id="score2_p2"></div>
-                  <div class="w-100"></div>
-                  <div class="col"id="score3_p1"></div>
-                  <div class="col"id="score3_p2"></div>
-                  <div class="w-100"></div>
-                  <div class="col"id="score4_p1"></div>
-                  <div class="col"id="score4_p2"></div>
-                  <div class="w-100"></div>
-                  <div class="col"id="total_p1"></div>
-                  <div class="col"id="total_p2"></div> 
-                </div>
-        </div>
-    
-    
-      </p> 
-        <center>
-            <button type="button" class="btn btn-info btn-lg "><a href="#" onclick="return show('game','endingPage');" style="color:aliceblue">Restart</a></button>
-        </center>
-      </p> 
-      
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        
-        <script>
-            document.getElementById("player1").innerHTML= name1;
-            document.getElementById("player2").innerHTML= "Sew";
-    
-            document.getElementById("score1_p1").innerHTML= "Score";
-            document.getElementById("score1_p2").innerHTML= "Score";
-            document.getElementById("score2_p1").innerHTML= "Score";
-            document.getElementById("score2_p2").innerHTML= "Score";
-            document.getElementById("score3_p1").innerHTML= "Score";
-            document.getElementById("score3_p2").innerHTML= "Score";
-            document.getElementById("score4_p1").innerHTML= "Score";
-            document.getElementById("score4_p2").innerHTML= "Score";
-    
-            document.getElementById("total_p1").innerHTML= "Total score:  " + "total";
-            document.getElementById("total_p2").innerHTML= "Total score:  " + "total";
-        
-        </script>
-        <center>
-            <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
-    
-            <p id="demo"></p>
-        
+    <div id="endingPage" style="display:none">
+        <div class="container-fluid">
+            </p>
+            <center>
+                <h1>Scoreboard</h1>
+            </center>
+            </p>
+
             <script>
-              function myFunction1() {
-                //click แล้วแสดงข้อมูลที่หน้าถัดไป
-               // window.location = "first.html";
-                location.reload();
-              }
+                //player1 name
+                var queryString = decodeURIComponent(window.location.search);
+                queryString = queryString.substring(1);
+                var queries = queryString.split("&");
+                for (var i = 0; i < queries.length; i++) { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
+                    //document.write(queries[i] + "<br>");
+                    var name1 = queries[i] + "<br>";
+                }
+
             </script>
-<<<<<<< HEAD
-        
-         
-        </center>
-       
-=======
+            <div class="container">
+
+                <div class="row">
+                    <div class="col" id="player1"></div>
+                    <div class="col" id="player2"></div>
+                    <div class="w-100"></div>
+                    <div class="col" id="score1_p1"></div>
+                    <div class="col" id="score1_p2"></div>
+                    <div class="w-100"></div>
+                    <div class="col" id="score2_p1"></div>
+                    <div class="col" id="score2_p2"></div>
+                    <div class="w-100"></div>
+                    <div class="col" id="score3_p1"></div>
+                    <div class="col" id="score3_p2"></div>
+                    <div class="w-100"></div>
+                    <div class="col" id="score4_p1"></div>
+                    <div class="col" id="score4_p2"></div>
+                    <div class="w-100"></div>
+                    <div class="col" id="total_p1"></div>
+                    <div class="col" id="total_p2"></div>
+                </div>
+            </div>
+
+
+            </p>
+            <center>
+                <button type="button" class="btn btn-info btn-lg "><a href="#" onclick="return show('game','endingPage');"
+                        style="color:aliceblue">Restart</a></button>
+            </center>
+            </p>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+
+            <script>
+                document.getElementById("player1").innerHTML = name1;
+                document.getElementById("player2").innerHTML = "Sew";
+
+                document.getElementById("score1_p1").innerHTML = "Score";
+                document.getElementById("score1_p2").innerHTML = "Score";
+                document.getElementById("score2_p1").innerHTML = "Score";
+                document.getElementById("score2_p2").innerHTML = "Score";
+                document.getElementById("score3_p1").innerHTML = "Score";
+                document.getElementById("score3_p2").innerHTML = "Score";
+                document.getElementById("score4_p1").innerHTML = "Score";
+                document.getElementById("score4_p2").innerHTML = "Score";
+
+                document.getElementById("total_p1").innerHTML = "Total score:  " + "total";
+                document.getElementById("total_p2").innerHTML = "Total score:  " + "total";
+
+            </script>
             <center>
                 <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
 
@@ -354,16 +296,13 @@
                         location.reload();
                     }
                 </script>
-            </center>
-            <center>
 
-                <button type="button" class="btn btn-info btn-lg " a href="#" onclick="return show('indexPage','endingPage');">menu</button>
 
-                <p id="demo"></p>
             </center>
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
+
         </div>
-</div>
+    </div>
 
 </body>
+
 </html>

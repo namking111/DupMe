@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //Make socket connection
 var socket = io();
 
@@ -9,7 +7,6 @@ socket.on('sendPattern', function(data){
     btnA.disable =true;
 })
 
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
 /*var player = Math.floor(Math.random() * 2) + 1;
 console.log(player);
 if (player == 1) {
@@ -115,25 +112,15 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-<<<<<<< HEAD
-    
-
-}
-function othername()
-{
-    var input = document.getElementById('userInput');
-=======
     // socket.emit("isClicked", 1)
 }
 
 function getUsername() {
     var username = document.getElementById('username');
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
     var div = document.getElementById('name1');
-    alert("Hello "+input.value+"!");
-    document.getElementById("name1").innerHTML="<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: "+input.value+"</div>";
-    //div.innerHTML = div.innerHTML + input.value;
-    
+    alert("hello "+username.value+"!");
+    div.innerHTML = "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + username.value + "</div>";
+    socket.emit("username", username.value);
 }
 
 

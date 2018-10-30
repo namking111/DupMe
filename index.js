@@ -26,10 +26,7 @@ app.get('/', function (req, res) {
 var io = socket(server);
 
 var numUser = 0;
-<<<<<<< HEAD
-=======
 var users = [];
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -40,23 +37,6 @@ io.on('connection', function (socket) {
         numUser--;
         console.log('Number of users: ' + numUser);
     });
-<<<<<<< HEAD
-});
-
-
-var PLAYER_LIST = {};
-//player object;
-var Player = function(id, nickname){
-	var self = {
-		id: id,
-		nickname: nickname,
-		score: 0,
-		timer: null,
-	}
-
-	return self;
-}
-=======
 
     socket.on('username', function (data) {
         user = new User(data, socket);
@@ -79,4 +59,3 @@ class User {
 }
 var randomItem = users[Math.floor(Math.random()*users.length)];
 console.log(randomItem);
->>>>>>> afdf0872cc712de0df5a94388eec35101e72a13e

@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 var io = socket(server);
 
 var numUser = 0;
-var username =[];
+var Users = [];
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -33,15 +33,24 @@ io.on('connection', function (socket) {
         console.log('someone disconnected');
         numUser--;
         console.log('Number of users: ' + numUser);
-        console.log(username);
     });
 
-    socket.on('username', function(data){
-        username.push(data);
-    })
-    
+    socket.on('username', function (data) {
+        user = new User(data, socket);
+        Users.push(user);
+        console.log(Users[0].name)
+    });
+
+    // socket.on('isClicked', function(data){
+    //     Users[1].socket.emit('sendPattern', data)
+    // });
+
 });
 
-function randomm(){
-    
-} 
+class User {
+    constructor(name, socket) {
+        this.name = name;
+        this.socket = socket;
+        var score =0;
+    }
+}

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/main.js"></script>
+
 </head>
 
 <script>
@@ -54,7 +54,6 @@
                     <input type="submit" onclick="getUsername()" />
                 </form>
 
-
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
                 <!-- <form form action="welcome.html" method="GET">
@@ -74,9 +73,6 @@
             <center>
                 <p id="name1" style="font-size: 16px">
             </center>
-
-
-
 
         </div>
     </div>
@@ -153,16 +149,6 @@
         <h1>
             <center>
                 <h1>DupMe</h1>
-
-                <script>
-                    var queryString = decodeURIComponent(window.location.search);
-                    queryString = queryString.substring(1);
-                    var queries = queryString.split("&");
-                    for (var i = 0; i < queries.length; i++) {
-
-                        document.write(queries[i] + "<br>");
-                    }
-                </script>
             </center>
         </h1>
         <script>
@@ -302,18 +288,12 @@
                         location.reload();
                     }
                 </script>
-
-
             </center>
             <center>
 
                 <button type="button" class="btn btn-info btn-lg " a href="#" onclick="return show('indexPage','endingPage');">menu</button>
 
                 <p id="demo"></p>
-
-
-
-
             </center>
         </div>
     </div>

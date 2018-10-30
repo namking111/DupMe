@@ -1,6 +1,12 @@
 //Make socket connection
 var socket = io();
 
+//Watch other user pattern
+socket.on('sendPattern', function(data){
+    btnA = document.getElementById("A")
+    btnA.disable =true;
+})
+
 /*var player = Math.floor(Math.random() * 2) + 1;
 console.log(player);
 if (player == 1) {
@@ -68,11 +74,6 @@ function gameEnd() {
     };
 }
 
-
-
-
-
-
 //array name data
 //check with new data player clicking
 var dataTemp = ["A", "B", "C", "D", "E", "A", "B"];
@@ -110,9 +111,9 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-
-
+    // socket.emit("isClicked", 1)
 }
+
 function getUsername() {
     var username = document.getElementById('username');
     var div = document.getElementById('name1');

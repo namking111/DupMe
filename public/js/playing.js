@@ -1,3 +1,6 @@
+//Make socket connection
+var socket = io();
+
 /*var player = Math.floor(Math.random() * 2) + 1;
 console.log(player);
 if (player == 1) {
@@ -47,7 +50,7 @@ function startTimer(duration, display) {
         //display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            
+
             //window.location = "ending.html";
             //window.location.href = "ending.html" + queryString;
             show('endingPage', 'game');
@@ -72,7 +75,7 @@ function gameEnd() {
 
 //array name data
 //check with new data player clicking
-var dataTemp = ["A","B","C","D","E","A","B"];
+var dataTemp = ["A", "B", "C", "D", "E", "A", "B"];
 
 var showdataTemp = dataTemp.toString();
 document.getElementById("showdataTemp").innerHTML = showdataTemp;
@@ -80,10 +83,10 @@ document.getElementById("showdataTemp").innerHTML = showdataTemp;
 var score = 0;
 var i = 0;  //index
 
-function calculateScore(data){
-    if(dataTemp[i]== data[i]){
-         score = score+1;
-    }else{
+function calculateScore(data) {
+    if (dataTemp[i] == data[i]) {
+        score = score + 1;
+    } else {
         alert("Game Over");
         show('endingPage', 'game');
         // document.getElementById("A").disabled = true;
@@ -107,14 +110,14 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-    
+
 
 }
-function othername()
-{
-    var input = document.getElementById('userInput')
+function getUsername() {
+    var username = document.getElementById('username');
     var div = document.getElementById('name1');
-    div.innerHTML = div.innerHTML + input.value;
+    div.innerHTML = div.innerHTML + username.value;
+    socket.emit("username", username.value);
 }
 
 // function othername() {

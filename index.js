@@ -1,6 +1,10 @@
 var express = require('express');
 var socket = require('socket.io');
 var myip = require('quick-local-ip');
+var path = require('path');
+
+
+
 
 //App setup
 var app = express();
@@ -12,6 +16,11 @@ server.listen(4000, '0.0.0.0', function () {
 
 //Static files
 app.use(express.static('public'));
+
+//Routes
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/views/index.html'));
+});
 
 //Socket setup
 var io = socket(server);
@@ -28,7 +37,6 @@ io.on('connection', function (socket) {
         console.log('Number of users: ' + numUser);
     });
 });
-
 
 
 var PLAYER_LIST = {};

@@ -47,6 +47,7 @@ function startTimer(duration, display) {
         //display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
+            
             //window.location = "ending.html";
             //window.location.href = "ending.html" + queryString;
             show('endingPage', 'game');
@@ -83,11 +84,13 @@ function calculateScore(data){
     if(dataTemp[i]== data[i]){
          score = score+1;
     }else{
-        document.getElementById("A").disabled = true;
-        document.getElementById("B").disabled = true;
-        document.getElementById("C").disabled = true;
-        document.getElementById("D").disabled = true;
-        document.getElementById("E").disabled = true;
+        alert("Game Over");
+        show('endingPage', 'game');
+        // document.getElementById("A").disabled = true;
+        // document.getElementById("B").disabled = true;
+        // document.getElementById("C").disabled = true;
+        // document.getElementById("D").disabled = true;
+        // document.getElementById("E").disabled = true;
     }
     i++;
     return score;

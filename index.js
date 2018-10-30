@@ -38,7 +38,7 @@ io.on('connection', function (socket) {
     });
 });
 
-
+/*
 var PLAYER_LIST = {};
 //player object;
 var Player = function(id, nickname){
@@ -51,3 +51,4 @@ var Player = function(id, nickname){
 
 	return self;
 }
+*/

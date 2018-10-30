@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+        
 <style>
+    
     .button {
         background-color: #4CAF50;
         border: none;
@@ -51,7 +52,7 @@
             <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
             </p>
             <h6>Please enter your nickname.</h6>
-            <form id="form" onsubmit="return show('game','indexPage');">Show page 2</a>
+            <form id="form" onsubmit="return show('welcomePage','indexPage');">Show page 2</a>
                 <input  type="text" id="userInput" />
                 <input  type="submit" onclick="othername();" />
             </form>
@@ -70,11 +71,18 @@
             <center>
     </div>
 </div>
-<div id="name1">
+<div id="name1" class="a" style=\"color:#ff8080";>
     <div class="container-fluid">
         
                 <center>
-                        <p id="name1" style="font-size: 16px" >
+                    <script>function getName1() {
+                            //othername();
+                            return document.getElementById('name1').value;
+                        }
+                        //getName1();
+                       </script>
+                        
+                        
                 </center>
             
             
@@ -88,23 +96,23 @@
     </p>
     
     <h1><center><script>
-        function getParams(){
-            var idx = document.URL.indexOf('?');
-            var params = new Array();
-            if (idx != -1) {
-                var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
-                for (var i=0; i<pairs.length; i++){
-                    nameVal = pairs[i].split('=');
-                    params[nameVal[0]] = nameVal[1];
-                }
-            }
-            return params;
-        }
-        params = getParams();
-        name = unescape(params["name"]);
+        // function getParams(){
+        //     var idx = document.URL.indexOf('?');
+        //     var params = new Array();
+        //     if (idx != -1) {
+        //         var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+        //         for (var i=0; i<pairs.length; i++){
+        //             nameVal = pairs[i].split('=');
+        //             params[nameVal[0]] = nameVal[1];
+        //         }
+        //     }
+        //     return params;
+        // }
+        // params = getParams();
+        // name = unescape(params["input"]);
         
         
-        document.write("<span style=\"color:#ff8080;font-size: 1em; font-family:arial, helvetica, sans-serif;\">Hello " + name + " !<\/span>");
+        //document.write("<span style=\"color:#ff8080;font-size: 1em; font-family:arial, helvetica, sans-serif;\">Hello!<\/span>");
     </script></center></h1>
     </p>
     <center>
@@ -126,6 +134,7 @@
             //click แล้วแสดงข้อมูลที่หน้าถัดไป
             var queryString = "?" + name ;
             show('game','welcomePage');
+            countDown(10, "status");
             //window.location.href = "game.html" + queryString;
     
           }
@@ -295,16 +304,7 @@
         
          
         </center>
-        <center>
-          
-            <button type="button" class="btn btn-info btn-lg " a href="#" onclick="return show('indexPage','endingPage');">menu</button>
-    
-            <p id="demo"></p>
-        
-        
-        
-         
-        </center>
+       
         </div>
 </div>
 

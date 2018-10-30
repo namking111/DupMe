@@ -18,7 +18,7 @@ function startGameFirst() {
 //wait for 20 sec
 //function waitToPlay() {
 //}
-countDown(10, "status");
+
 function countDown(secs, elem) {
     var element = document.getElementById(elem);
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
@@ -26,7 +26,8 @@ function countDown(secs, elem) {
     if (secs < 1) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
-        //window.location.href = "ending.html" + queryString;
+        show('endingPage', 'game');
+       // window.location.href = "ending.html" + queryString;
         //window.location = "ending.html";
         //ไว้เปลี่ยนหน้า      
     }
@@ -34,27 +35,27 @@ function countDown(secs, elem) {
     var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
 }
 
-function startTimer(duration, display) {
-    //timer chage page
-    var timer = duration, minutes, seconds;
-    var end = setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+// function startTimer(duration, display) {
+//     //timer chage page
+//     var timer = duration, minutes, seconds;
+//     var end = setInterval(function () {
+//         minutes = parseInt(timer / 60, 10)
+//         seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        //display.textContent = minutes + ":" + seconds;
+//         //display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
+//         if (--timer < 0) {
             
-            //window.location = "ending.html";
-            //window.location.href = "ending.html" + queryString;
-            show('endingPage', 'game');
-            clearInterval(end);
-        }
-    }, 1000);
-}
+//             //window.location = "ending.html";
+//             //window.location.href = "ending.html" + queryString;
+//             show('endingPage', 'game');
+//             clearInterval(end);
+//         }
+//     }, 1000);
+// }
 
 gameEnd();
 function gameEnd() {
@@ -112,16 +113,16 @@ function myFunctionA() {
 }
 function othername()
 {
-    var input = document.getElementById('userInput')
+    var input = document.getElementById('userInput');
     var div = document.getElementById('name1');
-    div.innerHTML = div.innerHTML + input.value;
+    alert("Hello "+input.value+"!");
+    document.getElementById("name1").innerHTML="<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: "+input.value+"</div>";
+    //div.innerHTML = div.innerHTML + input.value;
+    
 }
 
-// function othername() {
-//     var input = document.getElementById("userInput").toString();
-//     document.getElementById("userInput").innerHTML = input;
-//      //alert(input);
-//      }
+
+
 function myFunctionB() {
     data.push("B");
     var showdata = data.toString();

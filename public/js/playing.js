@@ -47,8 +47,10 @@ function startTimer(duration, display) {
         //display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
+            
             //window.location = "ending.html";
-            window.location.href = "ending.html" + queryString;
+            //window.location.href = "ending.html" + queryString;
+            show('endingPage', 'game');
             clearInterval(end);
         }
     }, 1000);
@@ -82,11 +84,13 @@ function calculateScore(data){
     if(dataTemp[i]== data[i]){
          score = score+1;
     }else{
-        document.getElementById("A").disabled = true;
-        document.getElementById("B").disabled = true;
-        document.getElementById("C").disabled = true;
-        document.getElementById("D").disabled = true;
-        document.getElementById("E").disabled = true;
+        alert("Game Over");
+        show('endingPage', 'game');
+        // document.getElementById("A").disabled = true;
+        // document.getElementById("B").disabled = true;
+        // document.getElementById("C").disabled = true;
+        // document.getElementById("D").disabled = true;
+        // document.getElementById("E").disabled = true;
     }
     i++;
     return score;
@@ -103,9 +107,21 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-    document.getElementById("showScore").innerHTML = score;
+    
 
 }
+function othername()
+{
+    var input = document.getElementById('userInput')
+    var div = document.getElementById('name1');
+    div.innerHTML = div.innerHTML + input.value;
+}
+
+// function othername() {
+//     var input = document.getElementById("userInput").toString();
+//     document.getElementById("userInput").innerHTML = input;
+//      //alert(input);
+//      }
 function myFunctionB() {
     data.push("B");
     var showdata = data.toString();

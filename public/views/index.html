@@ -51,19 +51,100 @@
             <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
             </p>
             <h6>Please enter your nickname.</h6>
-            <form form action="welcome.html" method="GET">
+            <form id="form" onsubmit="return show('game','indexPage');">Show page 2</a>
+                <input  type="text" id="userInput" />
+                <input  type="submit" onclick="othername();" />
+            </form>
+            
+            
+            <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
+
+            <!-- <form form action="welcome.html" method="GET">
                 Name:
                 <input type="text" name="name" style="font-family: Arial,Helvetica,sans-serif;">
                 <input type="submit" value="Submit " style="background-color:rgb(118, 175, 135);font-family: Arial,Helvetica,sans-serif;
             font-size: 14px; color: #ffffff; border: 0em; width: 4.25em;
             height: 2.5em;">
-            </form>
+            </form> -->
 
             <center>
     </div>
 </div>
+<div id="name1">
+    <div class="container-fluid">
+        
+                <center>
+                        <p id="name1" style="font-size: 16px" >
+                </center>
+            
+            
+             
 
-    <div id="game">
+    </div>
+</div>
+
+<div id="welcomePage" style="display:none">
+<div class="container-fluid">
+    </p>
+    
+    <h1><center><script>
+        function getParams(){
+            var idx = document.URL.indexOf('?');
+            var params = new Array();
+            if (idx != -1) {
+                var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                for (var i=0; i<pairs.length; i++){
+                    nameVal = pairs[i].split('=');
+                    params[nameVal[0]] = nameVal[1];
+                }
+            }
+            return params;
+        }
+        params = getParams();
+        name = unescape(params["name"]);
+        
+        
+        document.write("<span style=\"color:#ff8080;font-size: 1em; font-family:arial, helvetica, sans-serif;\">Hello " + name + " !<\/span>");
+    </script></center></h1>
+    </p>
+    <center>
+        <img src="img/alien3.jpeg" alt="alien">
+        <img src="img/alien4.jpeg" alt="alien">
+        
+    </center>
+  </p>
+ 
+    
+
+    <center>
+        <button type="button" class="btn btn-info btn-lg " onclick="myFunction()">Start</button>
+
+        <p id="demo"></p>
+    
+        <script>
+          function myFunction() {
+            //click แล้วแสดงข้อมูลที่หน้าถัดไป
+            var queryString = "?" + name ;
+            show('game','welcomePage');
+            //window.location.href = "game.html" + queryString;
+    
+          }
+        </script>
+    
+     
+    </center>
+    <!DOCTYPE html>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </div>
+</div>
+
+
+<div id="game" style="display:none">
     <h1>
             <center>
                 <h1>DupMe</h1>
@@ -127,6 +208,111 @@
         <script src="../js/playing.js"></script>
     </div>
 
+
+<div id="endingPage" style="display:none">
+    <div class="container-fluid">
+        </p> 
+        <center><h1>Scoreboard</h1></center>
+        </p> 
+        
+          <script>
+            //player1 name
+            var queryString = decodeURIComponent(window.location.search);
+            queryString = queryString.substring(1);
+            var queries = queryString.split("&");
+            for (var i = 0; i < queries.length; i++)
+            { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
+              //document.write(queries[i] + "<br>");
+              var name1 = queries[i] + "<br>";
+            }
+             
+            </script>
+        <div class="container">
+              
+                <div class="row">
+                  <div class="col" id="player1"></div> 
+                  <div class="col" id="player2"></div>
+                  <div class="w-100"></div>
+                  <div class="col"id="score1_p1"></div>
+                  <div class="col"id="score1_p2"></div>
+                  <div class="w-100"></div>
+                  <div class="col"id="score2_p1"></div>
+                  <div class="col"id="score2_p2"></div>
+                  <div class="w-100"></div>
+                  <div class="col"id="score3_p1"></div>
+                  <div class="col"id="score3_p2"></div>
+                  <div class="w-100"></div>
+                  <div class="col"id="score4_p1"></div>
+                  <div class="col"id="score4_p2"></div>
+                  <div class="w-100"></div>
+                  <div class="col"id="total_p1"></div>
+                  <div class="col"id="total_p2"></div> 
+                </div>
+        </div>
+    
+    
+      </p> 
+        <center>
+            <button type="button" class="btn btn-info btn-lg "><a href="game.html" style="color:aliceblue">Restart</a></button>
+        </center>
+      </p> 
+      
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <script>
+            document.getElementById("player1").innerHTML= name1;
+            document.getElementById("player2").innerHTML= "Sew";
+    
+            document.getElementById("score1_p1").innerHTML= "Score";
+            document.getElementById("score1_p2").innerHTML= "Score";
+            document.getElementById("score2_p1").innerHTML= "Score";
+            document.getElementById("score2_p2").innerHTML= "Score";
+            document.getElementById("score3_p1").innerHTML= "Score";
+            document.getElementById("score3_p2").innerHTML= "Score";
+            document.getElementById("score4_p1").innerHTML= "Score";
+            document.getElementById("score4_p2").innerHTML= "Score";
+    
+            document.getElementById("total_p1").innerHTML= "Total score:  " + "total";
+            document.getElementById("total_p2").innerHTML= "Total score:  " + "total";
+        
+        </script>
+        <center>
+            <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
+    
+            <p id="demo"></p>
+        
+            <script>
+              function myFunction1() {
+                //click แล้วแสดงข้อมูลที่หน้าถัดไป
+               // window.location = "first.html";
+                location.reload();
+              }
+            </script>
+        
+         
+        </center>
+        <center>
+          
+            <button type="button" class="btn btn-info btn-lg " onclick="myFunction2()">menu</button>
+    
+            <p id="demo"></p>
+        
+            <script>
+              function myFunction2() {
+                //click แล้วแสดงข้อมูลที่หน้าถัดไป
+                window.location = "index.html";
+                //location.reload();
+              }
+            </script>
+        
+         
+        </center>
+        </div>
+</div>
 
 </body>
 </html>

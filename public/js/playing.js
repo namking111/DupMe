@@ -48,7 +48,8 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             //window.location = "ending.html";
-            window.location.href = "ending.html" + queryString;
+            //window.location.href = "ending.html" + queryString;
+            show('endingPage', 'game');
             clearInterval(end);
         }
     }, 1000);
@@ -103,9 +104,21 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-    document.getElementById("showScore").innerHTML = score;
+    
 
 }
+function othername()
+{
+    var input = document.getElementById('userInput')
+    var div = document.getElementById('name1');
+    div.innerHTML = div.innerHTML + input.value;
+}
+
+// function othername() {
+//     var input = document.getElementById("userInput").toString();
+//     document.getElementById("userInput").innerHTML = input;
+//      //alert(input);
+//      }
 function myFunctionB() {
     data.push("B");
     var showdata = data.toString();

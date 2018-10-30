@@ -3,6 +3,9 @@ var socket = require('socket.io');
 var myip = require('quick-local-ip');
 var path = require('path');
 
+
+
+
 //App setup
 var app = express();
 var server = require('http').createServer(app);
@@ -34,7 +37,6 @@ io.on('connection', function (socket) {
         console.log('Number of users: ' + numUser);
     });
 });
-
 
 
 var PLAYER_LIST = {};

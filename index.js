@@ -14,6 +14,7 @@ server.listen(4000, '0.0.0.0', function () {
 //Static files
 app.use(express.static('public'));
 
+
 //Routes
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/views/index.html'));
@@ -24,6 +25,7 @@ var io = socket(server);
 
 var numUser = 0;
 var users = [];
+var pattern = [];
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game');
@@ -36,23 +38,25 @@ io.on('connection', function (socket) {
     });
 
     socket.on('username', function (data) {
-        user = new User(data, socket);
+        user = new User(data);
         users.push(user);
-        io.sockets.emit('username', users[users.length-1].name);
+        io.sockets.emit('username', users);
     });
 
-    socket.on('isClicked', function(data){
-        
+    socket.on('pattern', function (data) {
+        pattern.push(data);
+        io.sockets.emit('pattern', pattern);
     });
 
 });
 
 class User {
-    constructor(name, socket) {
+    constructor(name) {
         this.name = name;
-        this.socket = socket;
-        var score =0;
+        // this.socket = socket;
+        var score = 0;
+        // var pattern = [];
     }
-}
-var randomItem = users[Math.floor(Math.random()*users.length)];
+};
+var randomItem = users[Math.floor(Math.random() * users.length)];
 console.log(randomItem);

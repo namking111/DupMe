@@ -1,6 +1,8 @@
 //Make socket connection
 var socket = io();
 
+var username = {};
+
 //Watch other user pattern
 socket.on('sendPattern', function(data){
     btnA = document.getElementById("A")
@@ -116,12 +118,18 @@ function myFunctionA() {
 }
 
 function getUsername() {
-    var username = document.getElementById('username');
+    username = document.getElementById('username');
     var div = document.getElementById('name1');
     alert("hello "+username.value+"!");
     div.innerHTML = "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + username.value + "</div>";
     socket.emit("username", username.value);
+    //send name to the ending page
+    document.getElementById("player1").innerHTML= username.value;
+    //document.getElementById("player2").innerHTML= username.value;
+   
 }
+
+
 
 
 

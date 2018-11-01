@@ -16,26 +16,7 @@ socket.on('sendPattern', function (data) {
     document.getElementById("username").value = "Hello from the other side"
 })
 
-/*var player = Math.floor(Math.random() * 2) + 1;
-console.log(player);
-if (player == 1) {
-    startGameFirst();
-} else {
-    waitToPlay();
-}
 
-
-//play for 10 sec
-//wait for 20 sec
-function startGameFirst() {
-    countDown(10, "status");
-}
-*/
-
-//play for 10 sec
-//wait for 20 sec
-//function waitToPlay() {
-//}
 
 function countDown(secs, elem) {
     var element = document.getElementById(elem);
@@ -53,27 +34,7 @@ function countDown(secs, elem) {
     var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
 }
 
-// function startTimer(duration, display) {
-//     //timer chage page
-//     var timer = duration, minutes, seconds;
-//     var end = setInterval(function () {
-//         minutes = parseInt(timer / 60, 10)
-//         seconds = parseInt(timer % 60, 10);
 
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//         //display.textContent = minutes + ":" + seconds;
-
-//         if (--timer < 0) {
-
-//             //window.location = "ending.html";
-//             //window.location.href = "ending.html" + queryString;
-//             // show('endingPage', 'game');
-//             clearInterval(end);
-//         }
-//     }, 1000);
-// }
 
 gameEnd();
 function gameEnd() {
@@ -92,10 +53,12 @@ var showdataTemp = dataTemp.toString();
 document.getElementById("showdataTemp").innerHTML = showdataTemp;
 
 var score = 0;
+var length = dataTemp.length-1;
 var i = 0;  //index
+var count = 0;
 
 function calculateScore(data) {
-    
+    if (count < length) {
     if (objectsAreSame(data,dataTemp)) {
         score = score + 1;
     } else {
@@ -103,8 +66,14 @@ function calculateScore(data) {
         show('endingPage', 'game');
     }
     i++;
+    count++;
     return score;
-}
+    }else {
+        alert("You Made It !!");
+        show('endingPage', 'game');
+    
+    }
+} 
 
 function objectsAreSame(x, y) {
     var objectsAreSame = true;

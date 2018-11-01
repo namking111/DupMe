@@ -22,7 +22,11 @@ function countDown(secs, elem) {
     var element = document.getElementById(elem);
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
 
-    if (secs < 1) {
+    secs--;
+    var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
+
+    
+    if (secs < -1) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
         show('endingPage', 'game');
@@ -30,20 +34,10 @@ function countDown(secs, elem) {
         //window.location = "ending.html";
         //ไว้เปลี่ยนหน้า      
     }
-    secs--;
-    var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
-}
+    
+    }
 
 
-
-gameEnd();
-function gameEnd() {
-    window.onload = function () {
-        var fiveMinutes = 10,
-            display = document.querySelector('#time');
-        // startTimer(fiveMinutes, display);
-    };
-}
 
 //array name data
 //check with new data player clicking
@@ -64,6 +58,7 @@ function calculateScore(data) {
     } else {
         alert("Game Over");
         show('endingPage', 'game');
+        
     }
     i++;
     count++;
@@ -71,6 +66,7 @@ function calculateScore(data) {
     }else {
         alert("You Made It !!");
         show('endingPage', 'game');
+        
     
     }
 } 
@@ -140,6 +136,11 @@ function myFunctionE() {
     score = calculateScore(data);
     document.getElementById("showScore").innerHTML = score;
 
+}
+
+
+function playAgain(){
+    show('welcomePage','endingPage');
 }
 
 

@@ -2,6 +2,7 @@
 var socket = io();
 
 var username = {};
+var alp = "";
 
 //Listening for call from server
 socket.on('username', function (data) {
@@ -17,23 +18,24 @@ socket.on('sendPattern', function (data) {
 })
 
 
-
 function countDown(secs, elem) {
     var element = document.getElementById(elem);
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
 
-    if (secs < 1) {
+    if (secs < 0) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
         show('endingPage', 'game');
-        // window.location.href = "ending.html" + queryString;
-        //window.location = "ending.html";
         //ไว้เปลี่ยนหน้า      
     }
     secs--;
     var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
 }
-
+function myStopFunction() {
+    clearTimeout(timer);
+    for (var i = 1; i < interval_id; i++)
+        window.clearInterval(i);
+}
 
 
 gameEnd();
@@ -53,26 +55,34 @@ var showdataTemp = dataTemp.toString();
 document.getElementById("showdataTemp").innerHTML = showdataTemp;
 
 var score = 0;
-var length = dataTemp.length-1;
+var length = dataTemp.length+1;
 var i = 0;  //index
-var count = 0;
 
 function calculateScore(data) {
-    if (count < length) {
+    if (i < length) {
     if (objectsAreSame(data,dataTemp)) {
-        score = score + 1;
+        score = score + 1; 
+        if(i == length-1) {         
+            document.getElementById("showScore").innerHTML = "";
+            alert("You Made It !! Your score is "+ score);
+           show('endingPage', 'game'); 
+           myStopFunction();
+        return score;
+        }
     } else {
-        alert("Game Over");
+        alert("Game Over Your score is "+ score);
         show('endingPage', 'game');
+        myStopFunction();
+
     }
     i++;
-    count++;
     return score;
-    }else {
-        alert("You Made It !!");
-        show('endingPage', 'game');
-    
     }
+    // else {
+    //     alert("You Made It !!");
+    //     show('endingPage', 'game');
+    
+    // }
 } 
 
 function objectsAreSame(x, y) {
@@ -85,19 +95,7 @@ function objectsAreSame(x, y) {
     }
     return objectsAreSame;
  }
-
-
-//save value into array
-var data = [];
-function myFunctionA() {
-    data.push("A");
-    var showdata = data.toString();
-    document.getElementById("showdata").innerHTML = showdata;
-    score = calculateScore(data);
-    socket.emit("isClicked", "A")
-}
-
-function getUsername() {
+ function getUsername() {
     username = document.getElementById('username');
     var div = document.getElementById('name1');
     alert("hello "+username.value+"!");
@@ -106,7 +104,18 @@ function getUsername() {
     //send name to the ending page
     document.getElementById("player1").innerHTML= username.value;
     //document.getElementById("player2").innerHTML= username.value;
-   
+}
+
+//save value into array
+var data = [];
+function myFunctionA() {
+    data.push("A");
+    var showdata = data.toString();
+    document.getElementById("showdata").innerHTML = showdata;
+    score = calculateScore(data);
+    socket.emit("isClicked", "A");
+    document.getElementById("showScore").innerHTML = score;
+
 }
 
 function myFunctionB() {

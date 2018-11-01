@@ -22,30 +22,28 @@ function countDown(secs, elem) {
     var element = document.getElementById(elem);
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
 
-    if (secs < 0) {
+    secs--;
+    var timer = window.setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
+
+    
+    if (secs < -1) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
         show('endingPage', 'game');
         //ไว้เปลี่ยนหน้า      
     }
-    secs--;
-    var timer = setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
+    
 }
 function myStopFunction() {
-    clearTimeout(timer);
-    for (var i = 1; i < interval_id; i++)
-        window.clearInterval(i);
+    for(i=0; i<100; i++)
+{
+  window.clearTimeout(i);
 }
+}
+    
 
 
-gameEnd();
-function gameEnd() {
-    window.onload = function () {
-        var fiveMinutes = 10,
-            display = document.querySelector('#time');
-        // startTimer(fiveMinutes, display);
-    };
-}
+
 
 //array name data
 //check with new data player clicking
@@ -63,7 +61,6 @@ function calculateScore(data) {
     if (objectsAreSame(data,dataTemp)) {
         score = score + 1; 
         if(i == length-1) {         
-            document.getElementById("showScore").innerHTML = "";
             alert("You Made It !! Your score is "+ score);
            show('endingPage', 'game'); 
            myStopFunction();
@@ -73,10 +70,14 @@ function calculateScore(data) {
         alert("Game Over Your score is "+ score);
         show('endingPage', 'game');
         myStopFunction();
-
     }
     i++;
     return score;
+    }else {
+        alert("You Made It !!");
+        show('endingPage', 'game');
+        myStopFunction();
+    
     }
     // else {
     //     alert("You Made It !!");
@@ -149,6 +150,11 @@ function myFunctionE() {
     score = calculateScore(data);
     document.getElementById("showScore").innerHTML = score;
 
+}
+
+
+function playAgain(){
+    show('welcomePage','endingPage');
 }
 
 

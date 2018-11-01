@@ -2,7 +2,7 @@
 var socket = io();
 
 var username = {};
-var soundbutton = document.getElementById("buttonsound");
+var sound = document.getElementById("buttonsound");
 var alp = "";
 
 //Listening for call from server
@@ -111,13 +111,12 @@ function objectsAreSame(x, y) {
     document.getElementById("player1").innerHTML= username.value;
     //document.getElementById("player2").innerHTML= username.value;
 }
-// function playSound() {
-//     buttonsound.play();
-// }
+function playSound() {
+    buttonsound.play();
+}
 //save value into array
 var data = [];
 function myFunctionA() {
-    var sound = document.getElementById("buttonsound");
     sound.play();
     data.push("A");
     var showdata = data.toString();
@@ -129,6 +128,7 @@ function myFunctionA() {
 }
 
 function myFunctionB() {
+    sound.play();
     data.push("B");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
@@ -137,6 +137,7 @@ function myFunctionB() {
 
 }
 function myFunctionC() {
+    sound.play();
     data.push("C");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
@@ -145,6 +146,7 @@ function myFunctionC() {
 
 }
 function myFunctionD() {
+    sound.play();
     data.push("D");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
@@ -153,6 +155,7 @@ function myFunctionD() {
 
 }
 function myFunctionE() {
+    sound.play();
     data.push("E");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;

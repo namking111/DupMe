@@ -3,7 +3,6 @@ var socket = io();
 
 var username = {};
 var sound = document.getElementById("buttonsound");
-var alp = "";
 
 //Listening for call from server
 socket.on('username', function (data) {
@@ -78,17 +77,9 @@ function calculateScore(data) {
     }
     i++;
     return score;
-    }else {
-        alert("You Made It !!");
-        show('endingPage', 'game');
-        myStopFunction();
-    
     }
-    // else {
-    //     alert("You Made It !!");
-    //     show('endingPage', 'game');
+
     
-    // }
 } 
 
 function objectsAreSame(x, y) {
@@ -167,6 +158,10 @@ function myFunctionE() {
 
 function playAgain(){
     show('welcomePage','endingPage');
+    data = [];
+    score = 0;
+    i=1;
+
 }   
 
 // function mute(){

@@ -3,10 +3,17 @@ var socket = io();
 
 var username = {};
 
-//Watch other user pattern
-socket.on('sendPattern', function(data){
-    btnA = document.getElementById("A")
-    btnA.disable =true;
+//Listening for call from server
+socket.on('username', function (data) {
+    var div = document.getElementById('name1');
+    div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data + "</div>";
+    console.log('From client' + data);
+})
+
+socket.on('sendPattern', function (data) {
+    // btnA = document.getElementById("A")
+    // btnA.disabled =true;
+    document.getElementById("username").value = "Hello from the other side"
 })
 
 /*var player = Math.floor(Math.random() * 2) + 1;
@@ -38,7 +45,7 @@ function countDown(secs, elem) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
         show('endingPage', 'game');
-       // window.location.href = "ending.html" + queryString;
+        // window.location.href = "ending.html" + queryString;
         //window.location = "ending.html";
         //ไว้เปลี่ยนหน้า      
     }
@@ -59,10 +66,10 @@ function countDown(secs, elem) {
 //         //display.textContent = minutes + ":" + seconds;
 
 //         if (--timer < 0) {
-            
+
 //             //window.location = "ending.html";
 //             //window.location.href = "ending.html" + queryString;
-//             show('endingPage', 'game');
+//             // show('endingPage', 'game');
 //             clearInterval(end);
 //         }
 //     }, 1000);
@@ -73,13 +80,13 @@ function gameEnd() {
     window.onload = function () {
         var fiveMinutes = 10,
             display = document.querySelector('#time');
-        startTimer(fiveMinutes, display);
+        // startTimer(fiveMinutes, display);
     };
 }
 
 //array name data
 //check with new data player clicking
-var dataTemp = ["A","B","C","D","E","A","B"];
+var dataTemp = ["A", "B", "C", "D", "E", "A", "B"];
 
 var showdataTemp = dataTemp.toString();
 document.getElementById("showdataTemp").innerHTML = showdataTemp;
@@ -87,10 +94,10 @@ document.getElementById("showdataTemp").innerHTML = showdataTemp;
 var score = 0;
 var i = 0;  //index
 
-function calculateScore(data){
-    if(dataTemp[i]== data[i]){
-         score = score+1;
-    }else{
+function calculateScore(data) {
+    if (dataTemp[i] == data[i]) {
+        score = score + 1;
+    } else {
         alert("Game Over");
         show('endingPage', 'game');
         // document.getElementById("A").disabled = true;
@@ -114,7 +121,7 @@ function myFunctionA() {
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(data);
-    // socket.emit("isClicked", 1)
+    socket.emit("isClicked", "A")
 }
 
 function getUsername() {
@@ -128,10 +135,6 @@ function getUsername() {
     //document.getElementById("player2").innerHTML= username.value;
    
 }
-
-
-
-
 
 function myFunctionB() {
     data.push("B");

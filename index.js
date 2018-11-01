@@ -3,9 +3,6 @@ var socket = require('socket.io');
 var myip = require('quick-local-ip');
 var path = require('path');
 
-
-
-
 //App setup
 var app = express();
 var server = require('http').createServer(app);
@@ -41,12 +38,12 @@ io.on('connection', function (socket) {
     socket.on('username', function (data) {
         user = new User(data, socket);
         users.push(user);
-        console.log(users[0].name)
+        io.sockets.emit('username', users[users.length-1].name);
     });
 
-    // socket.on('isClicked', function(data){
-    //     users[1].socket.emit('sendPattern', data)
-    // });
+    socket.on('isClicked', function(data){
+        
+    });
 
 });
 

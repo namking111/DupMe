@@ -39,9 +39,10 @@
 <body>
         
     <div id="sound">
+            <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none" id="audioo"></iframe>
             <audio id="buttonsound" src="sound/button.mp3" ></audio>
             <audio id="wrong" src="sound/wrong.mp3" ></audio>
-            
+            <audio id="audio" src="sound/song.mp3" ></audio>
             <button type="button" id="playpausebtn" class="btn btn-info btn-lg " >Sound</button>
             <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             
@@ -109,7 +110,7 @@
 
 
             <center>
-                <button type="button" class="btn btn-info btn-lg " onclick="playSound(); myFunction()">Start</button>
+                <button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
 
                 <p id="demo"></p>
 

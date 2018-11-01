@@ -175,12 +175,13 @@ function playAgain(){
 //     audio.muted = true;
 // }
 
-var audio, playbtn, mutebtn, seek_bar;
+var playbtn, mutebtn, seek_bar;
             function initAudioPlayer(){
-                audio = new Audio();
-                audio.src = "sound/song.mp3";
+                audio = document.getElementById("audio");
+                //audio.src = "sound/song.mp3";
                 audio.loop = true;
                 audio.play();
+                audio.autoplay= true;
                 // Set object references
                 playbtn = document.getElementById("playpausebtn");
                 //mutebtn = document.getElementById("mutebtn");

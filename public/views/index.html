@@ -37,6 +37,15 @@
 </script>
 
 <body>
+        
+    <div id="sound">
+            <audio id="buttonsound" src="sound/button.mp3" autoplay="false" preload="auto"></audio>
+            <audio id="wrong" src="sound/wrong.mp3" autoplay="false" preload="auto"></audio>
+            
+            <button type="button" id="playpausebtn" class="btn btn-info btn-lg " >Sound</button>
+            <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
+            
+    </div>
     <div id="indexPage">
         <div class="container-fluid">
             <center>
@@ -265,8 +274,7 @@
 
                 <script>
                     function myFunction1() {
-                        //click แล้วแสดงข้อมูลที่หน้าถัดไป
-                        // window.location = "first.html";
+                        
                         location.reload();
                     }
                 </script>

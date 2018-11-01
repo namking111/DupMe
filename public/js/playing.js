@@ -2,6 +2,7 @@
 var socket = io();
 
 var username = {};
+var soundbutton = document.getElementById("buttonsound");
 var alp = "";
 
 //Listening for call from server
@@ -38,6 +39,7 @@ function myStopFunction() {
     for(i=0; i<100; i++)
 {
   window.clearTimeout(i);
+      
 }
 }
     
@@ -57,6 +59,7 @@ var length = dataTemp.length+1;
 var i = 0;  //index
 
 function calculateScore(data) {
+    
     if (i < length) {
     if (objectsAreSame(data,dataTemp)) {
         score = score + 1; 
@@ -67,6 +70,8 @@ function calculateScore(data) {
         return score;
         }
     } else {
+        var sound1 = document.getElementById("wrong");
+        sound1.play();
         alert("Game Over Your score is "+ score);
         show('endingPage', 'game');
         myStopFunction();
@@ -106,10 +111,14 @@ function objectsAreSame(x, y) {
     document.getElementById("player1").innerHTML= username.value;
     //document.getElementById("player2").innerHTML= username.value;
 }
-
+// function playSound() {
+//     buttonsound.play();
+// }
 //save value into array
 var data = [];
 function myFunctionA() {
+    var sound = document.getElementById("buttonsound");
+    sound.play();
     data.push("A");
     var showdata = data.toString();
     document.getElementById("showdata").innerHTML = showdata;
@@ -155,7 +164,44 @@ function myFunctionE() {
 
 function playAgain(){
     show('welcomePage','endingPage');
-}
+}   
 
+// function mute(){
+//     var audio = new Audio('sound/song.mp3');
+//     audio.play();
+//     audio.muted = true;
+// }
 
-
+var audio, playbtn, mutebtn, seek_bar;
+            function initAudioPlayer(){
+                audio = new Audio();
+                audio.src = "sound/song.mp3";
+                audio.loop = true;
+                audio.play();
+                // Set object references
+                playbtn = document.getElementById("playpausebtn");
+                //mutebtn = document.getElementById("mutebtn");
+                // Add Event Handling
+                playbtn.addEventListener("click",playPause);
+                //mutebtn.addEventListener("click", mute);
+                // Functions
+                function playPause(){
+                    if(audio.paused){
+                        audio.play();
+                        // playbtn.style.background = "url(images/pause.png) no-repeat";
+                    } else {
+                        audio.pause();
+                        //playbtn.style.background = "url(images/play.png) no-repeat";
+                    }
+                }
+                // function mute(){
+                //     if(audio.muted){
+                //         audio.muted = false;
+                //         //mutebtn.style.background = "url(images/speaker.png) no-repeat";
+                //     } else {
+                //         audio.muted = true;
+                //        //mutebtn.style.background = "url(images/speaker_muted.png) no-repeat";
+                //     }
+                // }
+            }
+            window.addEventListener("load", initAudioPlayer);

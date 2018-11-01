@@ -95,23 +95,27 @@ var score = 0;
 var i = 0;  //index
 
 function calculateScore(data) {
-    if (dataTemp[i] == data[i]) {
+    
+    if (objectsAreSame(data,dataTemp)) {
         score = score + 1;
     } else {
         alert("Game Over");
         show('endingPage', 'game');
-        // document.getElementById("A").disabled = true;
-        // document.getElementById("B").disabled = true;
-        // document.getElementById("C").disabled = true;
-        // document.getElementById("D").disabled = true;
-        // document.getElementById("E").disabled = true;
     }
     i++;
     return score;
 }
-// calculateScore(dataTemp,score);
-// document.getElementById("showScore").innerHTML = score;
 
+function objectsAreSame(x, y) {
+    var objectsAreSame = true;
+    for(var i in x) {
+       if(x[i] !== y[i]) {
+          objectsAreSame = false;
+          break;
+       }
+    }
+    return objectsAreSame;
+ }
 
 
 //save value into array

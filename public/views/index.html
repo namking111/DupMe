@@ -35,15 +35,8 @@
 </script>
 
 <body>
-    <div id="sound">
-        <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none"
-            id="audioo"></iframe>
-        <audio id="buttonsound" src="sound/button.mp3"></audio>
-        <audio id="wrong" src="sound/wrong.mp3"></audio>
-        <audio id="audio" src="sound/song.mp3"></audio>
-        <button type="button" id="playpausebtn" class="btn btn-info btn-lg ">Sound</button>
-        <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
-    </div>
+    
+   
     <div id="indexPage">
         <div class="container-fluid">
             <center>
@@ -59,7 +52,9 @@
                     <input type="text" id="username" />
                     <input type="submit" onclick="getUsername()" />
                 </form>
-
+                 </p>
+                <button type="button" class="btn btn-info btn-lg " onclick="show('setting','indexPage');">Setting</button>
+               
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
                 <!-- <form form action="welcome.html" method="GET">
@@ -80,7 +75,62 @@
             </center>
         </div>
     </div>
+    <div id="setting" style="display:none">
+            <center>
+                </p>
+                <h2>Setting</h2>
+                
+                </p>
+                <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
+                <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+                
+                </p>
+                <div id="sound" >
+                    <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none"
+                        id="audioo"></iframe>
+                    <audio id="buttonsound" src="sound/button.mp3"></audio>
+                    <audio id="wrong" src="sound/wrong.mp3"></audio>
+                    <audio id="audio" src="sound/song.mp3"></audio>
+                    <button class="button" id="playpausebtn" >Background music</button>
+                    <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
+                </div>
+            
+                    
+                
+                    <div class="button" id="setting1" onclick="show('howToPlay','setting');">How to play</div>
+                    <div class="w-100"></div>
+                    </p>
+                    <button type="button" id="backToMenu" class="btn btn-info btn-lg" onclick="show('indexPage','setting');">back to menu</button>
+                    <!-- <div class="button" id="setting2">Level : hard</div> -->
+                    
+               
+                    
+                </center>
+            
+        </div>
+    <div id="howToPlay" style="display:none">
+        <center>
+        </p>
+        <h2>How to play</h2>
 
+
+        </p>
+    </p>
+    <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
+    <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+    
+    </p>
+    </p>
+    <h3>111111</h3>
+    <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','howToPlay');">back to setting</button>
+
+    </p>
+
+
+    </center>
+       </div>
+    
+    
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
             </p>

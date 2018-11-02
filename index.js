@@ -26,17 +26,22 @@ var numUser = 0;
 var users = [];
 //listen for conn event
 io.on('connection', function (socket) {
-    console.log('someone joins the game');
+    console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
     socket.on('disconnect', function () {
+        for (i = 0; i < users.length; i++) {
+            if (users[i].socketId == socket.id) {
+                users.splice(i, 1);
+            }
+        }
         console.log('someone disconnected');
         numUser--;
         console.log('Number of users: ' + numUser);
     });
 
     socket.on('username', function (data) {
-        user = new User(data, socket);
+        user = new User(data, socket.id);
         users.push(user);
         io.sockets.emit('username', users[users.length-1].name);
     });
@@ -48,10 +53,13 @@ io.on('connection', function (socket) {
 });
 
 class User {
-    constructor(name, socket) {
+    constructor(name, socketId) {
         this.name = name;
-        this.socket = socket;
-        var score =0;
+        this.socketId = socketId;
+        var score = 0;
+        var isReady = false;
+        var order = 0;
+        // var pattern = [];
     }
 }
 var randomItem = users[Math.floor(Math.random()*users.length)];

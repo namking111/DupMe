@@ -2,7 +2,6 @@
 <html>
 
 <style>
-
     .button {
         background-color: #4CAF50;
         border: none;
@@ -15,7 +14,6 @@
         margin: 4px 2px;
         border-radius: 12px;
     }
-
     .button:active {
         background-color: rgb(255, 217, 0);
     }
@@ -37,15 +35,14 @@
 </script>
 
 <body>
-        
     <div id="sound">
-            <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none" id="audioo"></iframe>
-            <audio id="buttonsound" src="sound/button.mp3" ></audio>
-            <audio id="wrong" src="sound/wrong.mp3" ></audio>
-            <audio id="audio" src="sound/song.mp3" ></audio>
-            <button type="button" id="playpausebtn" class="btn btn-info btn-lg " >Sound</button>
-            <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
-            
+        <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none"
+            id="audioo"></iframe>
+        <audio id="buttonsound" src="sound/button.mp3"></audio>
+        <audio id="wrong" src="sound/wrong.mp3"></audio>
+        <audio id="audio" src="sound/song.mp3"></audio>
+        <button type="button" id="playpausebtn" class="btn btn-info btn-lg ">Sound</button>
+        <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
     </div>
     <div id="indexPage">
         <div class="container-fluid">
@@ -78,13 +75,11 @@
     </div>
     <div id="name1">
         <div class="container-fluid">
-
             <center>
                 <p id="name1" style="font-size: 16px">
             </center>
-
         </div>
-    </div> 
+    </div>
 
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
@@ -92,11 +87,13 @@
 
             <h1>
                 <center>
-                    <script>
-
-
-        //document.write("<span style=\"color:#ff8080;font-size: 1em; font-family:arial, helvetica, sans-serif;\">Hello!<\/span>");
-                    </script>
+                        <div class="row">
+                                <div class="col" id="playername1"></div>
+                                <div class="col" id="playername2"></div>
+                                <div class="w-100"></div>
+                                <script>
+                                        //document.getElementById("player2").innerHTML= users[1].name;
+                                        </script>
                 </center>
             </h1>
             </p>
@@ -110,7 +107,10 @@
 
 
             <center>
-                <button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
+                <button type="button" id="ready" class="btn btn-info btn-lg " onclick="setReady()">Ready</button>
+                <div style="display:none;" id="wait">waiting</div>
+                
+                <!--<button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
 
                 <p id="demo"></p>
 
@@ -123,6 +123,16 @@
                         //window.location.href = "game.html" + queryString;
 
                     }
+                </script>-->
+                <script>
+                    function setReady(){
+                        var setState = 10;
+
+                        var ready1 = true;
+                        document.getElementById('ready').style.visibility = 'hidden';
+                        document.getElementById('wait').style = 'display:visible;';
+                    }  
+                    
                 </script>
 
 
@@ -166,7 +176,6 @@
                 <form id="form1" runat="server">
 
                 </form>
-                
                 <button class="button" onclick="myFunctionA()" id="A">A</button>
                 <button class="button" onclick="myFunctionB()" id="B">B</button>
                 <button class="button" onclick="myFunctionC()" id="C">C</button>
@@ -233,11 +242,10 @@
                 </div>
             </div>
 
-
             </p>
             <center>
-                <button type="button" class="btn btn-info btn-lg "><a href="#" onclick="playAgain();"
-                        style="color:aliceblue">Play Again</a></button>
+                <button type="button" class="btn btn-info btn-lg "><a href="#" onclick="playAgain();" style="color:aliceblue">Play
+                        Again</a></button>
             </center>
             </p>
 
@@ -251,7 +259,6 @@
                 crossorigin="anonymous"></script>
 
             <script>
-    
                 document.getElementById("player1").innerHTML = username;
                 document.getElementById("player2").innerHTML = "Sew";
 
@@ -269,22 +276,14 @@
 
             </script>
             <center>
-                <button type="button" class="btn btn-info btn-lg " onclick="myFunction1()">Reset</button>
+                <button type="button" class="btn btn-info btn-lg " onclick="reset()">Reset</button>
 
                 <p id="demo"></p>
 
-                <script>
-                    function myFunction1() {
-                        location.reload();
-                    }
-                </script>
-
-
+                
             </center>
-
         </div>
     </div>
-
 </body>
 
 </html>

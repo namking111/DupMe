@@ -2,6 +2,7 @@
 <html>
 
 <style>
+    
     .button {
         background-color: #4CAF50;
         border: none;
@@ -34,7 +35,7 @@
     }
 </script>
 
-<body>
+<body style="background-color:powderblue;">
     
    
     <div id="indexPage">
@@ -99,8 +100,11 @@
                 
                     <div class="button" id="setting1" onclick="show('howToPlay','setting');">How to play</div>
                     <div class="w-100"></div>
+                    <div class="button" id="bg" onclick="show('background','setting');">Change background color</div>
+                    <div class="w-100"></div>
                     </p>
                     <button type="button" id="backToMenu" class="btn btn-info btn-lg" onclick="show('indexPage','setting');">back to menu</button>
+                    
                     <!-- <div class="button" id="setting2">Level : hard</div> -->
                     
                
@@ -129,6 +133,36 @@
 
     </center>
        </div>
+
+       <div id="background" style="display:none">
+        <center>
+            </p>
+            <h2>Change Background color</h2>
+    
+    
+            </p>
+        </p>
+        <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
+        <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+        
+        </p>
+        </p>
+        <button type="button" class="btn btn-primary" style= "background-color:white; color:black; border:none" onclick="changeBG()">White</button>
+        <button type="button" class="btn btn-primary" style= "background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()">Pink</button>
+        <button type="button" class="btn btn-primary" style= "background-color:powderblue; color:black; border:none"onclick="changeBG2()">Powderblue</button>
+        <button type="button" class="btn btn-primary" style= "background-color:#FFE680; color:black; border:none"onclick="changeBG3()">Yellow</button>
+        
+
+
+
+    </p>
+        <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','background');">back to setting</button>
+    
+        </p>
+    
+    
+        </center>
+           </div>
     
     
     <div id="welcomePage" style="display:none">

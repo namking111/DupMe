@@ -132,6 +132,18 @@ function getUsername() {
 function playSound() {
     buttonsound.play();
 }
+function changeBG(){
+    document.body.style.backgroundColor = "white";
+}
+function changeBG1(){
+    document.body.style.backgroundColor = "#FFA8A2";
+}
+function changeBG2(){
+    document.body.style.backgroundColor = "powderblue";
+}
+function changeBG3(){
+    document.body.style.backgroundColor = "#FFE680";
+}
 //save value into array
 var data = [];
 function myFunctionA() {

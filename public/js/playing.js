@@ -10,18 +10,23 @@ var sound = document.getElementById("buttonsound");
 socket.on('username', function (data) {
     var div = document.getElementById('name1');
     users = data;
-    if (users.length%2==0) {
-       document.getElementById("playername2").innerHTML= data[users.length-1].name ;
-    }else{
-        document.getElementById("playername1").innerHTML= data[users.length-1].name ;
+    document.getElementById("playername2").innerHTML= users[1].name ;
+    document.getElementById("playername1").innerHTML= users[0].name ;
+    document.getElementById("player1").innerHTML= users[0].name ;
+    document.getElementById("player2").innerHTML= users[1].name;
     
-    }
-    if (users.length%2==0) {
-        document.getElementById("player1").innerHTML= users[users.length-1].name ;
-     }else{
-         document.getElementById("player2").innerHTML= users[users.length-1].name ;
+    // if (users.length%2==0) {
+    //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
+    // }else{
+    //     document.getElementById("playername1").innerHTML= data[users.length-1].name ;
+    
+    // }
+    // if (users.length%2==0) {
+    //     document.getElementById("player1").innerHTML= users[users.length-1].name ;
+    //  }else{
+    //      document.getElementById("player2").innerHTML= users[users.length-1].name ;
      
-     }
+    //  }
         
         
     

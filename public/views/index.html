@@ -196,10 +196,10 @@
 
 
             <center>
-                <button type="button" id="ready" class="btn btn-info btn-lg " onclick="setReady()">Ready</button>
+                <!-- <button type="button" id="ready" class="btn btn-info btn-lg " onclick="myFunction()">Ready</button>
                 <div style="display:none;" id="wait">waiting</div>
-                
-                <!--<button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
+                 -->
+                <button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
 
                 <p id="demo"></p>
 
@@ -209,10 +209,11 @@
                         var queryString = "?" + name;
                         show('game', 'welcomePage');
                         countDown(10, "status");
+                        checkTurn();
                         //window.location.href = "game.html" + queryString;
 
                     }
-                </script>-->
+                </script>
             </center>
             <!DOCTYPE html>
 

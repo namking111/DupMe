@@ -44,6 +44,11 @@ io.on('connection', function (socket) {
     socket.on('username', function (data) {
         user = new User(data, socket.id);
         users.push(user);
+        if (users.length > 1) {
+            users[1].isTurn = false;
+            users[1].index = 2;
+        }
+        console.log(users);
         io.sockets.emit('username', users);
     });
 
@@ -58,6 +63,11 @@ io.on('connection', function (socket) {
         io.sockets.emit('updateUsers', users);
     })
 
+    socket.on('switchPlayer', function (data) {
+        users = data;
+        console.log(users);
+    })
+
 });
 
 class User {
@@ -66,8 +76,8 @@ class User {
         this.socketId = socketId;
         this.score = 0;
         this.isReady = false;
-        this.order = 0;
-        // var pattern = [];
+        this.index = 1;
+        this.isTurn = true;
     }
 }
 var randomItem = users[Math.floor(Math.random() * users.length)];

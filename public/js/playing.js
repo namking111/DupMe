@@ -4,6 +4,8 @@ var socket = io();
 var users = [];
 //pattern store pattern of clicked buttons
 var pattern = [];
+//isTurn is a boolean indicate whether it's his/her turn
+var isTurn;
 var sound = document.getElementById("buttonsound");
 
 // function setReadyGo() {
@@ -22,12 +24,9 @@ socket.on('username', function (data) {
     users = data;
     if (users.length == 1) {
         document.getElementById("playername1").innerHTML = users[users.length - 1].name;
-        console.log("From user1", users[users.length - 1].name);
     } else {
         document.getElementById("playername2").innerHTML = users[users.length - 1].name;
     }
-    document.getElementById("player1").innerHTML = users[0].name;
-    document.getElementById("player2").innerHTML = users[1].name;
 
     // if (users.length%2==0) {
     //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
@@ -43,7 +42,6 @@ socket.on('username', function (data) {
     //  }
 
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
-    console.log('From client' + users[users.length - 1].name);
 })
 
 socket.on('pattern', function (data) {
@@ -56,7 +54,6 @@ socket.on('pattern', function (data) {
 
 socket.on('updateUsers', function (data) {
     users = data;
-    console.log("From front", users);
 })
 
 function countDown(secs, elem) {
@@ -69,7 +66,8 @@ function countDown(secs, elem) {
         clearTimeout(timer);
         element.innerHTML = '<p>Time up!</p>';
         show('endingPage', 'game');
-        //ไว้เปลี่ยนหน้า      
+        //ไว้เปลี่ยนหน้า
+        pattern = [];
     }
 
 }
@@ -78,7 +76,6 @@ function myStopFunction() {
         window.clearTimeout(i);
         document.getElementById("player1").innerHTML = users[0].name;
         document.getElementById("player2").innerHTML = users[1].name;
-
     }
 }
 
@@ -94,7 +91,6 @@ var length = dataTemp.length + 1;
 var i = 0;  //index
 
 function calculateScore(data) {
-
     if (i < length) {
         if (objectsAreSame(data, dataTemp)) {
             score = score + 1;
@@ -110,6 +106,10 @@ function calculateScore(data) {
             alert("Game Over Your score is " + score);
             show('endingPage', 'game');
             myStopFunction();
+            //Clear pattern
+            pattern = [];
+            switchPlayer();
+            console.log(users);
         }
         i++;
         return score;
@@ -133,8 +133,17 @@ function getUsername() {
     alert("hello " + username.value + "!");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
-
 }
+function switchPlayer() {
+    console.log("Hello from switch");
+    let user1 = users.find(obj => obj.index == 1);
+    user1.isTurn = false;
+    let user2 = users.find(obj => obj.index == 2);
+    user2.isTurn = true;
+    checkTurn();
+    socket.emit("switchPlayer", users);
+}
+
 function playSound() {
     buttonsound.play();
 }
@@ -158,45 +167,81 @@ function setReady() {
     document.getElementById('wait').style = 'display:visible;';
 }
 
-//save value into array
-var data = [];
+//Check whether it his/her turn
+function checkTurn() {
+    user = users.find(obj => obj.socketId == socket.id);
+    isTurn = user.isTurn;
+    if (isTurn) {
+        enableAllButton();
+    } else {
+        disableAllButton();
+    }
+}
+
+function enableAllButton() {
+    document.getElementById('A').disabled = false;
+    document.getElementById('B').disabled = false;
+    document.getElementById('C').disabled = false;
+    document.getElementById('D').disabled = false;
+    document.getElementById('E').disabled = false;
+}
+
+function disableAllButton() {
+    document.getElementById('A').disabled = true;
+    document.getElementById('B').disabled = true;
+    document.getElementById('C').disabled = true;
+    document.getElementById('D').disabled = true;
+    document.getElementById('E').disabled = true;
+}
+
 function myFunctionA() {
-    sound.play();
-    // data.push("A");
-    socket.emit("pattern", "A");
-    console.log(pattern);
-    // var showdata = pattern.toString();
-    // document.getElementById("showdata").innerHTML = showdata;
-    // score = calculateScore(pattern);
-    // document.getElementById("showScore").innerHTML = score;
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", "A");
+    } else {
+
+    }
 }
 
 function myFunctionB() {
-    sound.play();
-    socket.emit("pattern", "B");
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", "B");
+    } else {
+
+    }
 }
 function myFunctionC() {
-    sound.play();
-    socket.emit("pattern", "C");
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", "C");
+    } else {
+
+    }
 }
 function myFunctionD() {
-    sound.play();
-    socket.emit("pattern", "D");
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", "D");
+    } else {
+
+    }
 }
 function myFunctionE() {
-    sound.play();
-    socket.emit("pattern", "E");
-}
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", "E");
+    } else {
 
+    }
+}
 
 function playAgain() {
     show('welcomePage', 'endingPage');
-    data = [];
+    pattern = [];
     score = 0;
     i = 1;
-
 }
-
 
 // function mute(){
 //     var audio = new Audio('sound/song.mp3');

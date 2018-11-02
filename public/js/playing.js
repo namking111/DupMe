@@ -160,7 +160,7 @@ function playAgain(){
     show('welcomePage','endingPage');
     data = [];
     score = 0;
-    i=1;
+    i = 1;
 
 }   
 

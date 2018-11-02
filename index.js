@@ -24,6 +24,7 @@ var io = socket(server);
 
 var numUser = 0;
 var users = [];
+var pattern = [];
 //listen for conn event
 io.on('connection', function (socket) {
     console.log('someone joins the game', socket.id);
@@ -43,12 +44,19 @@ io.on('connection', function (socket) {
     socket.on('username', function (data) {
         user = new User(data, socket.id);
         users.push(user);
-        io.sockets.emit('username', users[users.length-1].name);
+        io.sockets.emit('username', users[users.length - 1].name);
     });
 
-    socket.on('isClicked', function(data){
-        
+    socket.on('pattern', function (data) {
+        pattern.push(data);
+        io.sockets.emit('pattern', pattern);
     });
+
+    socket.on('ready', function (data) {
+        let user = users.find(obj => obj.socketId == data);
+        user.isReady = true;
+        io.sockets.emit('updateUsers', users);
+    })
 
 });
 
@@ -56,11 +64,11 @@ class User {
     constructor(name, socketId) {
         this.name = name;
         this.socketId = socketId;
-        var score = 0;
-        var isReady = false;
-        var order = 0;
+        this.score = 0;
+        this.isReady = false;
+        this.order = 0;
         // var pattern = [];
     }
 }
-var randomItem = users[Math.floor(Math.random()*users.length)];
+var randomItem = users[Math.floor(Math.random() * users.length)];
 console.log(randomItem);

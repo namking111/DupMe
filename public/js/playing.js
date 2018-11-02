@@ -6,7 +6,6 @@ var users = [];
 var pattern = [];
 var sound = document.getElementById("buttonsound");
 
-
 // function setReadyGo() {
 // 	setState--;
 // 	document.getElementById("seconds").setState = timeleft;
@@ -21,26 +20,26 @@ var sound = document.getElementById("buttonsound");
 socket.on('username', function (data) {
     var div = document.getElementById('name1');
     users = data;
-    document.getElementById("playername2").innerHTML= users[1].name ;
-    document.getElementById("playername1").innerHTML= users[0].name ;
-    document.getElementById("player1").innerHTML= users[0].name ;
-    document.getElementById("player2").innerHTML= users[1].name;
-    
+    document.getElementById("playername2").innerHTML = users[1].name;
+    document.getElementById("playername1").innerHTML = users[0].name;
+    document.getElementById("player1").innerHTML = users[0].name;
+    document.getElementById("player2").innerHTML = users[1].name;
+
     // if (users.length%2==0) {
     //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
     // }else{
     //     document.getElementById("playername1").innerHTML= data[users.length-1].name ;
-    
+
     // }
     // if (users.length%2==0) {
     //     document.getElementById("player1").innerHTML= users[users.length-1].name ;
     //  }else{
     //      document.getElementById("player2").innerHTML= users[users.length-1].name ;
-     
+
     //  }
-        
-        
-    
+
+
+
     //div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
     console.log('From client' + users[users.length - 1].name);
 })
@@ -51,6 +50,11 @@ socket.on('pattern', function (data) {
     document.getElementById("showdata").innerHTML = showdata;
     score = calculateScore(pattern);
     document.getElementById("showScore").innerHTML = score;
+})
+
+socket.on('updateUsers', function(data){
+    users = data;
+    console.log("From front", users);
 })
 
 function countDown(secs, elem) {
@@ -70,8 +74,8 @@ function countDown(secs, elem) {
 function myStopFunction() {
     for (i = 0; i < 100; i++) {
         window.clearTimeout(i);
-        document.getElementById("player1").innerHTML= users[0].name;
-        document.getElementById("player2").innerHTML= users[1].name;
+        document.getElementById("player1").innerHTML = users[0].name;
+        document.getElementById("player2").innerHTML = users[1].name;
 
     }
 }
@@ -127,7 +131,7 @@ function getUsername() {
     alert("hello " + username.value + "!");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
-    
+
 }
 function playSound() {
     buttonsound.play();
@@ -144,6 +148,14 @@ function changeBG2(){
 function changeBG3(){
     document.body.style.backgroundColor = "#FFE680";
 }
+
+function setReady() {
+    console.log("From playing", socket.id);
+    socket.emit('ready', socket.id);
+    document.getElementById('ready').style.visibility = 'hidden';
+    document.getElementById('wait').style = 'display:visible;';
+}
+
 //save value into array
 var data = [];
 function myFunctionA() {
@@ -181,7 +193,7 @@ function playAgain() {
     score = 0;
     i = 1;
 
-}   
+}
 
 
 // function mute(){
@@ -225,6 +237,6 @@ function initAudioPlayer() {
 }
 window.addEventListener("load", initAudioPlayer);
 
-function reset() {                
+function reset() {
     location.reload();
 }

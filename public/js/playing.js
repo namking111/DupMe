@@ -10,10 +10,20 @@ var sound = document.getElementById("buttonsound");
 socket.on('username', function (data) {
     var div = document.getElementById('name1');
     users = data;
+    if (users.length%2==0) {
+       document.getElementById("playername2").innerHTML= data[users.length-1].name ;
+    }else{
+        document.getElementById("playername1").innerHTML= data[users.length-1].name ;
     
-        document.getElementById("playername1").innerHTML= data[0].name ;
-        document.getElementById("playername2").innerHTML= data[1].name ;
-    
+    }
+    if (users.length%2==0) {
+        document.getElementById("player1").innerHTML= users[users.length-1].name ;
+     }else{
+         document.getElementById("player2").innerHTML= users[users.length-1].name ;
+     
+     }
+        
+        
     
     //div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
     console.log('From client' + users[users.length - 1].name);
@@ -44,9 +54,13 @@ function countDown(secs, elem) {
 function myStopFunction() {
     for (i = 0; i < 100; i++) {
         window.clearTimeout(i);
-        document.getElementById("player1").innerHTML= users[0].name;
-        document.getElementById("player2").innerHTML= users[1].name;
-
+        if (users.length%2==0) {
+            document.getElementById("playername2").innerHTML= data[users.length-1].name ;
+         }else{
+             document.getElementById("playername1").innerHTML= data[users.length-1].name ;
+         
+         }
+        
 
     }
 }
@@ -102,8 +116,7 @@ function getUsername() {
     alert("hello " + username.value + "!");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
-    document.getElementById("player1").innerHTML = users[0].name;
-    document.getElementById("player2").innerHTML= users[1].name;
+    
 }
 function playSound() {
     buttonsound.play();
@@ -187,7 +200,6 @@ function initAudioPlayer() {
 }
 window.addEventListener("load", initAudioPlayer);
 
-function reset() {
-                        
+function reset() {                
     location.reload();
 }

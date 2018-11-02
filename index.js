@@ -14,7 +14,6 @@ server.listen(4000, '0.0.0.0', function () {
 //Static files
 app.use(express.static('public'));
 
-
 //Routes
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/views/index.html'));
@@ -28,17 +27,22 @@ var users = [];
 var pattern = [];
 //listen for conn event
 io.on('connection', function (socket) {
-    console.log('someone joins the game');
+    console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
     socket.on('disconnect', function () {
+        for (i = 0; i < users.length; i++) {
+            if (users[i].socketId == socket.id) {
+                users.splice(i, 1);
+            }
+        }
         console.log('someone disconnected');
         numUser--;
         console.log('Number of users: ' + numUser);
     });
 
     socket.on('username', function (data) {
-        user = new User(data);
+        user = new User(data, socket.id);
         users.push(user);
         io.sockets.emit('username', users);
     });
@@ -51,10 +55,12 @@ io.on('connection', function (socket) {
 });
 
 class User {
-    constructor(name) {
+    constructor(name, socketId) {
         this.name = name;
-        // this.socket = socket;
+        this.socketId = socketId;
         var score = 0;
+        var isReady = false;
+        var order = 0;
         // var pattern = [];
     }
 };

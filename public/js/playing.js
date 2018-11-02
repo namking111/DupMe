@@ -39,6 +39,9 @@ function countDown(secs, elem) {
 function myStopFunction() {
     for (i = 0; i < 100; i++) {
         window.clearTimeout(i);
+        document.getElementById("player1").innerHTML= users[0].name;
+        document.getElementById("player2").innerHTML= users[1].name;
+
 
     }
 }
@@ -94,8 +97,8 @@ function getUsername() {
     alert("hello " + username.value + "!");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
-    document.getElementById("player1").innerHTML = username.value;
-    //document.getElementById("player2").innerHTML= username.value;
+    document.getElementById("player1").innerHTML = users[0].name;
+    document.getElementById("player2").innerHTML= users[1].name;
 }
 function playSound() {
     buttonsound.play();
@@ -178,3 +181,8 @@ function initAudioPlayer() {
     // }
 }
 window.addEventListener("load", initAudioPlayer);
+
+function reset() {
+                        
+    location.reload();
+}

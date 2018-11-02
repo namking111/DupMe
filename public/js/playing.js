@@ -10,7 +10,12 @@ var sound = document.getElementById("buttonsound");
 socket.on('username', function (data) {
     var div = document.getElementById('name1');
     users = data;
-    div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
+    
+        document.getElementById("playername1").innerHTML= data[0].name ;
+        document.getElementById("playername2").innerHTML= data[1].name ;
+    
+    
+    //div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
     console.log('From client' + users[users.length - 1].name);
 })
 

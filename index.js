@@ -44,7 +44,7 @@ io.on('connection', function (socket) {
     socket.on('username', function (data) {
         user = new User(data, socket.id);
         users.push(user);
-        io.sockets.emit('username', users[users.length - 1].name);
+        io.sockets.emit('username', users);
     });
 
     socket.on('pattern', function (data) {

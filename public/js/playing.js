@@ -20,8 +20,12 @@ var sound = document.getElementById("buttonsound");
 socket.on('username', function (data) {
     var div = document.getElementById('name1');
     users = data;
-    document.getElementById("playername2").innerHTML = users[1].name;
-    document.getElementById("playername1").innerHTML = users[0].name;
+    if (users.length == 1) {
+        document.getElementById("playername1").innerHTML = users[users.length - 1].name;
+        console.log("From user1", users[users.length - 1].name);
+    } else {
+        document.getElementById("playername2").innerHTML = users[users.length - 1].name;
+    }
     document.getElementById("player1").innerHTML = users[0].name;
     document.getElementById("player2").innerHTML = users[1].name;
 
@@ -38,9 +42,7 @@ socket.on('username', function (data) {
 
     //  }
 
-
-
-    //div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
+    // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
     console.log('From client' + users[users.length - 1].name);
 })
 
@@ -52,7 +54,7 @@ socket.on('pattern', function (data) {
     document.getElementById("showScore").innerHTML = score;
 })
 
-socket.on('updateUsers', function(data){
+socket.on('updateUsers', function (data) {
     users = data;
     console.log("From front", users);
 })
@@ -136,16 +138,16 @@ function getUsername() {
 function playSound() {
     buttonsound.play();
 }
-function changeBG(){
+function changeBG() {
     document.body.style.backgroundColor = "white";
 }
-function changeBG1(){
+function changeBG1() {
     document.body.style.backgroundColor = "#FFA8A2";
 }
-function changeBG2(){
+function changeBG2() {
     document.body.style.backgroundColor = "powderblue";
 }
-function changeBG3(){
+function changeBG3() {
     document.body.style.backgroundColor = "#FCE476";
 }
 

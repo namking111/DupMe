@@ -146,7 +146,7 @@ function changeBG2(){
     document.body.style.backgroundColor = "powderblue";
 }
 function changeBG3(){
-    document.body.style.backgroundColor = "#FFE680";
+    document.body.style.backgroundColor = "#FCE476";
 }
 
 function setReady() {

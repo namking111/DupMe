@@ -6,15 +6,11 @@ var users = [];
 var pattern = [];
 var sound = document.getElementById("buttonsound");
 
-// function setReadyGo() {
-// 	setState--;
-// 	document.getElementById("seconds").setState = timeleft;
-// 	if (timeleft > 0) {
-// 		setTimeout(setReadyGo, 300);
-// 	}
-// };
+var statusIndex = 0;
+var timerIndex = 0;
+var data = [];
+var dataTemp = [];
 
-// setTimeout(setReadyGo, 300);
 
 //Listening for call from server
 socket.on('username', function (data) {
@@ -48,10 +44,17 @@ socket.on('username', function (data) {
 
 socket.on('pattern', function (data) {
     pattern = data;
-    var showdata = pattern.toString();
-    document.getElementById("showdata").innerHTML = showdata;
-    score = calculateScore(pattern);
-    document.getElementById("showScore").innerHTML = score;
+    
+    if(statusIndex==0){
+        var showdataTemp = pattern.toString();
+        document.getElementById("showdataTemp").innerHTML = showdataTemp;
+    }else{
+        var showdata = pattern.toString();
+        document.getElementById("showdata").innerHTML = showdata;
+        score = calculateScore(pattern);
+        document.getElementById("showScore").innerHTML = score;
+    }
+    
 })
 
 socket.on('updateUsers', function (data) {
@@ -65,12 +68,37 @@ function countDown(secs, elem) {
     secs--;
     var timer = window.setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
 
-    if (secs < -1) {
-        clearTimeout(timer);
-        element.innerHTML = '<p>Time up!</p>';
-        show('endingPage', 'game');
+    if(secs<0 ){
+        setTimeout(function(){element.innerHTML="READY"},1000);
+    }
+    if(secs<-1){
+        if(timerIndex==1){
+            clearTimeout(timer);
+            element.innerHTML = '<p>Time up!</p>';
+            show('endingPage', 'game');
+        }
+        setTimeout(function(){element.innerHTML="SET"},1000);
+    }
+    if(secs<-2){
+        setTimeout(function(){element.innerHTML="COPY"},1000);
+    }
+    if (secs < -3) {
+        if(timerIndex==0){ 
+                statusIndex = 1;
+                timerIndex=1;
+                clearTimeout(timer);
+                countDown(21,"status");
+                player2Copy();
+                pattern = [];
+        }else{
+            // after 2nd player played
+            clearTimeout(timer);
+            element.innerHTML = '<p>Time up!</p>';
+            show('endingPage', 'game');
+        } 
         //ไว้เปลี่ยนหน้า      
     }
+    console.log(secs)
 
 }
 function myStopFunction() {
@@ -78,16 +106,28 @@ function myStopFunction() {
         window.clearTimeout(i);
         document.getElementById("player1").innerHTML = users[0].name;
         document.getElementById("player2").innerHTML = users[1].name;
-
     }
+}
+
+
+function gameStart() {
+    // start 1st 10 second
+    var queryString = "?" + name;
+    show('game', 'welcomePage');
+    countDown(10, "status");
+
+}
+
+function player2Copy() {
+    
+}
+
+function createPattern() {
+
 }
 
 //array name data
 //check with new data player clicking
-var dataTemp = ["A", "B", "C", "D", "E", "A", "B"];
-
-var showdataTemp = dataTemp.toString();
-document.getElementById("showdataTemp").innerHTML = showdataTemp;
 
 var score = 0;
 var length = dataTemp.length + 1;
@@ -133,7 +173,6 @@ function getUsername() {
     alert("hello " + username.value + "!");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
-
 }
 function playSound() {
     buttonsound.play();
@@ -160,6 +199,7 @@ function setReady() {
 
 //save value into array
 var data = [];
+
 function myFunctionA() {
     sound.play();
     // data.push("A");
@@ -191,9 +231,15 @@ function myFunctionE() {
 
 function playAgain() {
     show('welcomePage', 'endingPage');
-    data = [];
+    dataTemp = [];
     score = 0;
-    i = 1;
+    i = 0;
+    pattern = [];
+    showdata = "";
+    document.getElementById("showdata").innerHTML = showdata;
+    document.getElementById("showScore").innerHTML = score;
+    gameStart();
+
 
 }
 

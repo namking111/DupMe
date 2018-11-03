@@ -42,17 +42,17 @@ socket.on('username', function (data) {
 
 socket.on('pattern', function (data) {
     pattern = data;
-    
-    if(statusIndex==0){
+
+    if (statusIndex == 0) {
         var showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-    }else{
+    } else {
         var showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
         document.getElementById("showScore").innerHTML = score;
     }
-    
+
 })
 
 socket.on('updateUsers', function (data) {
@@ -65,34 +65,65 @@ function countDown(secs, elem) {
     secs--;
     var timer = window.setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
 
-    if(secs<0 ){
-        setTimeout(function(){element.innerHTML="READY"},1000);
+    // statusIndex=0  1st player create array
+    // statusIndex=1  2st player copy array
+    // statusIndex=2  2st player create array
+    // statusIndex=3  1st player copy array
+    if (secs < 0) {
+        if (timerIndex == 0 || timerIndex == 2) {
+            setTimeout(function () { element.innerHTML = "READY" }, 1000);
+        }
+        if(timerIndex ==1){
+            setTimeout(function () { element.innerHTML = "READY" }, 1000);    
+        }
     }
-    if(secs<-1){
-        if(timerIndex==1){
+    if (secs < -1) {
+        if (timerIndex == 0 || timerIndex == 2) {
+            setTimeout(function () { element.innerHTML = "SET" }, 1000);
+        }
+        if (timerIndex == 1) {
+            setTimeout(function () { element.innerHTML = "SET" }, 1000);
+        }
+        if (timerIndex == 3) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
         }
-        setTimeout(function(){element.innerHTML="SET"},1000);
     }
-    if(secs<-2){
-        setTimeout(function(){element.innerHTML="COPY"},1000);
+    if (secs < -2) {
+        if (timerIndex == 0 || timerIndex == 2) {
+            setTimeout(function () { element.innerHTML = "COPY" }, 1000);
+        }
+        if (timerIndex == 1) {
+            setTimeout(function () { element.innerHTML = "PLAY" }, 1000);
+        }
     }
     if (secs < -3) {
-        if(timerIndex==0){ 
-                statusIndex = 1;
-                timerIndex=1;
-                clearTimeout(timer);
-                countDown(21,"status");
-                player2Copy();
-                pattern = [];
-        }else{
+        if (timerIndex == 0) {
+            statusIndex = 1;
+            timerIndex = 1;
+            clearTimeout(timer);
+            countDown(21, "status");
+            player2Copy();
+            pattern = [];
+        } else if (timerIndex == 1) {
+            statusIndex = 0;
+            timerIndex = 2;
+            clearTimeout(timer);
+            countDown(11, "status");
+        }else if (timerIndex == 2) {
+            statusIndex = 0;
+            timerIndex = 3;
+            clearTimeout(timer);
+            countDown(21, "status");
+            player2Copy();
+            pattern = [];
+        }else {
             // after 2nd player played
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
-        } 
+        }
         //ไว้เปลี่ยนหน้า      
     }
     console.log(secs)
@@ -116,7 +147,7 @@ function gameStart() {
 }
 
 function player2Copy() {
-    
+
 }
 
 function createPattern() {
@@ -285,6 +316,7 @@ function playAgain() {
     i = 0;
     pattern = [];
     showdata = "";
+    timerIndex= 0;
     document.getElementById("showdata").innerHTML = showdata;
     document.getElementById("showScore").innerHTML = score;
     gameStart();

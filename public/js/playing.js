@@ -193,29 +193,29 @@ var length = dataTemp.length + 1;
 var i = 0;  //index
 
 function calculateScore(data) {
-    // if (i < length) {
-    //     if (objectsAreSame(data, dataTemp)) {
-    //         score = score + 1;
-    //         if (i == length - 1) {
-    //             alert("You Made It !! Your score is " + score);
-    //             show('endingPage', 'game');
-    //             myStopFunction();
-    //             return score;
-    //         }
-    //     } else {
-    //         var sound1 = document.getElementById("wrong");
-    //         sound1.play();
-    //         alert("Game Over Your score is " + score);
-    //         show('endingPage', 'game');
-    //         myStopFunction();
-    //         //Clear pattern
-    //         pattern = [];
-    //         switchPlayer();
-    //         console.log(users);
-    //     }
-    //     i++;
-    //     return score;
-    // }
+    if (i < length) {
+        if (objectsAreSame(data, dataTemp)) {
+            score = score + 1;
+            if (i == length - 1) {
+                alert("You Made It !! Your score is " + score);
+                show('endingPage', 'game');
+                myStopFunction();
+                return score;
+            }
+        } else {
+            var sound1 = document.getElementById("wrong");
+            sound1.play();
+            alert("Game Over Your score is " + score);
+            show('endingPage', 'game');
+            myStopFunction();
+            //Clear pattern
+            pattern = [];
+            switchPlayer();
+            console.log(users);
+        }
+        i++;
+        return score;
+    }
 }
 
 function objectsAreSame(x, y) {

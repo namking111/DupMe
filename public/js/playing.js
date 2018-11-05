@@ -80,7 +80,6 @@ socket.on('ready', function (data) {
         show('game', 'welcomePage');
         countDown(10, "status");
         checkTurn();
-
     }
 })
 
@@ -475,10 +474,9 @@ window.addEventListener("load", initAudioPlayer);
 function reset() {
     location.reload();
 }
-var value;
+var color;
 function changeAvatar() {
-    value = document.getElementById("myRadioYellow").value.toString();
-    setAvatar(value);
+    color = document.getElementById("myRadioYellow").value.toString();
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien3.jpeg";
     //     document.getElementById("pic11").src = "img/alien3.jpeg";
@@ -491,8 +489,7 @@ function changeAvatar() {
 
 }
 function changeAvatar2() {
-    value = document.getElementById("myRadioBlue").value.toString();
-    setAvatar(value);
+    color = document.getElementById("myRadioBlue").value.toString();
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien7.jpeg";
     //     document.getElementById("pic11").src = "img/alien7.jpeg";
@@ -505,8 +502,7 @@ function changeAvatar2() {
 
 }
 function changeAvatar3() {
-    value = document.getElementById("myRadioPink").value.toString();
-    setAvatar(value);
+    color = document.getElementById("myRadioPink").value.toString();
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien8.jpeg";
     //     document.getElementById("pic11").src = "img/alien8.jpeg";
@@ -519,8 +515,7 @@ function changeAvatar3() {
 
 }
 function changeAvatar4() {
-    value = document.getElementById("myRadioGreen").value.toString();
-    setAvatar(value);
+    color = document.getElementById("myRadioGreen").value.toString();
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien4.jpeg";
     //     document.getElementById("pic11").src = "img/alien4.jpeg";
@@ -536,10 +531,10 @@ function getMotto() {
     motto = document.getElementById('motto');
     socket.emit("motto", { socketId: socket.id, motto: motto.value });
 }
-function setAvatar(value) {
-    socket.emit('avatar', { socketId: socket.id, value: value });
+function setAvatar(color) {
+    socket.emit('avatar', { socketId: socket.id, color: color });
 }
 
 function color() {
-    alert(value);
+    alert(color);
 }

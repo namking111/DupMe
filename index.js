@@ -114,7 +114,7 @@ io.on('connection', function (socket) {
 
     socket.on('avatar', function (data) {
         let user = users.find(obj => obj.socketId == data.socketId);
-        user.avatar = data.value;
+        user.avatar = data.color;
         io.sockets.emit('avatar', users);
     });
 

@@ -154,8 +154,8 @@ function countDown(secs, elem) {
 function myStopFunction() {
     for (i = 0; i < 100; i++) {
         window.clearTimeout(i);
-        document.getElementById("player1").innerHTML = users[0].name;
-        document.getElementById("player2").innerHTML = users[1].name;
+        // document.getElementById("player1").innerHTML = users[0].name;
+        // document.getElementById("player2").innerHTML = users[1].name;
     }
 }
 
@@ -236,7 +236,7 @@ function getUsername() {
     username = document.getElementById('username');
     var div = document.getElementById('name1');
     socket.emit("username", username.value);
-    alert("hello " + username.value + "!");
+    alert("Welcome " + username.value + " !");
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
 }
@@ -463,4 +463,7 @@ function changeAvatar4(){
       function color(){
           alert(value);
       }
-  
+  function getMotto(){
+    document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
+    document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
+  }

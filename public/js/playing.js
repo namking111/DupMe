@@ -23,8 +23,10 @@ socket.on('username', function (data) {
     users = data;
     if (users.length == 1) {
         document.getElementById("playername1").innerHTML = users[users.length - 1].name;
+        document.getElementById("player1").innerHTML = users[users.length - 1].name;
     } else {
         document.getElementById("playername2").innerHTML = users[users.length - 1].name;
+        document.getElementById("player2").innerHTML = users[users.length - 1].name;
     }
 
     // if (users.length%2==0) {
@@ -43,7 +45,7 @@ socket.on('username', function (data) {
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
 })
 
-socket.on('pattern',function (data) {
+socket.on('pattern', function (data) {
     console.log(pattern + " data: " + data);
     pattern = data;
 
@@ -51,8 +53,8 @@ socket.on('pattern',function (data) {
         dataTemp = data;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-    } else if(statusIndex==1) {
-        data= data;
+    } else if (statusIndex == 1) {
+        data = data;
         showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
@@ -61,10 +63,24 @@ socket.on('pattern',function (data) {
 
 })
 
-
-
-socket.on('updateUsers', function (data) {
+socket.on('ready', function (data) {
     users = data;
+    if (users.length > 1 && (users[0].isReady && users[1].isReady)) {
+        show('game', 'welcomePage');
+        countDown(10, "status");
+        checkTurn();
+
+    }
+})
+
+socket.on('avatar', function (data) {
+    users = data;
+    let user = users.find(obj => obj.socketId == data);
+    if (user.index == 1) {
+
+    } else {
+
+    }
 })
 
 function countDown(secs, elem) {
@@ -101,6 +117,7 @@ function countDown(secs, elem) {
         }
     }
     if (secs < -2) {
+        switchPlayer();
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "COPY" }, 1000);
             disableAllButton();
@@ -131,6 +148,7 @@ function countDown(secs, elem) {
             timerIndex = 3;
             pattern = [];
             enableAllButton();
+            switchBack();
             clearTimeout(timer);
             countDown(21, "status");
             player2Copy();
@@ -156,7 +174,6 @@ function myStopFunction() {
 
 function gameStart() {
     // start 1st 10 second
-    empty();
     var queryString = "?" + name;
     dataTemp = [];
     showdataTemp = "";
@@ -164,9 +181,9 @@ function gameStart() {
     i = 0;
     pattern = [];
     data = [];
-    pattern.length=0;
-    data.length=0;
-    dataTemp.length=0;
+    pattern.length = 0;
+    data.length = 0;
+    dataTemp.length = 0;
     showdata = "";
     timerIndex = 0;
     statusIndex = 0;
@@ -236,6 +253,7 @@ function getUsername() {
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
 }
+
 function switchPlayer() {
     console.log("Hello from switch");
     let user1 = users.find(obj => obj.index == 1);
@@ -244,6 +262,14 @@ function switchPlayer() {
     user2.isTurn = true;
     checkTurn();
     socket.emit("switchPlayer", users);
+}
+function switchBack() {
+    let user1 = users.find(obj => obj.index == 1);
+    user1.isTurn = true;
+    let user2 = users.find(obj => obj.index == 2);
+    user2.isTurn = false;
+    checkTurn();
+    socket.emit("switchBack", users);
 }
 
 function playSound() {
@@ -263,7 +289,6 @@ function changeBG3() {
 }
 
 function setReady() {
-    console.log("From playing", socket.id);
     socket.emit('ready', socket.id);
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';
@@ -355,8 +380,6 @@ function playAgain() {
     document.getElementById("showScore").innerHTML = score;
     gameStart();
     console.log(showdataTemp)
-
-
 }
 
 // function mute(){
@@ -402,4 +425,65 @@ window.addEventListener("load", initAudioPlayer);
 
 function reset() {
     location.reload();
+}
+var value;
+function changeAvatar() {
+    value = document.getElementById("myRadioYellow").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien3.jpeg";
+        document.getElementById("pic11").src = "img/alien3.jpeg";
+    }
+    else {
+        document.getElementById("pic2").src = "img/alien3.jpeg";
+        document.getElementById("pic22").src = "img/alien3.jpeg";
+
+    }
+
+}
+function changeAvatar2() {
+    value = document.getElementById("myRadioBlue").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien7.jpeg";
+        document.getElementById("pic11").src = "img/alien7.jpeg";
+    }
+    else {
+        document.getElementById("pic2").src = "img/alien7.jpeg";
+        document.getElementById("pic22").src = "img/alien7.jpeg";
+
+    }
+
+}
+function changeAvatar3() {
+    value = document.getElementById("myRadioPink").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien8.jpeg";
+        document.getElementById("pic11").src = "img/alien8.jpeg";
+    }
+    else {
+        document.getElementById("pic2").src = "img/alien8.jpeg";
+        document.getElementById("pic22").src = "img/alien8.jpeg";
+
+    }
+
+}
+function changeAvatar4() {
+    value = document.getElementById("myRadioGreen").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien4.jpeg";
+        document.getElementById("pic11").src = "img/alien4.jpeg";
+    }
+    else {
+        document.getElementById("pic2").src = "img/alien4.jpeg";
+        document.getElementById("pic22").src = "img/alien4.jpeg";
+
+    }
+
+}
+
+function setAvatar(value) {
+    socket.emit('avatar', value);
+}
+
+function color() {
+    alert(value);
 }

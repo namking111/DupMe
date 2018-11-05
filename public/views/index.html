@@ -45,6 +45,8 @@
                 <h2>Dup me</h2>
 
                 </p>
+                
+
                 <img src="img/alien.jpeg" alt="alien" width="180" height="156">
                 <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
                 </p>
@@ -55,6 +57,7 @@
                 </form>
                  </p>
                 <button type="button" class="btn btn-info btn-lg " onclick="show('setting','indexPage');">Setting</button>
+                <button type="button" class="btn btn-info btn-lg " onclick="color()">color</button>
                
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
@@ -102,6 +105,7 @@
                     <div class="w-100"></div>
                     <div class="button" id="bg" onclick="show('background','setting');">Change background color</div>
                     <div class="w-100"></div>
+                    <div class="button" id="avatar1" onclick="show('avatar','setting');">Change your avatar</div>
                     </p>
                     <button type="button" id="backToMenu" class="btn btn-info btn-lg" onclick="show('indexPage','setting');">back to menu</button>
                     
@@ -164,18 +168,48 @@
         </center>
            </div>
     
-    
+           <div id="avatar" style="display:none">
+                <center>
+                    </p>
+                    <h2>Change your avatar</h2>
+                    </p>
+                    <form action="">
+                            <img src="img/alien3.jpeg" alt="alien" width="180" height="156"> 
+                            <img src="img/alien7.jpeg" alt="alien" width="180" height="156">
+                            <img src="img/alien8.jpeg" alt="alien" width="180" height="156">
+                            <img src="img/alien4.jpeg" alt="alien" width="180" height="156">
+                    </p>
+                            <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow"> yellow<br>
+                            
+                            <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"> blue<br>
+                            
+                            <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> pink<br>
+                            
+                            <input type="radio" name="char" value="green" onchange="changeAvatar4()"id="myRadioGreen" > green
+                            
+                          </form>
+                
+        
+        
+        
+            </p>
+                <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','avatar');">back to setting</button>
+            
+                </p>
+            
+            
+                </center>
+                </div>        
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
             </p>
-
+       
             <h1>
-                <center>
-                    </p>
-                    <h1>Player</h1>
-            
-            
-                    </p>
+                <center> </p>
+        <h1>Player</h1>
+
+
+        </p>
                         <div class="row">
                                 <div class="col" id="playername1"></div>
                                 <div class="col" id="playername2"></div>
@@ -187,8 +221,8 @@
             </h1>
             </p>
             <center>
-                <img src="img/alien3.jpeg" alt="alien">
-                <img src="img/alien4.jpeg" alt="alien">
+                <img id = "pic1" src="img/alien3.jpeg" alt="alien">
+                <img id = "pic2" src="img/alien4.jpeg" alt="alien">
 
             </center>
             </p>
@@ -196,18 +230,18 @@
 
 
             <center>
-                <!-- <button type="button" id="ready" class="btn btn-info btn-lg " onclick="myFunction()">Ready</button>
+                 <button type="button" id="ready" class="btn btn-info btn-lg " onclick="setReady()">Ready</button>
                 <div style="display:none;" id="wait">waiting</div>
 
-                <button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>
+                <!--<button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>-->
                 
                 <!--<button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
                  -->
-                <button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>
+                <!--<button type="button" class="btn btn-info btn-lg " onclick=" myFunction()">Start</button>-->
 
                 <p id="demo"></p>
 
-                <script>
+                <!--<script>
                     function myFunction() {
                         //click แล้วแสดงข้อมูลที่หน้าถัดไป
                         var queryString = "?" + name;
@@ -217,7 +251,7 @@
                         //window.location.href = "game.html" + queryString;
 
                     }
-                </script>
+                </script>-->
             </center>
             <!DOCTYPE html>
 
@@ -254,6 +288,11 @@
             </head>
 
             <body>
+                <center>
+                <img id = "pic11" src="img/alien3.jpeg" alt="alien">
+                <img id = "pic22" src="img/alien4.jpeg" alt="alien">
+
+            </center>
 
                 <form id="form1" runat="server">
 

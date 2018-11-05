@@ -90,14 +90,19 @@ io.on('connection', function (socket) {
         pattern=[];
         let user = users.find(obj => obj.socketId == data);
         user.isReady = true;
-        io.sockets.emit('updateUsers', users);
-    })
+        io.sockets.emit('ready', users);
+    });
 
     socket.on('switchPlayer', function (data) {
         users = data;
         console.log(users);
-    })
+    });
 
+    socket.on('avatar', function (data){
+        let user = users.find(obj => obj.socketId == data);
+        user.avatar = data;
+        io.sockets.emit('avatar', users);
+    })
 });
 
 class User {
@@ -108,5 +113,6 @@ class User {
         this.isReady = false;
         this.index = 1;
         this.isTurn = true;
+        this.avatar;
     }
 }

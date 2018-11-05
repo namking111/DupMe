@@ -51,8 +51,12 @@ socket.on('pattern',function (data) {
         dataTemp = data;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
+<<<<<<< Updated upstream
     } else if(statusIndex==1) {
         data= data;
+=======
+    } else if (statusIndex == 1) {
+>>>>>>> Stashed changes
         showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
@@ -61,10 +65,11 @@ socket.on('pattern',function (data) {
 
 })
 
-
-
-socket.on('updateUsers', function (data) {
+socket.on('ready', function (data) {
     users = data;
+    if (users.length > 1 && (users[0].isReady && users[1].isReady)) {
+        
+    }
 })
 
 function countDown(secs, elem) {
@@ -263,7 +268,6 @@ function changeBG3() {
 }
 
 function setReady() {
-    console.log("From playing", socket.id);
     socket.emit('ready', socket.id);
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';

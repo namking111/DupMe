@@ -62,7 +62,7 @@ io.on('connection', function (socket) {
         pattern=[];
         let user = users.find(obj => obj.socketId == data);
         user.isReady = true;
-        io.sockets.emit('updateUsers', users);
+        io.sockets.emit('ready', users);
     })
 
     socket.on('switchPlayer', function (data) {

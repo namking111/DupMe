@@ -4,7 +4,7 @@ var socket = io();
 var users = [];
 //pattern store pattern of clicked buttons
 var pattern = [];
-var copypattern = [];
+var copyPattern = [];
 //isTurn is a boolean indicate whether it's his/her turn
 var isTurn;
 var sound = document.getElementById("buttonsound");
@@ -47,15 +47,14 @@ socket.on('username', function (data) {
 
 socket.on('pattern', function (data) {
     console.log(pattern + " data: " + data);
-    pattern = data;
 
-    if (statusIndex == 0) {
-        dataTemp = data;
+    if (data.round == 0) {
+        pattern = data.pattern;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-    } else if (statusIndex == 1) {
-        data = data;
-        showdata = pattern.toString();
+    } else if (data.round == 1) {
+        copyPattern = data.copyPattern;
+        showdata = copyPattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
         document.getElementById("showScore").innerHTML = score;
@@ -136,6 +135,9 @@ function countDown(secs, elem) {
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
+            pattern = [];
+            copyPattern = [];
+            socket.emit('resetPattern');
         }
     }
     if (secs < -1) {
@@ -147,6 +149,9 @@ function countDown(secs, elem) {
             disableAllButton();
         }
         if (timerIndex == 3) {
+            pattern = [];
+            copyPattern = [];
+            socket.emit('resetPattern');
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
@@ -362,7 +367,7 @@ function disableAllButton() {
 function myFunctionA() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", "A");
+        socket.emit("pattern", { btn: "A", round: statusIndex });
     } else {
 
     }
@@ -371,7 +376,7 @@ function myFunctionA() {
 function myFunctionB() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", "B");
+        socket.emit("pattern", { btn: "B", round: statusIndex });
     } else {
 
     }
@@ -379,7 +384,7 @@ function myFunctionB() {
 function myFunctionC() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", "C");
+        socket.emit("pattern", { btn: "C", round: statusIndex });
     } else {
 
     }
@@ -395,7 +400,7 @@ function myFunctionD() {
 function myFunctionE() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", "E");
+        socket.emit("pattern", { btn: "D", round: statusIndex });
     } else {
 
     }

@@ -135,13 +135,13 @@
                 <h6>Please enter your nickname.</h6>
                 <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
                     <input type="text" id="username" class="textbox" />
-                    <input type="submit" onclick="getUsername()" />
+                    <input type="submit" onclick="getUsername(); getMotto();" />
                 </form>
                 </p>
                 <h6>Please enter your motto.</h6>
                 <form id="form"></a>
                     <input type="text" id="motto" class="textbox" />
-                    <input type="button" value="Done" onclick="getMotto()" />
+                    <!-- <input type="button" value="Done" onclick="getMotto()" /> -->
                 </form>
                 </p>
                 <button type="button" class="button" onclick="show('setting','indexPage');">Setting</button>

@@ -44,7 +44,18 @@ socket.on('username', function (data) {
     //  }
 
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
-})
+});
+
+socket.on('motto', function (data) {
+    users = data;
+    for (i = 0; i < users.length; i++) {
+        if (users[i].index == 1) {
+            document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + users[i].motto + "'</span>";
+        } else {
+            document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + users[i].motto + "'</span>";
+        }
+    }
+});
 
 socket.on('pattern', function (data) {
     console.log(pattern + " data: " + data);
@@ -518,8 +529,8 @@ function changeAvatar4() {
 
 }
 function getMotto() {
-    document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + motto.value + "'</span>";
-    document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + motto.value + "'</span>";
+    motto = document.getElementById('motto');
+    socket.emit("motto", { socketId: socket.id, motto: motto.value });
 }
 function setAvatar(value) {
     socket.emit('avatar', { socketId: socket.id, value: value });

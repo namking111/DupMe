@@ -392,7 +392,7 @@ function myFunctionC() {
 function myFunctionD() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", "D");
+        socket.emit("pattern", { btn: "D", round: statusIndex });
     } else {
 
     }
@@ -400,7 +400,7 @@ function myFunctionD() {
 function myFunctionE() {
     if (isTurn) {
         sound.play();
-        socket.emit("pattern", { btn: "D", round: statusIndex });
+        socket.emit("pattern", { btn: "E", round: statusIndex });
     } else {
 
     }

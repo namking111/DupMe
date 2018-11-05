@@ -467,7 +467,6 @@ function reset() {
 var value;
 function changeAvatar() {
     value = document.getElementById("myRadioYellow").value.toString();
-    console.log("Hello avatar1", value);
     setAvatar(value);
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien3.jpeg";
@@ -527,7 +526,6 @@ function getMotto() {
     document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + motto.value + "'</span>";
 }
 function setAvatar(value) {
-    console.log("set avatar");
     socket.emit('avatar', { socketId: socket.id, value: value });
 }
 

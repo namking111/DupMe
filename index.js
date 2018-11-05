@@ -114,9 +114,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('avatar', function (data) {
-        console.log("Hello avatar from server", data.value);
         let user = users.find(obj => obj.socketId == data.socketId);
-        console.log(user);
         user.avatar = data.value;
         io.sockets.emit('avatar', users);
     })

@@ -92,10 +92,6 @@ socket.on('avatar', function (data) {
                 document.getElementById("pic1").src = "img/alien4.jpeg";
                 document.getElementById("pic11").src = "img/alien4.jpeg";
             }
-            else {
-                document.getElementById("pic1").src = "img/alien8.jpeg";
-                document.getElementById("pic11").src = "img/alien8.jpeg";
-            }
 
         } else {
             if (users[i].avatar == "yellow") {

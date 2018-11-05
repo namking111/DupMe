@@ -23,8 +23,10 @@ socket.on('username', function (data) {
     users = data;
     if (users.length == 1) {
         document.getElementById("playername1").innerHTML = users[users.length - 1].name;
+        document.getElementById("player1").innerHTML= users[users.length-1].name ;
     } else {
         document.getElementById("playername2").innerHTML = users[users.length - 1].name;
+        document.getElementById("player2").innerHTML= users[users.length-1].name ;
     }
 
     // if (users.length%2==0) {
@@ -398,3 +400,61 @@ window.addEventListener("load", initAudioPlayer);
 function reset() {
     location.reload();
 }
+var value;
+function changeAvatar(){
+    value = document.getElementById("myRadioYellow").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien3.jpeg";
+        document.getElementById("pic11").src = "img/alien3.jpeg";
+    }
+     else {
+        document.getElementById("pic2").src = "img/alien3.jpeg";
+        document.getElementById("pic22").src = "img/alien3.jpeg";
+        
+    }
+    
+}
+function changeAvatar2(){
+    value = document.getElementById("myRadioBlue").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien7.jpeg";
+        document.getElementById("pic11").src = "img/alien7.jpeg";
+    }
+     else {
+        document.getElementById("pic2").src = "img/alien7.jpeg";
+        document.getElementById("pic22").src = "img/alien7.jpeg";
+        
+    }
+
+}
+function changeAvatar3(){
+    value = document.getElementById("myRadioPink").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien8.jpeg";
+        document.getElementById("pic11").src = "img/alien8.jpeg";
+    }
+     else {
+        document.getElementById("pic2").src = "img/alien8.jpeg";
+        document.getElementById("pic22").src = "img/alien8.jpeg";
+        
+    }
+
+}
+function changeAvatar4(){
+    value = document.getElementById("myRadioGreen").value;
+    if (users.length == 1) {
+        document.getElementById("pic1").src = "img/alien4.jpeg";
+        document.getElementById("pic11").src = "img/alien4.jpeg";
+    }
+     else {
+        document.getElementById("pic2").src = "img/alien4.jpeg";
+        document.getElementById("pic22").src = "img/alien4.jpeg";
+        
+    }
+
+}
+
+      function color(){
+          alert(value);
+      }
+  

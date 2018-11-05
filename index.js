@@ -63,18 +63,26 @@ io.on('connection', function (socket) {
         let user = users.find(obj => obj.socketId == data);
         user.isReady = true;
         io.sockets.emit('ready', users);
-    })
+    });
 
     socket.on('switchPlayer', function (data) {
         users = data;
         console.log(users);
-    })
+    });
 
+<<<<<<< Updated upstream
     socket.on('switchBack', function (data) {
         users = data;
         console.log(users);
     })
 
+=======
+    socket.on('avatar', function (data){
+        let user = users.find(obj => obj.socketId == data);
+        user.avatar = data;
+        io.sockets.emit('avatar', users);
+    })
+>>>>>>> Stashed changes
 });
 
 class User {
@@ -85,6 +93,7 @@ class User {
         this.isReady = false;
         this.index = 1;
         this.isTurn = true;
+        this.avatar;
     }
 }
 var randomItem = users[Math.floor(Math.random() * users.length)];

@@ -43,14 +43,16 @@ socket.on('username', function (data) {
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
 })
 
-socket.on('pattern', function (data) {
+socket.on('pattern',function (data) {
     console.log(pattern + " data: " + data);
     pattern = data;
 
     if (statusIndex == 0) {
+        dataTemp = data;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
     } else if(statusIndex==1) {
+        data= data;
         showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
@@ -152,9 +154,9 @@ function myStopFunction() {
     }
 }
 
-
 function gameStart() {
     // start 1st 10 second
+    empty();
     var queryString = "?" + name;
     dataTemp = [];
     showdataTemp = "";
@@ -162,6 +164,9 @@ function gameStart() {
     i = 0;
     pattern = [];
     data = [];
+    pattern.length=0;
+    data.length=0;
+    dataTemp.length=0;
     showdata = "";
     timerIndex = 0;
     statusIndex = 0;
@@ -188,29 +193,29 @@ var length = dataTemp.length + 1;
 var i = 0;  //index
 
 function calculateScore(data) {
-    if (i < length) {
-        if (objectsAreSame(data, dataTemp)) {
-            score = score + 1;
-            if (i == length - 1) {
-                alert("You Made It !! Your score is " + score);
-                show('endingPage', 'game');
-                myStopFunction();
-                return score;
-            }
-        } else {
-            var sound1 = document.getElementById("wrong");
-            sound1.play();
-            alert("Game Over Your score is " + score);
-            show('endingPage', 'game');
-            myStopFunction();
-            //Clear pattern
-            pattern = [];
-            switchPlayer();
-            console.log(users);
-        }
-        i++;
-        return score;
-    }
+    // if (i < length) {
+    //     if (objectsAreSame(data, dataTemp)) {
+    //         score = score + 1;
+    //         if (i == length - 1) {
+    //             alert("You Made It !! Your score is " + score);
+    //             show('endingPage', 'game');
+    //             myStopFunction();
+    //             return score;
+    //         }
+    //     } else {
+    //         var sound1 = document.getElementById("wrong");
+    //         sound1.play();
+    //         alert("Game Over Your score is " + score);
+    //         show('endingPage', 'game');
+    //         myStopFunction();
+    //         //Clear pattern
+    //         pattern = [];
+    //         switchPlayer();
+    //         console.log(users);
+    //     }
+    //     i++;
+    //     return score;
+    // }
 }
 
 function objectsAreSame(x, y) {

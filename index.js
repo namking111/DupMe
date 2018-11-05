@@ -27,6 +27,7 @@ var users = [];
 var pattern = [];
 //listen for conn event
 io.on('connection', function (socket) {
+    pattern = [];
     console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
@@ -58,6 +59,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('ready', function (data) {
+        pattern=[];
         let user = users.find(obj => obj.socketId == data);
         user.isReady = true;
         io.sockets.emit('updateUsers', users);

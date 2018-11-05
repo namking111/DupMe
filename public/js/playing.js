@@ -19,14 +19,15 @@ var showdata = "";
 
 //Listening for call from server
 socket.on('username', function (data) {
-    var div = document.getElementById('name1');
     users = data;
-    if (users.length == 1) {
-        document.getElementById("playername1").innerHTML = users[users.length - 1].name;
-        document.getElementById("player1").innerHTML = users[users.length - 1].name;
-    } else {
-        document.getElementById("playername2").innerHTML = users[users.length - 1].name;
-        document.getElementById("player2").innerHTML = users[users.length - 1].name;
+    for (i = 0; i < users.length; i++) {
+        if (users[i].index == 1) {
+            document.getElementById("playername1").innerHTML = users[i].name;
+            document.getElementById("player1").innerHTML = users[i].name;
+        } else {
+            document.getElementById("playername2").innerHTML = users[i].name;
+            document.getElementById("player2").innerHTML = users[i].name;
+        }
     }
 
     // if (users.length%2==0) {
@@ -74,48 +75,47 @@ socket.on('ready', function (data) {
 
 socket.on('avatar', function (data) {
     users = data;
-    console.log("Hello avatar");
-    let user = users.find(obj => obj.socketId == socket.id);
-    if (user.index == 1) {
-        if(value=="yellow"){
-        document.getElementById("pic1").src = "img/alien3.jpeg";
-        document.getElementById("pic11").src = "img/alien3.jpeg";
-        }else if(value=="blue"){
-        document.getElementById("pic1").src = "img/alien7.jpeg";
-        document.getElementById("pic11").src = "img/alien7.jpeg";
-        }
-        else if(value=="pink"){
-            document.getElementById("pic1").src = "img/alien8.jpeg";
-            document.getElementById("pic11").src = "img/alien8.jpeg";
+    for (i = 0; i < users.length; i++) {
+        if (users[i].index == 1) {
+            if (users[i].avatar == "yellow") {
+                document.getElementById("pic1").src = "img/alien3.jpeg";
+                document.getElementById("pic11").src = "img/alien3.jpeg";
+            } else if (users[i].avatar == "blue") {
+                document.getElementById("pic1").src = "img/alien7.jpeg";
+                document.getElementById("pic11").src = "img/alien7.jpeg";
             }
-        else if(value=="green"){
-            document.getElementById("pic1").src = "img/alien4.jpeg";
-            document.getElementById("pic11").src = "img/alien4.jpeg";
-                }
-        else{
-            document.getElementById("pic1").src = "img/alien8.jpeg";
-            document.getElementById("pic11").src = "img/alien8.jpeg";           
-        }
+            else if (users[i].avatar == "pink") {
+                document.getElementById("pic1").src = "img/alien8.jpeg";
+                document.getElementById("pic11").src = "img/alien8.jpeg";
+            }
+            else if (users[i].avatar == "green") {
+                document.getElementById("pic1").src = "img/alien4.jpeg";
+                document.getElementById("pic11").src = "img/alien4.jpeg";
+            }
+            else {
+                document.getElementById("pic1").src = "img/alien8.jpeg";
+                document.getElementById("pic11").src = "img/alien8.jpeg";
+            }
 
-    } else {
-        if(value=="yellow"){
-            document.getElementById("pic2").src = "img/alien3.jpeg";
-            document.getElementById("pic22").src = "img/alien3.jpeg";
-            }else if(value=="blue"){
-            document.getElementById("pic2").src = "img/alien7.jpeg";
-            document.getElementById("pic22").src = "img/alien7.jpeg";
+        } else {
+            if (users[i].avatar == "yellow") {
+                document.getElementById("pic2").src = "img/alien3.jpeg";
+                document.getElementById("pic22").src = "img/alien3.jpeg";
+            } else if (users[i].avatar == "blue") {
+                document.getElementById("pic2").src = "img/alien7.jpeg";
+                document.getElementById("pic22").src = "img/alien7.jpeg";
             }
-            else if(value=="pink"){
+            else if (users[i].avatar == "pink") {
                 document.getElementById("pic2").src = "img/alien8.jpeg";
                 document.getElementById("pic22").src = "img/alien8.jpeg";
-                }
-            else if(value=="green"){
-                    document.getElementById("pic2").src = "img/alien4.jpeg";
-                    document.getElementById("pic22").src = "img/alien4.jpeg";
-                    }
-        
-
+            }
+            else if (users[i].avatar == "green") {
+                document.getElementById("pic2").src = "img/alien4.jpeg";
+                document.getElementById("pic22").src = "img/alien4.jpeg";
+            }
+        }
     }
+
 })
 
 function countDown(secs, elem) {
@@ -288,11 +288,8 @@ function objectsAreSame(x, y) {
 }
 function getUsername() {
     username = document.getElementById('username');
-    var div = document.getElementById('name1');
-    socket.emit("username", username.value);
+    socket.emit("username", { socketId: socket.id, username: username.value });
     alert("Welcome " + username.value + " !");
-    // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
-    //send name to the ending page
 }
 
 function switchPlayer() {
@@ -470,7 +467,7 @@ function reset() {
 var value;
 function changeAvatar() {
     value = document.getElementById("myRadioYellow").value.toString();
-    console.log("Hello avatar1",value);
+    console.log("Hello avatar1", value);
     setAvatar(value);
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien3.jpeg";
@@ -484,7 +481,7 @@ function changeAvatar() {
 
 }
 function changeAvatar2() {
-    value = document.getElementById("myRadioBlue").valuet.toString();;
+    value = document.getElementById("myRadioBlue").value.toString();
     setAvatar(value);
     // if (users.length == 1) {
     //     document.getElementById("pic1").src = "img/alien7.jpeg";
@@ -525,13 +522,13 @@ function changeAvatar4() {
     // }
 
 }
-  function getMotto(){
-    document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
-    document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
-  }
+function getMotto() {
+    document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + motto.value + "'</span>";
+    document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'" + motto.value + "'</span>";
+}
 function setAvatar(value) {
     console.log("set avatar");
-    socket.emit('avatar', {socketId: socket.id, value: value});
+    socket.emit('avatar', { socketId: socket.id, value: value });
 }
 
 function color() {

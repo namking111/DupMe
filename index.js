@@ -44,6 +44,8 @@ function getRandomInt(max) {
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
+    user = new User(socket.id);
+    users.push(user);
     console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
@@ -73,8 +75,8 @@ io.on('connection', function (socket) {
     });
 
     socket.on('username', function (data) {
-        user = new User(data, socket.id);
-        users.push(user);
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.name = data.username;
         if (users.length > 1) {
             users[1].isTurn = false;
             users[1].index = 2;
@@ -112,21 +114,22 @@ io.on('connection', function (socket) {
     });
 
     socket.on('avatar', function (data) {
-        console.log("Hello avatar from server");
+        console.log("Hello avatar from server", data.value);
         let user = users.find(obj => obj.socketId == data.socketId);
+        console.log(user);
         user.avatar = data.value;
         io.sockets.emit('avatar', users);
     })
 });
 
 class User {
-    constructor(name, socketId) {
-        this.name = name;
+    constructor(socketId) {
+        this.name = "";
         this.socketId = socketId;
         this.score = 0;
         this.isReady = false;
         this.index = 1;
         this.isTurn = true;
-        this.avatar;
+        this.avatar = "yellow";
     }
 }

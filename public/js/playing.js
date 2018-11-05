@@ -4,6 +4,7 @@ var socket = io();
 var users = [];
 //pattern store pattern of clicked buttons
 var pattern = [];
+var copypattern = [];
 //isTurn is a boolean indicate whether it's his/her turn
 var isTurn;
 var sound = document.getElementById("buttonsound");
@@ -12,6 +13,8 @@ var statusIndex = 0;
 var timerIndex = 0;
 var data = [];
 var dataTemp = [];
+var showdataTemp = "";
+var showdata = "";
 
 
 //Listening for call from server
@@ -41,19 +44,22 @@ socket.on('username', function (data) {
 })
 
 socket.on('pattern', function (data) {
+    console.log(pattern + " data: " + data);
     pattern = data;
 
     if (statusIndex == 0) {
-        var showdataTemp = pattern.toString();
+        showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-    } else {
-        var showdata = pattern.toString();
+    } else if(statusIndex==1) {
+        showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
         document.getElementById("showScore").innerHTML = score;
     }
 
 })
+
+
 
 socket.on('updateUsers', function (data) {
     users = data;
@@ -72,9 +78,10 @@ function countDown(secs, elem) {
     if (secs < 0) {
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
+            disableAllButton();
         }
-        if(timerIndex ==1){
-            setTimeout(function () { element.innerHTML = "READY" }, 1000);    
+        if (timerIndex == 1) {
+            setTimeout(function () { element.innerHTML = "READY" }, 1000);
         }
     }
     if (secs < -1) {
@@ -83,6 +90,7 @@ function countDown(secs, elem) {
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "SET" }, 1000);
+            disableAllButton();
         }
         if (timerIndex == 3) {
             clearTimeout(timer);
@@ -93,32 +101,39 @@ function countDown(secs, elem) {
     if (secs < -2) {
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "COPY" }, 1000);
+            disableAllButton();
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "PLAY" }, 1000);
+            disableAllButton();
         }
     }
     if (secs < -3) {
         if (timerIndex == 0) {
             statusIndex = 1;
             timerIndex = 1;
+            pattern = [];
+            enableAllButton();
             clearTimeout(timer);
             countDown(21, "status");
             player2Copy();
-            pattern = [];
         } else if (timerIndex == 1) {
             statusIndex = 0;
             timerIndex = 2;
+            pattern = [];
+            enableAllButton();
             clearTimeout(timer);
             countDown(11, "status");
-        }else if (timerIndex == 2) {
-            statusIndex = 0;
+        } else if (timerIndex == 2) {
+            statusIndex = 1;
             timerIndex = 3;
+            pattern = [];
+            enableAllButton();
             clearTimeout(timer);
             countDown(21, "status");
             player2Copy();
             pattern = [];
-        }else {
+        } else {
             // after 2nd player played
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
@@ -141,6 +156,17 @@ function myStopFunction() {
 function gameStart() {
     // start 1st 10 second
     var queryString = "?" + name;
+    dataTemp = [];
+    showdataTemp = "";
+    score = 0;
+    i = 0;
+    pattern = [];
+    data = [];
+    showdata = "";
+    timerIndex = 0;
+    statusIndex = 0;
+    document.getElementById("showdata").innerHTML = showdata;
+    document.getElementById("showScore").innerHTML = score;
     show('game', 'welcomePage');
     countDown(10, "status");
 
@@ -312,14 +338,18 @@ function myFunctionE() {
 function playAgain() {
     show('welcomePage', 'endingPage');
     dataTemp = [];
+    showdataTemp = "";
     score = 0;
     i = 0;
     pattern = [];
+    data = [];
     showdata = "";
-    timerIndex= 0;
+    timerIndex = 0;
+    statusIndex = 0;
     document.getElementById("showdata").innerHTML = showdata;
     document.getElementById("showScore").innerHTML = score;
     gameStart();
+    console.log(showdataTemp)
 
 
 }

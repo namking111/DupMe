@@ -51,12 +51,7 @@ socket.on('pattern',function (data) {
         dataTemp = data;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-<<<<<<< Updated upstream
-    } else if(statusIndex==1) {
-        data= data;
-=======
     } else if (statusIndex == 1) {
->>>>>>> Stashed changes
         showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
@@ -68,7 +63,10 @@ socket.on('pattern',function (data) {
 socket.on('ready', function (data) {
     users = data;
     if (users.length > 1 && (users[0].isReady && users[1].isReady)) {
-        
+        show('game', 'welcomePage');
+        countDown(10, "status");
+        checkTurn();
+
     }
 })
 
@@ -161,7 +159,6 @@ function myStopFunction() {
 
 function gameStart() {
     // start 1st 10 second
-    empty();
     var queryString = "?" + name;
     dataTemp = [];
     showdataTemp = "";

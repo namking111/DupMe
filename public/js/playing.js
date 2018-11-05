@@ -45,14 +45,15 @@ socket.on('username', function (data) {
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
 })
 
-socket.on('pattern', function (data) {
+socket.on('pattern',function (data) {
     console.log(pattern + " data: " + data);
     pattern = data;
 
     if (statusIndex == 0) {
+        dataTemp = data;
         showdataTemp = pattern.toString();
         document.getElementById("showdataTemp").innerHTML = showdataTemp;
-    } else if(statusIndex==1) {
+    } else if (statusIndex == 1) {
         showdata = pattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern);
@@ -61,10 +62,14 @@ socket.on('pattern', function (data) {
 
 })
 
-
-
-socket.on('updateUsers', function (data) {
+socket.on('ready', function (data) {
     users = data;
+    if (users.length > 1 && (users[0].isReady && users[1].isReady)) {
+        show('game', 'welcomePage');
+        countDown(10, "status");
+        checkTurn();
+
+    }
 })
 
 function countDown(secs, elem) {
@@ -154,7 +159,6 @@ function myStopFunction() {
     }
 }
 
-
 function gameStart() {
     // start 1st 10 second
     var queryString = "?" + name;
@@ -164,6 +168,9 @@ function gameStart() {
     i = 0;
     pattern = [];
     data = [];
+    pattern.length=0;
+    data.length=0;
+    dataTemp.length=0;
     showdata = "";
     timerIndex = 0;
     statusIndex = 0;
@@ -260,7 +267,6 @@ function changeBG3() {
 }
 
 function setReady() {
-    console.log("From playing", socket.id);
     socket.emit('ready', socket.id);
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';

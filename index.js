@@ -70,6 +70,11 @@ io.on('connection', function (socket) {
         console.log(users);
     })
 
+    socket.on('switchBack', function (data) {
+        users = data;
+        console.log(users);
+    })
+
 });
 
 class User {

@@ -104,6 +104,7 @@ function countDown(secs, elem) {
         }
     }
     if (secs < -2) {
+        switchPlayer();
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "COPY" }, 1000);
             disableAllButton();
@@ -134,6 +135,7 @@ function countDown(secs, elem) {
             timerIndex = 3;
             pattern = [];
             enableAllButton();
+            switchBack();
             clearTimeout(timer);
             countDown(21, "status");
             player2Copy();
@@ -238,6 +240,7 @@ function getUsername() {
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + users[users.length - 1].name + "</div>";
     //send name to the ending page
 }
+
 function switchPlayer() {
     console.log("Hello from switch");
     let user1 = users.find(obj => obj.index == 1);
@@ -246,6 +249,14 @@ function switchPlayer() {
     user2.isTurn = true;
     checkTurn();
     socket.emit("switchPlayer", users);
+}
+function switchBack() {
+    let user1 = users.find(obj => obj.index == 1);
+    user1.isTurn = true;
+    let user2 = users.find(obj => obj.index == 2);
+    user2.isTurn = false;
+    checkTurn();
+    socket.emit("switchBack", users);
 }
 
 function playSound() {
@@ -356,8 +367,6 @@ function playAgain() {
     document.getElementById("showScore").innerHTML = score;
     gameStart();
     console.log(showdataTemp)
-
-
 }
 
 // function mute(){

@@ -70,19 +70,11 @@ io.on('connection', function (socket) {
         console.log(users);
     });
 
-<<<<<<< Updated upstream
-    socket.on('switchBack', function (data) {
-        users = data;
-        console.log(users);
-    })
-
-=======
     socket.on('avatar', function (data){
         let user = users.find(obj => obj.socketId == data);
         user.avatar = data;
         io.sockets.emit('avatar', users);
     })
->>>>>>> Stashed changes
 });
 
 class User {

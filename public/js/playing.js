@@ -75,10 +75,46 @@ socket.on('ready', function (data) {
 
 socket.on('avatar', function (data) {
     users = data;
-    let user = users.find(obj => obj.socketId == data);
+    console.log("Hello avatar");
+    let user = users.find(obj => obj.socketId == socket.id);
     if (user.index == 1) {
+        if(value=="yellow"){
+        document.getElementById("pic1").src = "img/alien3.jpeg";
+        document.getElementById("pic11").src = "img/alien3.jpeg";
+        }else if(value=="blue"){
+        document.getElementById("pic1").src = "img/alien7.jpeg";
+        document.getElementById("pic11").src = "img/alien7.jpeg";
+        }
+        else if(value=="pink"){
+            document.getElementById("pic1").src = "img/alien8.jpeg";
+            document.getElementById("pic11").src = "img/alien8.jpeg";
+            }
+        else if(value=="green"){
+            document.getElementById("pic1").src = "img/alien4.jpeg";
+            document.getElementById("pic11").src = "img/alien4.jpeg";
+                }
+        else{
+            document.getElementById("pic1").src = "img/alien8.jpeg";
+            document.getElementById("pic11").src = "img/alien8.jpeg";           
+        }
 
     } else {
+        if(value=="yellow"){
+            document.getElementById("pic2").src = "img/alien3.jpeg";
+            document.getElementById("pic22").src = "img/alien3.jpeg";
+            }else if(value=="blue"){
+            document.getElementById("pic2").src = "img/alien7.jpeg";
+            document.getElementById("pic22").src = "img/alien7.jpeg";
+            }
+            else if(value=="pink"){
+                document.getElementById("pic2").src = "img/alien8.jpeg";
+                document.getElementById("pic22").src = "img/alien8.jpeg";
+                }
+            else if(value=="green"){
+                    document.getElementById("pic2").src = "img/alien4.jpeg";
+                    document.getElementById("pic22").src = "img/alien4.jpeg";
+                    }
+        
 
     }
 })
@@ -428,67 +464,69 @@ function reset() {
 }
 var value;
 function changeAvatar() {
-    value = document.getElementById("myRadioYellow").value;
-    if (users.length == 1) {
-        document.getElementById("pic1").src = "img/alien3.jpeg";
-        document.getElementById("pic11").src = "img/alien3.jpeg";
-    }
-    else {
-        document.getElementById("pic2").src = "img/alien3.jpeg";
-        document.getElementById("pic22").src = "img/alien3.jpeg";
+    value = document.getElementById("myRadioYellow").value.toString();
+    console.log("Hello avatar1",value);
+    setAvatar(value);
+    // if (users.length == 1) {
+    //     document.getElementById("pic1").src = "img/alien3.jpeg";
+    //     document.getElementById("pic11").src = "img/alien3.jpeg";
+    // }
+    // else {
+    //     document.getElementById("pic2").src = "img/alien3.jpeg";
+    //     document.getElementById("pic22").src = "img/alien3.jpeg";
 
-    }
+    // }
 
 }
 function changeAvatar2() {
-    value = document.getElementById("myRadioBlue").value;
-    if (users.length == 1) {
-        document.getElementById("pic1").src = "img/alien7.jpeg";
-        document.getElementById("pic11").src = "img/alien7.jpeg";
-    }
-    else {
-        document.getElementById("pic2").src = "img/alien7.jpeg";
-        document.getElementById("pic22").src = "img/alien7.jpeg";
+    value = document.getElementById("myRadioBlue").valuet.toString();;
+    setAvatar(value);
+    // if (users.length == 1) {
+    //     document.getElementById("pic1").src = "img/alien7.jpeg";
+    //     document.getElementById("pic11").src = "img/alien7.jpeg";
+    // }
+    // else {
+    //     document.getElementById("pic2").src = "img/alien7.jpeg";
+    //     document.getElementById("pic22").src = "img/alien7.jpeg";
 
-    }
+    // }
 
 }
 function changeAvatar3() {
-    value = document.getElementById("myRadioPink").value;
-    if (users.length == 1) {
-        document.getElementById("pic1").src = "img/alien8.jpeg";
-        document.getElementById("pic11").src = "img/alien8.jpeg";
-    }
-    else {
-        document.getElementById("pic2").src = "img/alien8.jpeg";
-        document.getElementById("pic22").src = "img/alien8.jpeg";
+    value = document.getElementById("myRadioPink").value.toString();
+    setAvatar(value);
+    // if (users.length == 1) {
+    //     document.getElementById("pic1").src = "img/alien8.jpeg";
+    //     document.getElementById("pic11").src = "img/alien8.jpeg";
+    // }
+    // else {
+    //     document.getElementById("pic2").src = "img/alien8.jpeg";
+    //     document.getElementById("pic22").src = "img/alien8.jpeg";
 
-    }
+    // }
 
 }
 function changeAvatar4() {
-    value = document.getElementById("myRadioGreen").value;
-    if (users.length == 1) {
-        document.getElementById("pic1").src = "img/alien4.jpeg";
-        document.getElementById("pic11").src = "img/alien4.jpeg";
-    }
-    else {
-        document.getElementById("pic2").src = "img/alien4.jpeg";
-        document.getElementById("pic22").src = "img/alien4.jpeg";
+    value = document.getElementById("myRadioGreen").value.toString();
+    setAvatar(value);
+    // if (users.length == 1) {
+    //     document.getElementById("pic1").src = "img/alien4.jpeg";
+    //     document.getElementById("pic11").src = "img/alien4.jpeg";
+    // }
+    // else {
+    //     document.getElementById("pic2").src = "img/alien4.jpeg";
+    //     document.getElementById("pic22").src = "img/alien4.jpeg";
 
-    }
+    // }
 
 }
-
-      function color(){
-          alert(value);
-      }
   function getMotto(){
     document.getElementById("playername1Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
     document.getElementById("playername2Motto").innerHTML = "<span style='color: black; font-size: 15pt; font-style:italic'>'"+motto.value+"'</span>";
   }
 function setAvatar(value) {
-    socket.emit('avatar', value);
+    console.log("set avatar");
+    socket.emit('avatar', {socketId: socket.id, value: value});
 }
 
 function color() {

@@ -71,8 +71,9 @@ io.on('connection', function (socket) {
     });
 
     socket.on('avatar', function (data){
-        let user = users.find(obj => obj.socketId == data);
-        user.avatar = data;
+        console.log("Hello avatar from server");
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.avatar = data.value;
         io.sockets.emit('avatar', users);
     })
 });

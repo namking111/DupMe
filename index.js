@@ -25,12 +25,40 @@ var io = socket(server);
 var numUser = 0;
 var users = [];
 var pattern = [];
+//var min = maxusernumber;
+//var max = minusernumber;
+//var randomItem = 0;
+//users[Math.floor(Math.random() * users.length)];
+
+function randomIntInRange(min, max){
+    return (Math.ceil(Math.random()*(max - min)+min));
+  }
+  
+function getRandomInt(max) {
+   // return Math.floor( (Math.random() * Math.floor(max)) +1 );
+    return Math.floor( Math.random() * Math.floor(max) );
+  }
+
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
     console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
+
+    if(users.length <= 2){
+        console.log('range: ' + randomIntInRange(0, 1) );  
+    }else{
+        console.log('getRanMax: '+getRandomInt(users.length));
+    }
+    
+    //console.log(getRandomInt(3));
+    // expected output: 0, 1 or 2
+
+   // randomItem = users[(Math.random() * users.length)+1];
+   // randomItem = Math.floor(Math.random() * Math.floor(users));
+    //console.log('The first randomized player : '+ randomItem);
+
     socket.on('disconnect', function () {
         for (i = 0; i < users.length; i++) {
             if (users[i].socketId == socket.id) {
@@ -82,5 +110,3 @@ class User {
         this.isTurn = true;
     }
 }
-var randomItem = users[Math.floor(Math.random() * users.length)];
-console.log(randomItem);

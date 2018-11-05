@@ -1,17 +1,99 @@
 <!DOCTYPE html>
 <html>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 <style>
-    
+   /* Large desktops and laptops */
+@media (min-width: 1200px) {
+    .img-responsive{
+    width:20%;
+    height:auto;
+    text-align:center;
+}.button {
+    font-size:16px;
+    padding:20px;
+  }.textbox{
+    width:30%;
+    height:auto;
+    text-align:center;
+  }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .img-responsive{
+    width:20%;
+    height:auto;
+    text-align:center;
+}.button {
+    font-size:14px;
+    padding:18px;
+  }.textbox{
+    width:30%;
+    height:auto;
+    text-align:center;
+  }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .img-responsive{
+    width:20%;
+    height:auto;
+    text-align:center;
+}.button {
+    font-size:12px;
+    padding:16px;
+  }.textbox{
+    width:30%;
+    height:auto;
+    text-align:center;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    .img-responsive{
+    width:20%;
+    height:auto;
+    text-align:center;
+}.button {
+    font-size:10px;
+    padding:14px;
+  }.textbox{
+    width:30%;
+    height:auto;
+    text-align:center;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+.img-responsive{
+    width:20%;
+    height:auto;
+    text-align:center;
+}.button {
+    font-size:8px;
+    padding:12px;
+  }.textbox{
+    width:30%;
+    height:auto;
+    text-align:center;
+  }
+}
+
+   
     .button {
         background-color: #4CAF50;
         border: none;
         color: white;
-        padding: 20px;
+        /* padding: 20px; */
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
+        /* font-size: 16px; */
         margin: 4px 2px;
         border-radius: 12px;
     }
@@ -38,7 +120,7 @@
 <body style="background-color:powderblue;">
     
    
-    <div id="indexPage">
+    <div id="indexPage" >
         <div class="container-fluid">
             <center>
                 </p>
@@ -47,23 +129,23 @@
                 </p>
                 
 
-                <img src="img/alien.jpeg" alt="alien" width="180" height="156">
-                <img src="img/alien2.jpeg" alt="alien" width="180" height="156">
+                <img src="img/alien8.jpeg" class="img-responsive" alt="alien" >
+                <img src="img/alien7.jpeg" class="img-responsive" alt="alien" >
                 </p>
                 <h6>Please enter your nickname.</h6>
                 <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
-                    <input type="text" id="username" />
+                    <input type="text" id="username" class="textbox"/>
                     <input type="submit" onclick="getUsername()" />
                 </form>
             </p>
                 <h6>Please enter your motto.</h6>
                 <form id="form" ></a>
-                    <input type="text" id="motto" />
+                    <input type="text" id="motto" class="textbox" />
                     <input type="button" value="Done" onclick="getMotto()" />
                 </form>
                  </p>
-                <button type="button" class="btn btn-info btn-lg " onclick="show('setting','indexPage');">Setting</button>
-                <button type="button" class="btn btn-info btn-lg " onclick="color()">color</button>
+                <button type="button" class="button" onclick="show('setting','indexPage');">Setting</button>
+                <button type="button" class="button" onclick="color()">color</button>
                
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
@@ -91,8 +173,8 @@
                 <h2>Setting</h2>
                 
                 </p>
-                <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
-                <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+                <img src="img/alien6.jpeg" alt="alien" class="img-responsive"width="180" height="156">
+                <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 
                 </p>
                 <div id="sound" >
@@ -113,7 +195,7 @@
                     <div class="w-100"></div>
                     <div class="button" id="avatar1" onclick="show('avatar','setting');">Change your avatar</div>
                     </p>
-                    <button type="button" id="backToMenu" class="btn btn-info btn-lg" onclick="show('indexPage','setting');">back to menu</button>
+                    <button type="button" id="backToMenu" class="button" onclick="show('indexPage','setting');">back to menu</button>
                     
                     <!-- <div class="button" id="setting2">Level : hard</div> -->
                     
@@ -130,13 +212,13 @@
 
         </p>
     </p>
-    <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
-    <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+    <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
+    <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
     
     </p>
     </p>
     <h3>111111</h3>
-    <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','howToPlay');">back to setting</button>
+    <button type="button" id="backToSetting" class="button" onclick="show('setting','howToPlay');">back to setting</button>
 
     </p>
 
@@ -152,21 +234,21 @@
     
             </p>
         </p>
-        <img src="img/alien6.jpeg" alt="alien" width="180" height="156">
-        <img src="img/alien5.jpeg" alt="alien" width="180" height="156">
+        <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
+        <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
         
         </p>
         </p>
-        <button type="button" class="btn btn-primary" style= "background-color:white; color:black; border:none" onclick="changeBG()">White</button>
-        <button type="button" class="btn btn-primary" style= "background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()">Pink</button>
-        <button type="button" class="btn btn-primary" style= "background-color:powderblue; color:black; border:none"onclick="changeBG2()">Powderblue</button>
-        <button type="button" class="btn btn-primary" style= "background-color:#FCE476; color:black; border:none"onclick="changeBG3()">Yellow</button>
+        <button type="button" class="button" style= "background-color:white; color:black; border:none" onclick="changeBG()">White</button>
+        <button type="button" class="button" style= "background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()">Pink</button>
+        <button type="button" class="button" style= "background-color:powderblue; color:black; border:none"onclick="changeBG2()">Powderblue</button>
+        <button type="button" class="button" style= "background-color:#FCE476; color:black; border:none"onclick="changeBG3()">Yellow</button>
         
 
 
 
     </p>
-        <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','background');">back to setting</button>
+        <button type="button" id="backToSetting" class="button" onclick="show('setting','background');">back to setting</button>
     
         </p>
     
@@ -180,10 +262,10 @@
                     <h2>Change your avatar</h2>
                     </p>
                     <form action="">
-                            <img src="img/alien3.jpeg" alt="alien" width="180" height="156"> 
-                            <img src="img/alien7.jpeg" alt="alien" width="180" height="156">
-                            <img src="img/alien8.jpeg" alt="alien" width="180" height="156">
-                            <img src="img/alien4.jpeg" alt="alien" width="180" height="156">
+                            <img src="img/alien3.jpeg" alt="alien" class="img-responsive" width="180" height="156"> 
+                            <img src="img/alien7.jpeg" alt="alien" class="img-responsive" width="180" height="156">
+                            <img src="img/alien8.jpeg" alt="alien" class="img-responsive" width="180" height="156">
+                            <img src="img/alien4.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                     </p>
                             <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow"> yellow<br>
                             
@@ -195,14 +277,14 @@
                             
                           </form>
                         </p>
-                          <button type="button" class="btn btn-primary" onclick="setAvatar()">Done</button>
+                          <button type="button" class="button" onclick="setAvatar()">Done</button>
 
                 
         
         
         
             </p>
-                <button type="button" id="backToSetting" class="btn btn-info btn-lg" onclick="show('setting','avatar');">back to setting</button>
+                <button type="button" id="backToSetting" class="button" onclick="show('setting','avatar');">back to setting</button>
             
                 </p>
             
@@ -232,8 +314,8 @@
             </h1>
             </p>
             <center>
-                <img id = "pic1" src="img/alien3.jpeg" alt="alien">
-                <img id = "pic2" src="img/alien4.jpeg" alt="alien">
+                <img id = "pic1" src="img/alien3.jpeg" class="img-responsive" alt="alien">
+                <img id = "pic2" src="img/alien4.jpeg" class="img-responsive" alt="alien">
 
             </center>
             </p>
@@ -241,7 +323,7 @@
 
 
             <center>
-                 <button type="button" id="ready" class="btn btn-info btn-lg " onclick="setReady()">Ready</button>
+                 <button type="button" id="ready" class="button" onclick="setReady()">Ready</button>
                 <div style="display:none;" id="wait">waiting</div>
 
                 <!--<button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>-->
@@ -300,8 +382,8 @@
 
             <body>
                 <center>
-                <img id = "pic11" src="img/alien3.jpeg" alt="alien">
-                <img id = "pic22" src="img/alien4.jpeg" alt="alien">
+                <img id = "pic11" src="img/alien3.jpeg"class="img-responsive" alt="alien">
+                <img id = "pic22" src="img/alien4.jpeg" class="img-responsive"alt="alien">
 
             </center>
 
@@ -376,7 +458,7 @@
 
             </p>
             <center>
-                <button type="button" class="btn btn-info btn-lg "><a href="#" onclick="playAgain();" style="color:aliceblue">Play
+                <button type="button" class="button"><a href="#" onclick="playAgain();" style="color:aliceblue">Play
                         Again</a></button>
             </center>
             </p>

@@ -93,7 +93,6 @@ io.on('connection', function (socket) {
             copyPattern.push(data.btn);
             io.sockets.emit('pattern', { copyPattern: copyPattern, round: data.round });
         }
-
     });
 
     socket.on('resetPattern', function (data) {
@@ -117,6 +116,12 @@ io.on('connection', function (socket) {
         let user = users.find(obj => obj.socketId == data.socketId);
         user.avatar = data.value;
         io.sockets.emit('avatar', users);
+    });
+
+    socket.on('motto', function (data) {
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.motto = data.motto;
+        io.sockets.emit('motto', users);
     })
 });
 
@@ -129,5 +134,6 @@ class User {
         this.index = 1;
         this.isTurn = true;
         this.avatar = "yellow";
+        this.motto = "";
     }
 }

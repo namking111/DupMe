@@ -145,7 +145,6 @@
                 </form>
                 </p>
                 <input type="button" class="button" id="settingb" value="setting" onclick="show('setting','indexPage');"/>
-                
 
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
@@ -183,19 +182,19 @@
                 <audio id="buttonsound" src="sound/button.mp3"></audio>
                 <audio id="wrong" src="sound/wrong.mp3"></audio>
                 <audio id="audio" src="sound/song.mp3"></audio>
-                <input class="button" id="playpausebtn" value="Background music"/>
+                <input type="button" class="button" id="playpausebtn" value="Background music"/>
                 <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
 
 
-            <input class="button" id="setting1" value="How to play" onclick="show('howToPlay','setting');"/>
-            <input class="button" id="bg" value="Change background" onclick="show('background','setting');"/>
+            <input type="button" class="button" id="setting1" value="How to play" onclick="show('howToPlay','setting');"/>
+            <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');"/>
             <div class="w-100"></div>
-            <input class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');"/>
-            <input class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');"/>
+            <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');"/>
+            <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');"/>
             </p>
-            <input type="button" id="backToMenu" class="button" value="Back to menu"onclick="show('indexPage','setting');"/>
+            <input type="button" type="button" id="backToMenu" class="button" value="Back to menu"onclick="show('indexPage','setting');"/>
 
             <!-- <div class="button" id="setting2">Level : hard</div> -->
 
@@ -267,14 +266,13 @@
                 <img src="img/alien8.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 <img src="img/alien4.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 </p>
-                <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked">
-                1<br>
+                <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked"><h6 style="display: inline;" id="color1"> Yellow</h6><br>
 
-                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"> 2<br>
+                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"><h6 style="display: inline;" id="color2"> Blue</h6><br>
 
-                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> 3<br>
+                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> <h6 style="display: inline;" id="color3"> Pink</h6><br>
 
-                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen"> 4
+                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen"><h6 style="display: inline;" id="color4"> Green</h6><br>
 
             </form>
             </p>
@@ -301,8 +299,8 @@
             <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
 
             </p>
-                <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1" > Thai<br>
-                <input type="radio"  name="lang" value="2" onchange="changeLanguage2()" id="language2">English
+                <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1"> Thai<br>
+                <input type="radio"  name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked">English
                 </p>
                 <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');"/>
     </div>
@@ -332,14 +330,24 @@
             <center>
                 <img id="pic1" src="img/alien3.jpeg" class="img-responsive" alt="alien">
                 <img id="pic2" src="img/alien4.jpeg" class="img-responsive" alt="alien">
-
+            </p>
+            
             </center>
             </p>
 
 
 
             <center>
+                    <div class="row">
+                
+                        </div>
+                        <h5 id="levelText">Level</h5>
+                            <input type="radio" name="level" value="hard" onchange="showB()" id="hard" checked="checked"> <h6 style="display: inline;" id="levelText1">Hard</h6><br>
+                            
+                            <input type="radio" name="level" value="easy" onchange="hide()" id="easy"> <h6 style="display: inline;" id="levelText2">Easy</h6>
+            </p>
                 <input type="button" id="ready" class="button" value="Ready" onclick="setReady()"/>
+            </p>
                 <div style="display:none;" id="wait">waiting</div>
 
                 <!--<button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>-->
@@ -414,6 +422,9 @@
                 <button class="button" onclick="myFunctionC()" id="C">C</button>
                 <button class="button" onclick="myFunctionD()" id="D">D</button>
                 <button class="button" onclick="myFunctionE()" id="E">E</button>
+                <button class="button" onclick="myFunctionF()" id="F">F</button>
+                <button class="button" onclick="myFunctionG()" id="G">G</button>
+                <button class="button" onclick="myFunctionH()" id="H">H</button>
         </center>
         
         <center>

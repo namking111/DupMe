@@ -15,11 +15,16 @@ var data = [];
 var dataTemp = [];
 var showdataTemp = "";
 var showdata = "";
+var score = 0;
+var userIndex = 1;
 
 
 //Listening for call from server
 socket.on('username', function (data) {
     users = data;
+    let user = users.find(obj => obj.socketId == socket.id);
+    userIndex = user.index;
+    console.log(userIndex);
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
@@ -29,7 +34,6 @@ socket.on('username', function (data) {
             document.getElementById("player2").innerHTML = users[i].name;
         }
     }
-
     // if (users.length%2==0) {
     //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
     // }else{
@@ -58,7 +62,7 @@ socket.on('motto', function (data) {
 });
 
 socket.on('pattern', function (data) {
-    console.log(pattern + " data: " + data);
+    //console.log(pattern + " data: " + data);
 
     if (data.round == 0) {
         pattern = data.pattern;
@@ -68,11 +72,16 @@ socket.on('pattern', function (data) {
         copyPattern = data.copyPattern;
         showdata = copyPattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
-        score = calculateScore(pattern);
-        document.getElementById("showScore").innerHTML = score;
+        score = calculateScore(pattern, copyPattern);
     }
-
 })
+
+socket.on('resetCopyPattern', function(data){
+    console.log("reset on front");
+    copyPattern = [];
+    document.getElementById("showdata").innerHTML = "";
+})
+
 
 socket.on('ready', function (data) {
     users = data;
@@ -129,7 +138,7 @@ function countDown(secs, elem) {
     element.innerHTML = '<button type="button" class="btn btn-info">Time : ' + secs + '</button>';
     secs--;
     var timer = window.setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
-
+    showAndHideArray();
     // statusIndex=0  1st player create array
     // statusIndex=1  2st player copy array
     // statusIndex=2  2st player create array
@@ -138,12 +147,15 @@ function countDown(secs, elem) {
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             disableAllButton();
+
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             pattern = [];
             copyPattern = [];
             socket.emit('resetPattern');
+            document.getElementById("showdataTemp").innerHTML = pattern;
+            document.getElementById("showdata").innerHTML = copyPattern;
         }
     }
     if (secs < -1) {
@@ -178,28 +190,22 @@ function countDown(secs, elem) {
         if (timerIndex == 0) {
             statusIndex = 1;
             timerIndex = 1;
-            pattern = [];
             enableAllButton();
             clearTimeout(timer);
             countDown(21, "status");
-            player2Copy();
         } else if (timerIndex == 1) {
             statusIndex = 0;
             timerIndex = 2;
-            pattern = [];
             enableAllButton();
             clearTimeout(timer);
             countDown(11, "status");
         } else if (timerIndex == 2) {
             statusIndex = 1;
             timerIndex = 3;
-            pattern = [];
             enableAllButton();
             switchBack();
             clearTimeout(timer);
             countDown(21, "status");
-            player2Copy();
-            pattern = [];
         } else {
             // after 2nd player played
             clearTimeout(timer);
@@ -208,7 +214,6 @@ function countDown(secs, elem) {
         }
         //ไว้เปลี่ยนหน้า      
     }
-    console.log(secs)
 
 }
 function myStopFunction() {
@@ -216,6 +221,28 @@ function myStopFunction() {
         window.clearTimeout(i);
         // document.getElementById("player1").innerHTML = users[0].name;
         // document.getElementById("player2").innerHTML = users[1].name;
+    }
+}
+
+function showAndHideArray() {
+    if (timerIndex == 0) {
+        // document.getElementById("showdata").style.visibility = 'hidden';
+        // document.getElementById("showdataTemp").style = 'display:visible;';
+    } else if (timerIndex == 1 && userIndex == 1) {
+        document.getElementById("showdataTemp").style = 'display:visible;';
+        document.getElementById("showdata").style = 'display:visible;';
+    } else if (timerIndex == 1 && userIndex == 2) {
+        document.getElementById("showdataTemp").style.visibility = 'hidden';
+        document.getElementById("showdata").style = 'display:visible;';
+    } else if (timerIndex == 2) {
+        document.getElementById("showdataTemp").style = 'display:visible;';
+        document.getElementById("showdata").style.visibility = 'hidden';
+    } else if (timerIndex == 3 && userIndex == 1) {
+        document.getElementById("showdataTemp").style.visibility = 'hidden';
+        document.getElementById("showdata").style = 'display:visible;';
+    } else if (timerIndex == 3 && userIndex == 2) {
+        document.getElementById("showdataTemp").style = 'display:visible;';
+        document.getElementById("showdata").style = 'display:visible;';
     }
 }
 
@@ -240,56 +267,22 @@ function gameStart() {
     countDown(10, "status");
 
 }
-
-function player2Copy() {
-
-}
-
-function createPattern() {
-
-}
-
 //array name data
 //check with new data player clicking
 
-var score = 0;
-var length = dataTemp.length + 1;
+// var score = 0;
+// var length = dataTemp.length + 1;
 var i = 0;  //index
 
-function calculateScore(data) {
-    if (i < length) {
-        if (objectsAreSame(data, dataTemp)) {
-            score = score + 1;
-            if (i == length - 1) {
-                if(lan =="1"){
-                    alert("สำเร็จแล้ว !! คะแนนของคุณคือ " + score);
-                }else{
-                    alert("You Made It !! Your score is " + score);
-            }
-                //alert("You Made It !! Your score is " + score);
-                show('endingPage', 'game');
-                myStopFunction();
-                return score;
-            }
-        } else {
-            var sound1 = document.getElementById("wrong");
-            sound1.play();
-            if(lan =="1"){
-                alert("เกมจบแล้วคะแนนของคุณคือ " + score);
-            }else{
-                alert("Game Over Your score is " + score);
-        }
-            //alert("Game Over Your score is " + score);
-            show('endingPage', 'game');
-            myStopFunction();
-            //Clear pattern
-            pattern = [];
-            switchPlayer();
-            console.log(users);
-        }
-        i++;
-        return score;
+function calculateScore(pattern, copyPattern) {
+    if(pattern[copyPattern.length-1]==copyPattern[copyPattern.length-1]){
+        score++;
+    }else{
+        score = 0;
+        socket.emit('resetCopyPattern');
     }
+    
+    return score;
 }
 
 function objectsAreSame(x, y) {

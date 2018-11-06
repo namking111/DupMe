@@ -116,10 +116,6 @@ socket.on('avatar', function (data) {
                 document.getElementById("pic1").src = "img/alien4.jpeg";
                 document.getElementById("pic11").src = "img/alien4.jpeg";
             }
-            else {
-                document.getElementById("pic1").src = "img/alien8.jpeg";
-                document.getElementById("pic11").src = "img/alien8.jpeg";
-            }
 
         } else {
             if (users[i].avatar == "yellow") {
@@ -307,8 +303,13 @@ function objectsAreSame(x, y) {
 function getUsername() {
     username = document.getElementById('username');
     socket.emit("username", { socketId: socket.id, username: username.value });
-    alert("Welcome " + username.value + " !");
+    if(lan =="1"){
+        alert("ยินดีต้อนรับ " + username.value + " !");
+    }else{
+        alert("Welcome " + username.value + " !");
 }
+    }
+    
 
 function switchPlayer() {
     console.log("Hello from switch");
@@ -549,4 +550,74 @@ function setAvatar(color) {
 
 function color() {
     alert(color);
+}
+var lan=2;
+function changeLanguage(){
+    lan = document.getElementById("language1").value;
+    document.getElementById("usernameSubmit").value = "ไป";
+    document.getElementById("settingb").value = "ตั้งค่า";
+    document.getElementById("language1").value = "ไทย";
+    document.getElementById("playpausebtn").value = "เพลงประกอบ";
+    document.getElementById("backToMenu").value = "กลับหน้าหลัก";
+    document.getElementById("setting1").value = "วิธีเล่น";
+    document.getElementById("bg").value = "เปลี่ยนสีพื้นหลัง";
+    document.getElementById("avatar1").value = "เปลี่ยนตัวละคร";
+    document.getElementById("backToSetting").value = "กลับไปหน้าตั้งค่า";
+    document.getElementById("white").value = "ขาว";
+    document.getElementById("pink").value = "ชมพู";
+    document.getElementById("blue").value = "ฟ้า";
+    document.getElementById("yellow").value = "เหลือง";
+    document.getElementById("backToSetting1").value = "กลับไปหน้าตั้งค่า";
+    document.getElementById("backToSetting3").value = "กลับไปหน้าตั้งค่า";
+    document.getElementById("backToSetting4").value = "กลับไปหน้าตั้งค่า";
+   // document.getElementById("readyB").value = "พร้อม";
+    document.getElementById("resetB").value = "รีเซ็ต";
+    document.getElementById("ready").value = "พร้อม";
+    document.getElementById("languageP").value = "เปลี่ยนภาษา";
+
+    document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
+    document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
+    document.getElementById("nameText").innerHTML = "โปรดใส่ชื่อเล่นของคุณ";
+    document.getElementById("settingText").innerHTML = "ตั้งค่า";
+    document.getElementById("howText").innerHTML = "วิธีเล่น";
+    document.getElementById("bgText").innerHTML = "เปลี่ยนสีพื้นหลัง";
+    document.getElementById("avatarText").innerHTML = "เปลี่ยนตัวละคร";
+    document.getElementById("playerText").innerHTML = "ผู้เล่น";
+    document.getElementById("lastDupMe").innerHTML = "ดุ๊บมี";
+    document.getElementById("scoreText").innerHTML = "ตารางคะแนน";
+    document.getElementById("languageText").innerHTML = "เปลี่ยนภาษา";
+}
+function changeLanguage2(){
+    lan = document.getElementById("language2").value;
+    document.getElementById("usernameSubmit").value = "Go";
+    document.getElementById("settingb").value = "Setting";
+    document.getElementById("playpausebtn").value = "Background Music";
+    document.getElementById("backToMenu").value = "Back to Menu";
+    document.getElementById("setting1").value = "How to play";
+    document.getElementById("bg").value = "Change background";
+    document.getElementById("avatar1").value = "Change your avatar";
+    document.getElementById("backToSetting").value = "Back to setting";
+    document.getElementById("white").value = "White";
+    document.getElementById("pink").value = "Pink";
+    document.getElementById("blue").value = "Blue";
+    document.getElementById("yellow").value = "Yellow";
+    document.getElementById("backToSetting1").value = "Back to setting";
+    document.getElementById("backToSetting3").value = "Back to setting";
+    document.getElementById("backToSetting4").value = "Back to setting";
+    //document.getElementById("readyB").value = "Ready";
+    document.getElementById("resetB").value = "Reset";
+    document.getElementById("ready").value = "Ready";
+    document.getElementById("languageP").value = "Change Language";
+
+    document.getElementById("firstDupMe").innerHTML = "ีDup Me";
+    document.getElementById("mottoText").innerHTML = "Please enter your motto.";
+    document.getElementById("nameText").innerHTML = "Please enter your nickname.";
+    document.getElementById("settingText").innerHTML = "Setting";
+    document.getElementById("howText").innerHTML = "How to play";
+    document.getElementById("bgText").innerHTML = "Change Background Color";
+    document.getElementById("avatarText").innerHTML = "Change your avatar";
+    document.getElementById("playerText").innerHTML = "Player";
+    document.getElementById("lastDupMe").innerHTML = "Dup Me";
+    document.getElementById("scoreText").innerHTML = "Scoreboard";
+    document.getElementById("languageText").innerHTML = "Change Language";
 }

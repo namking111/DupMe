@@ -27,18 +27,19 @@ var users = [];
 var pattern = [];
 var copyPattern = [];
 var dum =0;
-//var min = maxusernumber;
-//var max = minusernumber;
+var randomturn=0;
 //var randomItem = 0;
-//users[Math.floor(Math.random() * users.length)];
 
 function randomIntInRange(min, max){
-    return (Math.ceil(Math.random()*(max - min)+min));
-  }
-  
+    randomturn = (Math.ceil(Math.random()*(max - min)+min));
+    return randomturn;
+}
 
-//if น้อยกว่า useindex เป้น 0
-//if มากกว่า userindex เป็น 1
+console.log('randomturn: ' + randomIntInRange(0,2));
+//console.log('getRanMax: ' + getRandomInt(users.length));
+/*
+if น้อยกว่า useindex เป้น 0
+if มากกว่า userindex เป็น 1
 function getRandomInt(max) {
     //return Math.floor(Math.random() * Math.floor(max));
     dum = (Math.random() * Math.floor(max));
@@ -48,7 +49,8 @@ function getRandomInt(max) {
         return 0;
     }  
 }
-    
+ */
+
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
@@ -57,16 +59,6 @@ io.on('connection', function (socket) {
     console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
-
-
-        console.log('range: ' + randomIntInRange(0, 2));
-        console.log('getRanMax: ' + getRandomInt(users.length));
-        
-    //console.log(getRandomInt(3));
-    // expected output: 0, 1 or 2
-
-    // randomItem = users[(Math.random() * users.length)+1];
-    // randomItem = Math.floor(Math.random() * Math.floor(users));
 
     socket.on('disconnect', function () {
         for (i = 0; i < users.length; i++) {
@@ -82,9 +74,14 @@ io.on('connection', function (socket) {
     socket.on('username', function (data) {
         let user = users.find(obj => obj.socketId == data.socketId);
         user.name = data.username;
-        if (users.length > 1) {
-            users[1].isTurn = false;
-            users[1].index = 2;
+        if (users.length == 2) {
+            if(randomturn == 1){
+                users[1].isTurn = false; //player 2 ไม่ได้เล่น
+                users[1].index = 2;
+            }else{
+                users[0].isTurn = false; //player 1 ไม่ได้เล่น
+                users[0].index = 2;
+            }    
         }
         console.log(users);
         io.sockets.emit('username', users);

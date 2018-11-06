@@ -26,22 +26,29 @@ var numUser = 0;
 var users = [];
 var pattern = [];
 var copyPattern = [];
+var dum =0;
 //var min = maxusernumber;
 //var max = minusernumber;
 //var randomItem = 0;
 //users[Math.floor(Math.random() * users.length)];
-//if น้อยกว่า useindex เป้น 0
-//if มากกว่า userindex เป็น 1
+
 function randomIntInRange(min, max){
     return (Math.ceil(Math.random()*(max - min)+min));
   }
   
+
+//if น้อยกว่า useindex เป้น 0
+//if มากกว่า userindex เป็น 1
 function getRandomInt(max) {
-    // return Math.floor( (Math.random() * Math.floor(max)) +1 );
-    return Math.floor(Math.random() * Math.floor(max));
+    //return Math.floor(Math.random() * Math.floor(max));
+    dum = (Math.random() * Math.floor(max));
+    if(dum > 0.5){
+        return 1;
+    }else{
+        return 0;
+    }  
 }
-
-
+    
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
@@ -51,18 +58,15 @@ io.on('connection', function (socket) {
     numUser++;
     console.log('Number of users: ' + numUser);
 
-    if (users.length <= 2) {
-        console.log('range: ' + randomIntInRange(0, 1));
-    } else {
-        console.log('getRanMax: ' + getRandomInt(users.length));
-    }
 
+        console.log('range: ' + randomIntInRange(0, 2));
+        console.log('getRanMax: ' + getRandomInt(users.length));
+        
     //console.log(getRandomInt(3));
     // expected output: 0, 1 or 2
 
     // randomItem = users[(Math.random() * users.length)+1];
     // randomItem = Math.floor(Math.random() * Math.floor(users));
-    //console.log('The first randomized player : '+ randomItem);
 
     socket.on('disconnect', function () {
         for (i = 0; i < users.length; i++) {

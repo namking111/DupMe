@@ -144,8 +144,8 @@
                     <!-- <input type="button" value="Done" onclick="getMotto()" /> -->
                 </form>
                 </p>
-                <input type="button" class="button" id="settingb" value="setting" onclick="show('setting','indexPage');"/>
-                <input type="button" class="button" id="setting1" value="How to play" onclick="show('howToPlay','indexPage');"/>
+                <input type="button" class="button" id="settingb" value="setting" onclick="show('setting','indexPage');" />
+                <input type="button" class="button" id="setting1" value="How to play" onclick="show('howToPlay','indexPage');" />
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
                 <!-- <form form action="welcome.html" method="GET">
@@ -182,20 +182,20 @@
                 <audio id="buttonsound" src="sound/button.mp3"></audio>
                 <audio id="wrong" src="sound/wrong.mp3"></audio>
                 <audio id="audio" src="sound/song.mp3"></audio>
-                <input type="button" class="button" id="playpausebtn" value="Background music"/>
-                <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');"/>
+                <input type="button" class="button" id="playpausebtn" value="Background music" />
+                <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');" />
                 <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
 
 
-            
-            
-            <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');"/>
-            
-            <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');"/>
+
+
+            <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');" />
+
+            <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');" />
             </p>
-            <input type="button" type="button" id="backToMenu" class="button" value="Back to menu"onclick="show('indexPage','setting');"/>
+            <input type="button" type="button" id="backToMenu" class="button" value="Back to menu" onclick="show('indexPage','setting');" />
 
             <!-- <div class="button" id="setting2">Level : hard</div> -->
 
@@ -218,7 +218,7 @@
             </p>
             </p>
             <h3 id="instuction">111111</h3>
-            <input type="button" value="Back to Menu" id="backToSetting" class="button" onclick="show('indexPage','howToPlay');"/>
+            <input type="button" value="Back to Menu" id="backToSetting" class="button" onclick="show('indexPage','howToPlay');" />
 
             </p>
 
@@ -271,13 +271,17 @@
                 <img src="img/alien8.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 <img src="img/alien4.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 </p>
-                <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked"><h6 style="display: inline;" id="color1"> Yellow</h6><br>
+                <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked">
+                <h6 style="display: inline;" id="color1"> Yellow</h6><br>
 
-                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"><h6 style="display: inline;" id="color2"> Blue</h6><br>
+                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue">
+                <h6 style="display: inline;" id="color2"> Blue</h6><br>
 
-                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> <h6 style="display: inline;" id="color3"> Pink</h6><br>
+                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink">
+                <h6 style="display: inline;" id="color3"> Pink</h6><br>
 
-                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen"><h6 style="display: inline;" id="color4"> Green</h6><br>
+                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen">
+                <h6 style="display: inline;" id="color4"> Green</h6><br>
 
             </form>
             </p>
@@ -304,10 +308,10 @@
             <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
 
             </p>
-                <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1"> Thai<br>
-                <input type="radio"  name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked">English
-                </p>
-                <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');"/>
+            <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1"> Thai<br>
+            <input type="radio" name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked">English
+            </p>
+            <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');" />
     </div>
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
@@ -342,16 +346,18 @@
 
 
             <center>
-                    <div class="row">
-                
-                        </div>
-                        <h5 id="levelText">Level</h5>
-                            <input type="radio" name="level" value="hard" onchange="showB()" id="hard" checked="checked"> <h6 style="display: inline;" id="levelText1">Hard</h6><br>
-                            
-                            <input type="radio" name="level" value="easy" onchange="hide()" id="easy"> <h6 style="display: inline;" id="levelText2">Easy</h6>
-            </p>
-                <input type="button" id="ready" class="button" value="Ready" onclick="setReady()"/>
-            </p>
+                <div class="row">
+
+                </div>
+                <h5 id="levelText">Level</h5>
+                <input type="radio" name="radioLevel" value="hard" onchange="setLevel();" id="hard" checked="checked">
+                <h6 style="display: inline;" id="levelText1">Hard</h6><br>
+
+                <input type="radio" name="radioLevel" value="easy" onchange="setLevel()" id="easy">
+                <h6 style="display: inline;" id="levelText2">Easy</h6>
+                </p>
+                <input type="button" id="ready" class="button" value="Ready" onclick="setReady()" />
+                </p>
                 <div style="display:none;" id="wait">waiting</div>
 
                 <!--<button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>-->
@@ -412,11 +418,12 @@
                 <center>
                     <img id="pic11" src="img/alien3.jpeg" class="img-responsive" alt="alien">
                     <img id="pic22" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-                
+
                 </center>
-                <center></p>
+                <center>
+                    </p>
                     <strong id="notturn" style="display:none;">Not your turn</strong>
-                </p>
+                    </p>
                 </center>
 
                 <form id="form1" runat="server">
@@ -431,7 +438,7 @@
                 <button class="button" onclick="myFunctionG()" id="G">G</button>
                 <button class="button" onclick="myFunctionH()" id="H">H</button>
         </center>
-        
+
         <center>
             <p id="textPlayer1Score" style="font-size: 16px" />
             <p id="textPlayer2Score" style="font-size: 16px" />
@@ -489,7 +496,7 @@
                 </div>
             </div>
             <center>
-                <img id="first" src="img/First_Place.png" width="50" height="70" >
+                <img id="first" src="img/First_Place.png" width="50" height="70">
             </center>
             <center>
                 <img id="second" src="img/second.jpg" width="55" height="60">
@@ -531,8 +538,6 @@
             <center>
                 <input type="button" class="button" id="resetB" value="reset" onclick="reset()" />
                 <p id="demo"></p>
-
-
             </center>
         </div>
     </div>

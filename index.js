@@ -26,9 +26,7 @@ var numUser = 0;
 var users = [];
 var pattern = [];
 var copyPattern = [];
-var dum = 0;
 var randomturn = 0;
-//var randomItem = 0;
 
 function randomIntInRange(min, max) {
     randomturn = (Math.ceil(Math.random() * (max - min) + min));
@@ -145,6 +143,10 @@ io.on('connection', function (socket) {
         io.sockets.emit('score', users);
         console.log(users);
     });
+
+    socket.on('level', function(data){
+        io.sockets.emit('level', data);
+    })
 });
 
 class User {

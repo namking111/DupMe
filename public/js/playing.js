@@ -35,19 +35,6 @@ socket.on('username', function (data) {
             document.getElementById("player2").innerHTML = users[i].name;
         }
     }
-    // if (users.length%2==0) {
-    //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
-    // }else{
-    //     document.getElementById("playername1").innerHTML= data[users.length-1].name ;
-
-    // }
-    // if (users.length%2==0) {
-    //     document.getElementById("player1").innerHTML= users[users.length-1].name ;
-    //  }else{
-    //      document.getElementById("player2").innerHTML= users[users.length-1].name ;
-
-    //  }
-
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
 });
 
@@ -140,7 +127,15 @@ socket.on('avatar', function (data) {
             }
         }
     }
+})
 
+socket.on('level', function (data) {
+    level = data;
+    if (data == 'easy') {
+        radioLevel[1].checked = true;
+    } else {
+        radioLevel[0].checked = true;
+    }
 })
 
 function countDown(secs, elem) {
@@ -363,6 +358,10 @@ function setReady() {
     socket.emit('ready', socket.id);
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';
+    console.log(level);
+    if (level == "easy") {
+        hide();
+    }
 }
 
 function setlevele() {
@@ -650,7 +649,9 @@ function changeLanguage2() {
     document.getElementById("levelText").innerHTML = "Level";
     document.getElementById("notturn").innerHTML = "Not your turn";
 }
-var level;
+
+//level tell how hard the game is
+var level = "hard";
 function hide() {
     level = document.getElementById("easy").value.toString();
     document.getElementById("F").style.display = "none";
@@ -662,4 +663,15 @@ function showB() {
     document.getElementById("F").style.display = "inline";
     document.getElementById("G").style.display = "inline";
     document.getElementById("H").style.display = "inline";
+}
+
+var radioLevel = document.getElementsByName('radioLevel');
+function setLevel() {
+    //Hide button -> remain 5 buttons
+    if (radioLevel[0].checked) {
+        level = "hard";
+    } else {
+        level = "easy";
+    }
+    socket.emit('level', level);
 }

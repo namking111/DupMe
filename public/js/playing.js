@@ -566,7 +566,7 @@ function changeLanguage(){
     document.getElementById("ready").value = "พร้อม";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
-    document.getElementById("mottoText").innerHTML = "โปรดใส่คำขวัญเพื่อข่มขวัญศัตรู";
+    document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
     document.getElementById("nameText").innerHTML = "โปรดใส่ชื่อเล่นของคุณ";
     document.getElementById("settingText").innerHTML = "ตั้งค่า";
     document.getElementById("howText").innerHTML = "วิธีเล่น";

@@ -585,6 +585,10 @@ function changeLanguage() {
     document.getElementById("resetB").value = "รีเซ็ต";
     document.getElementById("ready").value = "พร้อม";
     document.getElementById("languageP").value = "เปลี่ยนภาษา";
+    document.getElementById("gameT").value = "วิธีเล่น";
+    document.getElementById("setT").value = "วิธีตั้งค่า";
+    document.getElementById("backToHow1").value = "กลับ";
+    document.getElementById("backToHow2").value = "กลับ";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
@@ -605,6 +609,9 @@ function changeLanguage() {
     document.getElementById("color4").innerHTML = " เขียว";
     document.getElementById("levelText").innerHTML = "ระดับ";
     document.getElementById("notturn").innerHTML = "โปรดรอรอบถัดไป";
+    document.getElementById("setHowText").innerHTML = "วิธีตั้งค่า";
+    document.getElementById("gameHowText").innerHTML = "วิธีเล่น";
+   
 
 }
 function changeLanguage2() {
@@ -628,6 +635,10 @@ function changeLanguage2() {
     document.getElementById("resetB").value = "Reset";
     document.getElementById("ready").value = "Ready";
     document.getElementById("languageP").value = "Change Language";
+    document.getElementById("gameT").value = "Game Tutorial";
+    document.getElementById("setT").value = "Setting Tutorial";
+    document.getElementById("backToHow1").value = "Back to How to play";
+    document.getElementById("backToHow2").value = "Back to How to play";
 
     document.getElementById("firstDupMe").innerHTML = "Dup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";
@@ -648,6 +659,9 @@ function changeLanguage2() {
     document.getElementById("color4").innerHTML = " Green";
     document.getElementById("levelText").innerHTML = "Level";
     document.getElementById("notturn").innerHTML = "Not your turn";
+    document.getElementById("setHowText").innerHTML = "setting Tutorial";
+    document.getElementById("gameHowText").innerHTML = "Game Tutorial";
+    
 }
 
 //level tell how hard the game is

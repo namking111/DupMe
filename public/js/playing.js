@@ -17,7 +17,7 @@ var showdataTemp = "";
 var showdata = "";
 var score = 0;
 var userIndex = 1;
-var setlevel=0;
+var setlevel = 0;
 
 
 //Listening for call from server
@@ -77,12 +77,9 @@ socket.on('pattern', function (data) {
     }
 })
 
-socket.on('resetCopyPattern', function(data){
-    console.log("reset on front");
-    copyPattern = [];
-    document.getElementById("showdata").innerHTML = "";
+socket.on('resetCopyPattern', function (data) {
+    document.getElementById("showdata").innerHTML = copyPattern.toString();
 })
-
 
 socket.on('ready', function (data) {
     users = data;
@@ -93,10 +90,17 @@ socket.on('ready', function (data) {
     }
 })
 
-socket.on('surrend', function (data){
+socket.on('surrend', function (data) {
     alert("Surrender!!");
     show('endingPage', 'game');
 })
+socket.on('score', function (data) {
+    users = data;
+    let user1 = users.find(obj => obj.index == 1);
+    document.getElementById("textPlayer1Score").innerHTML = user1.name + ' score: ' + user1.score;
+    let user2 = users.find(obj => obj.index == 2);
+    document.getElementById("textPlayer2Score").innerHTML = user2.name + ' score: ' + user2.score;
+});
 
 socket.on('avatar', function (data) {
     users = data;
@@ -149,7 +153,7 @@ function countDown(secs, elem) {
     // statusIndex=1  2st player copy array
     // statusIndex=2  2st player create array
     // statusIndex=3  1st player copy array
-    if (secs < 0) {    
+    if (secs < 0) {
         document.getElementById("notturn").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
@@ -159,6 +163,7 @@ function countDown(secs, elem) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             pattern = [];
             copyPattern = [];
+            score = 0;
             socket.emit('resetPattern');
             document.getElementById("showdataTemp").innerHTML = pattern;
             document.getElementById("showdata").innerHTML = copyPattern;
@@ -233,10 +238,10 @@ function myStopFunction() {
 
 function showAndHideArray() {
     if (timerIndex == 0 && userIndex == 2) {
-        document.getElementById('notturn').style = 'display:visible;';        
+        document.getElementById('notturn').style = 'display:visible;';
         // document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
-    } else if (timerIndex == 1 && userIndex == 1) { 
+    } else if (timerIndex == 1 && userIndex == 1) {
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style = 'display:visible;';
@@ -285,18 +290,18 @@ function gameStart() {
 //array name data
 //check with new data player clicking
 
-// var score = 0;
 // var length = dataTemp.length + 1;
 var i = 0;  //index
 
 function calculateScore(pattern, copyPattern) {
-    if(pattern[copyPattern.length-1]==copyPattern[copyPattern.length-1]){
+    if (pattern[copyPattern.length - 1] == copyPattern[copyPattern.length - 1]) {
         score++;
-    }else{
+    } else {
         score = 0;
+        copyPattern = [];
         socket.emit('resetCopyPattern');
     }
-    
+    socket.emit("score", { timerIndex: timerIndex, score: score });
     return score;
 }
 
@@ -313,16 +318,15 @@ function objectsAreSame(x, y) {
 function getUsername() {
     username = document.getElementById('username');
     socket.emit("username", { socketId: socket.id, username: username.value });
-    if(lan =="1"){
+    if (lan == "1") {
         alert("ยินดีต้อนรับ " + username.value + " !");
-    }else{
+    } else {
         alert("Welcome " + username.value + " !");
-}
     }
-    
+}
+
 
 function switchPlayer() {
-    console.log("Hello from switch");
     let user1 = users.find(obj => obj.index == 1);
     user1.isTurn = false;
     let user2 = users.find(obj => obj.index == 2);
@@ -361,14 +365,14 @@ function setReady() {
     document.getElementById('wait').style = 'display:visible;';
 }
 
-function setlevele(){
-    socket.emit('easy',socket.id);
+function setlevele() {
+    socket.emit('easy', socket.id);
     alert("You choose EASY!");
     setlevel = 0; // easy = 0
 }
 
-function setlevelh(){
-    socket.emit('easy',socket.id);
+function setlevelh() {
+    socket.emit('easy', socket.id);
     alert("You choose HARD!");
     setlevel = 1; // hard = 1
 }
@@ -481,12 +485,13 @@ function playAgain() {
     timerIndex = 0;
     statusIndex = 0;
     document.getElementById("showdata").innerHTML = showdata;
-    document.getElementById("showScore").innerHTML = score;
+    document.getElementById("textPlayer1Score").innerHTML = "";
+    document.getElementById("textPlayer2Score").innerHTML = "";
     gameStart();
     console.log(showdataTemp)
 }
 
-function surrend(){
+function surrend() {
     socket.emit('surrend', socket.id);
 }
 
@@ -537,55 +542,15 @@ function reset() {
 var color;
 function changeAvatar() {
     color = document.getElementById("myRadioYellow").value.toString();
-    // if (users.length == 1) {
-    //     document.getElementById("pic1").src = "img/alien3.jpeg";
-    //     document.getElementById("pic11").src = "img/alien3.jpeg";
-    // }
-    // else {
-    //     document.getElementById("pic2").src = "img/alien3.jpeg";
-    //     document.getElementById("pic22").src = "img/alien3.jpeg";
-
-    // }
-
 }
 function changeAvatar2() {
     color = document.getElementById("myRadioBlue").value.toString();
-    // if (users.length == 1) {
-    //     document.getElementById("pic1").src = "img/alien7.jpeg";
-    //     document.getElementById("pic11").src = "img/alien7.jpeg";
-    // }
-    // else {
-    //     document.getElementById("pic2").src = "img/alien7.jpeg";
-    //     document.getElementById("pic22").src = "img/alien7.jpeg";
-
-    // }
-
 }
 function changeAvatar3() {
     color = document.getElementById("myRadioPink").value.toString();
-    // if (users.length == 1) {
-    //     document.getElementById("pic1").src = "img/alien8.jpeg";
-    //     document.getElementById("pic11").src = "img/alien8.jpeg";
-    // }
-    // else {
-    //     document.getElementById("pic2").src = "img/alien8.jpeg";
-    //     document.getElementById("pic22").src = "img/alien8.jpeg";
-
-    // }
-
 }
 function changeAvatar4() {
     color = document.getElementById("myRadioGreen").value.toString();
-    // if (users.length == 1) {
-    //     document.getElementById("pic1").src = "img/alien4.jpeg";
-    //     document.getElementById("pic11").src = "img/alien4.jpeg";
-    // }
-    // else {
-    //     document.getElementById("pic2").src = "img/alien4.jpeg";
-    //     document.getElementById("pic22").src = "img/alien4.jpeg";
-
-    // }
-
 }
 function getMotto() {
     motto = document.getElementById('motto');
@@ -598,8 +563,8 @@ function setAvatar(color) {
 function color() {
     alert(color);
 }
-var lan=2;
-function changeLanguage(){
+var lan = 2;
+function changeLanguage() {
     lan = document.getElementById("language1").value;
     document.getElementById("usernameSubmit").value = "ไป";
     document.getElementById("settingb").value = "ตั้งค่า";
@@ -617,7 +582,7 @@ function changeLanguage(){
     document.getElementById("backToSetting1").value = "กลับไปหน้าตั้งค่า";
     document.getElementById("backToSetting3").value = "กลับไปหน้าตั้งค่า";
     document.getElementById("backToSetting4").value = "กลับไปหน้าตั้งค่า";
-   // document.getElementById("readyB").value = "พร้อม";
+    // document.getElementById("readyB").value = "พร้อม";
     document.getElementById("resetB").value = "รีเซ็ต";
     document.getElementById("ready").value = "พร้อม";
     document.getElementById("languageP").value = "เปลี่ยนภาษา";
@@ -640,9 +605,9 @@ function changeLanguage(){
     document.getElementById("color3").innerHTML = " ชมพู";
     document.getElementById("color4").innerHTML = " เขียว";
     document.getElementById("levelText").innerHTML = "ระดับ";
-    
+
 }
-function changeLanguage2(){
+function changeLanguage2() {
     lan = document.getElementById("language2").value;
     document.getElementById("usernameSubmit").value = "Go";
     document.getElementById("settingb").value = "Setting";
@@ -684,15 +649,15 @@ function changeLanguage2(){
     document.getElementById("levelText").innerHTML = "Level";
 }
 var level;
-    function hide(){
-        level = document.getElementById("easy").value.toString();
-        document.getElementById("F").style.display="none";
-        document.getElementById("G").style.display="none";
-        document.getElementById("H").style.display="none";
-    }
-    function showB(){
-        level = document.getElementById("hard").value.toString();
-        document.getElementById("F").style.display="inline";
-        document.getElementById("G").style.display="inline";
-        document.getElementById("H").style.display="inline";
-    }
+function hide() {
+    level = document.getElementById("easy").value.toString();
+    document.getElementById("F").style.display = "none";
+    document.getElementById("G").style.display = "none";
+    document.getElementById("H").style.display = "none";
+}
+function showB() {
+    level = document.getElementById("hard").value.toString();
+    document.getElementById("F").style.display = "inline";
+    document.getElementById("G").style.display = "inline";
+    document.getElementById("H").style.display = "inline";
+}

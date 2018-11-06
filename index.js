@@ -26,16 +26,16 @@ var numUser = 0;
 var users = [];
 var pattern = [];
 var copyPattern = [];
-var dum =0;
-var randomturn=0;
+var dum = 0;
+var randomturn = 0;
 //var randomItem = 0;
 
-function randomIntInRange(min, max){
-    randomturn = (Math.ceil(Math.random()*(max - min)+min));
+function randomIntInRange(min, max) {
+    randomturn = (Math.ceil(Math.random() * (max - min) + min));
     return randomturn;
 }
 
-console.log('randomturn: ' + randomIntInRange(0,2));
+console.log('randomturn: ' + randomIntInRange(0, 2));
 //console.log('getRanMax: ' + getRandomInt(users.length));
 /*
 if น้อยกว่า useindex เป้น 0
@@ -75,13 +75,13 @@ io.on('connection', function (socket) {
         let user = users.find(obj => obj.socketId == data.socketId);
         user.name = data.username;
         if (users.length == 2) {
-            if(randomturn == 1){
+            if (randomturn == 1) {
                 users[1].isTurn = false; //player 2 ไม่ได้เล่น
                 users[1].index = 2;
-            }else{
+            } else {
                 users[0].isTurn = false; //player 1 ไม่ได้เล่น
                 users[0].index = 2;
-            }    
+            }
         }
         console.log(users);
         io.sockets.emit('username', users);
@@ -103,11 +103,9 @@ io.on('connection', function (socket) {
     });
 
     socket.on('resetCopyPattern', function (data) {
-        console.log("reset pattern");
         copyPattern = [];
         socket.emit('resetCopyPattern');
     });
-        
 
     socket.on('ready', function (data) {
         pattern = [];
@@ -122,7 +120,6 @@ io.on('connection', function (socket) {
 
     socket.on('switchPlayer', function (data) {
         users = data;
-        console.log(users);
     });
 
     socket.on('avatar', function (data) {
@@ -135,7 +132,19 @@ io.on('connection', function (socket) {
         let user = users.find(obj => obj.socketId == data.socketId);
         user.motto = data.motto;
         io.sockets.emit('motto', users);
-    })
+    });
+
+    socket.on('score', function (data) {
+        if (data.timerIndex == 1) {
+            let user = users.find(obj => obj.index == 2);
+            user.score = data.score;
+        } else {
+            let user = users.find(obj => obj.index == 1);
+            user.score = data.score;
+        }
+        io.sockets.emit('score', users);
+        console.log(users);
+    });
 });
 
 class User {

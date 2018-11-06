@@ -239,16 +239,20 @@
 
             </p>
             </p>
-            <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none" onclick="changeBG()"/>
-            <input type="button" class="button" id="pink" value="Pink" style="background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()"/>
-            <input type="button" class="button" id="blue" value="Blue" style="background-color:powderblue; color:black; border:none" onclick="changeBG2()"/>
-            <input type="button" class="button" id="yellow"value="Yellow"style="background-color:#FCE476; color:black; border:none" onclick="changeBG3()"/>
+            <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none"
+                onclick="changeBG()" />
+            <input type="button" class="button" id="pink" value="Pink" style="background-color:#FFA8A2; color:black; border:none"
+                onclick="changeBG1()" />
+            <input type="button" class="button" id="blue" value="Blue" style="background-color:powderblue; color:black; border:none"
+                onclick="changeBG2()" />
+            <input type="button" class="button" id="yellow" value="Yellow" style="background-color:#FCE476; color:black; border:none"
+                onclick="changeBG3()" />
 
 
 
 
             </p>
-            <input type="button" id="backToSetting1"value="Back to setting" class="button" onclick="show('setting','background');"/>
+            <input type="button" id="backToSetting1" value="Back to setting" class="button" onclick="show('setting','background');" />
 
             </p>
 
@@ -284,7 +288,7 @@
 
 
             </p>
-            <input type="button" id="backToSetting3"value="Back to setting" class="button" onclick="show('setting','avatar');"/>
+            <input type="button" id="backToSetting3" value="Back to setting" class="button" onclick="show('setting','avatar');" />
 
             </p>
 
@@ -292,9 +296,9 @@
         </center>
     </div>
     <div id="languagePage" style="display:none">
-            <center>
-                </p>
-                <h2 id="languageText">Change Language</h2>
+        <center>
+            </p>
+            <h2 id="languageText">Change Language</h2>
             </p>
             <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
             <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
@@ -330,9 +334,8 @@
             </p>
             <center>
                 <img id="pic1" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-                <img id="pic2" src="img/alien4.jpeg" class="img-responsive" alt="alien">
-            </p>
-            
+                <img id="pic2" src="img/alien3.jpeg" class="img-responsive" alt="alien">
+
             </center>
             </p>
 
@@ -408,8 +411,11 @@
             <body>
                 <center>
                     <img id="pic11" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-                    <img id="pic22" src="img/alien4.jpeg" class="img-responsive" alt="alien">
+                    <img id="pic22" src="img/alien3.jpeg" class="img-responsive" alt="alien">
 
+                </center>
+                <center>
+                    <strong id="notturn" style="display:none;">Not your turn</strong>
                 </center>
 
                 <form id="form1" runat="server">
@@ -426,16 +432,12 @@
         </center>
         
         <center>
+            <p id="textPlayer1Score" style="font-size: 16px" />
+            <p id="textPlayer2Score" style="font-size: 16px" />
             <p id="showdataTemp" style="font-size: 16px" />
         </center>
         <center>
             <p id="showdata" style="font-size: 16px" />
-        </center>
-        <center>
-            <p id="showScore" style="font-size: 16px" />
-        </center>
-        <center>
-            <button class="button" onclick="surrend()" id=surrend>Surrender</button>
         </center>
 
         <!-- Optional JavaScript -->
@@ -485,11 +487,17 @@
                     <div class="col" id="total_p2"></div>
                 </div>
             </div>
+            <center>
+                <img id="first" src="img/First_Place.png" width="50" height="70" >
+            </center>
+            <center>
+                <img id="second" src="img/second.jpg" width="55" height="60">
+            </center>
 
             </p>
             <center>
-                    <button type="button" class="button"><a href="#" onclick="playAgain();" style="color:aliceblue">Play
-                            Again</a></button>
+                <button type="button" class="button"><a href="#" onclick="playAgain();" style="color:aliceblue">Play
+                        Again</a></button>
             </center>
             </p>
 
@@ -520,7 +528,7 @@
 
             </script>
             <center>
-                <input type="button" class="button" id="resetB" value="reset" onclick="reset()"/>
+                <input type="button" class="button" id="resetB" value="reset" onclick="reset()" />
                 <p id="demo"></p>
 
 

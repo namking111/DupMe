@@ -25,6 +25,7 @@ var io = socket(server);
 var numUser = 0;
 var users = [];
 var pattern = [];
+var copyPattern = [];
 //var min = maxusernumber;
 //var max = minusernumber;
 //var randomItem = 0;
@@ -36,28 +37,31 @@ function randomIntInRange(min, max){
   }
   
 function getRandomInt(max) {
-   // return Math.floor( (Math.random() * Math.floor(max)) +1 );
-    return Math.floor( Math.random() * Math.floor(max) );
-  }
+    // return Math.floor( (Math.random() * Math.floor(max)) +1 );
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
+    user = new User(socket.id);
+    users.push(user);
     console.log('someone joins the game', socket.id);
     numUser++;
     console.log('Number of users: ' + numUser);
 
-    if(users.length <= 2){
-        console.log('range: ' + randomIntInRange(0, 1) );  
-    }else{
-        console.log('getRanMax: '+getRandomInt(users.length));
+    if (users.length <= 2) {
+        console.log('range: ' + randomIntInRange(0, 1));
+    } else {
+        console.log('getRanMax: ' + getRandomInt(users.length));
     }
-    
+
     //console.log(getRandomInt(3));
     // expected output: 0, 1 or 2
 
-   // randomItem = users[(Math.random() * users.length)+1];
-   // randomItem = Math.floor(Math.random() * Math.floor(users));
+    // randomItem = users[(Math.random() * users.length)+1];
+    // randomItem = Math.floor(Math.random() * Math.floor(users));
     //console.log('The first randomized player : '+ randomItem);
 
     socket.on('disconnect', function () {
@@ -72,8 +76,8 @@ io.on('connection', function (socket) {
     });
 
     socket.on('username', function (data) {
-        user = new User(data, socket.id);
-        users.push(user);
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.name = data.username;
         if (users.length > 1) {
             users[1].isTurn = false;
             users[1].index = 2;
@@ -83,12 +87,22 @@ io.on('connection', function (socket) {
     });
 
     socket.on('pattern', function (data) {
-        pattern.push(data);
-        io.sockets.emit('pattern', pattern);
+        if (data.round == 0) {
+            pattern.push(data.btn);
+            io.sockets.emit('pattern', { pattern: pattern, round: data.round });
+        } else {
+            copyPattern.push(data.btn);
+            io.sockets.emit('pattern', { copyPattern: copyPattern, round: data.round });
+        }
+    });
+
+    socket.on('resetPattern', function (data) {
+        pattern = [];
+        copyPattern = [];
     });
 
     socket.on('ready', function (data) {
-        pattern=[];
+        pattern = [];
         let user = users.find(obj => obj.socketId == data);
         user.isReady = true;
         io.sockets.emit('ready', users);
@@ -99,21 +113,28 @@ io.on('connection', function (socket) {
         console.log(users);
     });
 
-    socket.on('avatar', function (data){
-        let user = users.find(obj => obj.socketId == data);
-        user.avatar = data;
+    socket.on('avatar', function (data) {
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.avatar = data.color;
         io.sockets.emit('avatar', users);
+    });
+
+    socket.on('motto', function (data) {
+        let user = users.find(obj => obj.socketId == data.socketId);
+        user.motto = data.motto;
+        io.sockets.emit('motto', users);
     })
 });
 
 class User {
-    constructor(name, socketId) {
-        this.name = name;
+    constructor(socketId) {
+        this.name = "";
         this.socketId = socketId;
         this.score = 0;
         this.isReady = false;
         this.index = 1;
         this.isTurn = true;
-        this.avatar;
+        this.avatar = "yellow";
+        this.motto = "";
     }
 }

@@ -585,7 +585,7 @@ function changeLanguage2(){
     document.getElementById("playpausebtn").value = "Background Music";
     document.getElementById("backToMenu").value = "Back to Menu";
     document.getElementById("setting1").value = "How to play";
-    document.getElementById("bg").value = "Change background color";
+    document.getElementById("bg").value = "Change background";
     document.getElementById("avatar1").value = "Change your avatar";
     document.getElementById("backToSetting").value = "Back to setting";
     document.getElementById("white").value = "White";

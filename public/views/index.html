@@ -124,7 +124,7 @@
         <div class="container-fluid">
             <center>
                 </p>
-                <h2>Dup me</h2>
+                <h2 id="firstDupMe">Dup me</h2>
 
                 </p>
 
@@ -132,20 +132,20 @@
                 <img src="img/alien8.jpeg" class="img-responsive" alt="alien">
                 <img src="img/alien7.jpeg" class="img-responsive" alt="alien">
                 </p>
-                <h6>Please enter your nickname.</h6>
+                <h6 id="nameText">Please enter your nickname.</h6>
                 <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
                     <input type="text" id="username" class="textbox" />
-                    <input type="submit" onclick="getUsername(); getMotto(); setAvatar(color);" />
+                    <input type="submit" id="usernameSubmit" value="go" onclick="getUsername(); getMotto(); setAvatar(color);" />
                 </form>
                 </p>
-                <h6>Please enter your motto.</h6>
+                <h6 id="mottoText">Please enter your motto.</h6>
                 <form id="form"></a>
                     <input type="text" id="motto" class="textbox" />
                     <!-- <input type="button" value="Done" onclick="getMotto()" /> -->
                 </form>
                 </p>
-                <button type="button" class="button" onclick="show('setting','indexPage');">Setting</button>
-                <button type="button" class="button" onclick="color()">color</button>
+                <input type="button" class="button" id="settingb" value="setting" onclick="show('setting','indexPage');"/>
+                
 
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
@@ -170,7 +170,7 @@
     <div id="setting" style="display:none">
         <center>
             </p>
-            <h2>Setting</h2>
+            <h2 id="settingText">Setting</h2>
 
             </p>
             <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
@@ -183,19 +183,19 @@
                 <audio id="buttonsound" src="sound/button.mp3"></audio>
                 <audio id="wrong" src="sound/wrong.mp3"></audio>
                 <audio id="audio" src="sound/song.mp3"></audio>
-                <button class="button" id="playpausebtn">Background music</button>
+                <input class="button" id="playpausebtn" value="Background music"/>
                 <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
 
 
-            <div class="button" id="setting1" onclick="show('howToPlay','setting');">How to play</div>
+            <input class="button" id="setting1" value="How to play" onclick="show('howToPlay','setting');"/>
+            <input class="button" id="bg" value="Change background color" onclick="show('background','setting');"/>
             <div class="w-100"></div>
-            <div class="button" id="bg" onclick="show('background','setting');">Change background color</div>
-            <div class="w-100"></div>
-            <div class="button" id="avatar1" onclick="show('avatar','setting');">Change your avatar</div>
+            <input class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');"/>
+            <input class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');"/>
             </p>
-            <button type="button" id="backToMenu" class="button" onclick="show('indexPage','setting');">back to menu</button>
+            <input type="button" id="backToMenu" class="button" value="Back to menu"onclick="show('indexPage','setting');"/>
 
             <!-- <div class="button" id="setting2">Level : hard</div> -->
 
@@ -207,7 +207,7 @@
     <div id="howToPlay" style="display:none">
         <center>
             </p>
-            <h2>How to play</h2>
+            <h2 id="howText">How to play</h2>
 
 
             </p>
@@ -217,9 +217,8 @@
 
             </p>
             </p>
-            <h3>111111</h3>
-            <button type="button" id="backToSetting" class="button" onclick="show('setting','howToPlay');">back to
-                setting</button>
+            <h3 id="instuction">111111</h3>
+            <input type="button" value="Back to setting" id="backToSetting" class="button" onclick="show('setting','howToPlay');"/>
 
             </p>
 
@@ -230,7 +229,7 @@
     <div id="background" style="display:none">
         <center>
             </p>
-            <h2>Change Background color</h2>
+            <h2 id="bgText">Change Background Color</h2>
 
 
             </p>
@@ -240,17 +239,16 @@
 
             </p>
             </p>
-            <button type="button" class="button" style="background-color:white; color:black; border:none" onclick="changeBG()">White</button>
-            <button type="button" class="button" style="background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()">Pink</button>
-            <button type="button" class="button" style="background-color:powderblue; color:black; border:none" onclick="changeBG2()">Powderblue</button>
-            <button type="button" class="button" style="background-color:#FCE476; color:black; border:none" onclick="changeBG3()">Yellow</button>
+            <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none" onclick="changeBG()"/>
+            <input type="button" class="button" id="pink" value="Pink" style="background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()"/>
+            <input type="button" class="button" id="blue" value="Blue" style="background-color:powderblue; color:black; border:none" onclick="changeBG2()"/>
+            <input type="button" class="button" id="yellow"value="Yellow"style="background-color:#FCE476; color:black; border:none" onclick="changeBG3()"/>
 
 
 
 
             </p>
-            <button type="button" id="backToSetting" class="button" onclick="show('setting','background');">back to
-                setting</button>
+            <input type="button" id="backToSetting1"value="Back to setting" class="button" onclick="show('setting','background');"/>
 
             </p>
 
@@ -261,7 +259,7 @@
     <div id="avatar" style="display:none">
         <center>
             </p>
-            <h2>Change your avatar</h2>
+            <h2 id="avatarText">Change your avatar</h2>
             </p>
             <form action="">
                 <img src="img/alien3.jpeg" alt="alien" class="img-responsive" width="180" height="156">
@@ -270,13 +268,13 @@
                 <img src="img/alien4.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 </p>
                 <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked">
-                yellow<br>
+                1<br>
 
-                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"> blue<br>
+                <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue"> 2<br>
 
-                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> pink<br>
+                <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink"> 3<br>
 
-                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen"> green
+                <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen"> 4
 
             </form>
             </p>
@@ -287,12 +285,21 @@
 
 
             </p>
-            <button type="button" id="backToSetting" class="button" onclick="show('setting','avatar');">back to setting</button>
+            <input type="button" id="backToSetting3"value="Back to setting" class="button" onclick="show('setting','avatar');"/>
 
             </p>
 
 
         </center>
+    </div>
+    <div id="languagePage" style="display:none">
+            <center>
+                </p>
+                <h2 id="languageText">Change Language</h2>
+                <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1" > Thai<br>
+                <input type="radio"  name="lang" value="2" onchange="changeLanguage2()" id="language2">English
+                </p>
+                <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');"/>
     </div>
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
@@ -301,7 +308,7 @@
             <h1>
                 <center>
                     </p>
-                    <h1>Player</h1>
+                    <h1 id="playerText">Player</h1>
 
 
                     </p>
@@ -327,7 +334,7 @@
 
 
             <center>
-                <button type="button" id="ready" class="button" onclick="setReady()">Ready</button>
+                <input type="button" id="ready" class="button" value="Ready" onclick="setReady()"/>
                 <div style="display:none;" id="wait">waiting</div>
 
                 <!--<button type="button" id="ready" class="btn btn-info btn-lg " onclick="gameStart()">Start</button>-->
@@ -367,7 +374,7 @@
     <div id="game" style="display:none">
         <h1>
             <center>
-                <h1>DupMe</h1>
+                <h1 id="lastDupMe">DupMe</h1>
             </center>
         </h1>
         <script>
@@ -428,7 +435,7 @@
         <div class="container-fluid">
             </p>
             <center>
-                <h1>Scoreboard</h1>
+                <h1 id="scoreText">Scoreboard</h1>
             </center>
             </p>
 
@@ -462,8 +469,8 @@
 
             </p>
             <center>
-                <button type="button" class="button"><a href="#" onclick="playAgain();" style="color:aliceblue">Play
-                        Again</a></button>
+                    <button type="button" class="button"><a href="#" onclick="playAgain();" style="color:aliceblue">Play
+                            Again</a></button>
             </center>
             </p>
 
@@ -494,7 +501,7 @@
 
             </script>
             <center>
-                <button type="button" class="btn btn-info btn-lg " onclick="reset()">Reset</button>
+                <input type="button" class="button" id="resetB" value="reset" onclick="reset()"/>
                 <p id="demo"></p>
 
 

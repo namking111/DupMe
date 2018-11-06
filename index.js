@@ -119,6 +119,10 @@ io.on('connection', function (socket) {
         io.sockets.emit('ready', users);
     });
 
+    socket.on('surrend', function (data) {
+        io.sockets.emit('surrend', users);
+    });
+
     socket.on('switchPlayer', function (data) {
         users = data;
         console.log(users);

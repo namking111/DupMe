@@ -145,7 +145,7 @@
                 </form>
                 </p>
                 <input type="button" class="button" id="settingb" value="setting" onclick="show('setting','indexPage');"/>
-
+                <input type="button" class="button" id="setting1" value="How to play" onclick="show('howToPlay','indexPage');"/>
                 <!-- <a href="#" onclick="return show('Page2','Page1');">Show page 2</a> -->
 
                 <!-- <form form action="welcome.html" method="GET">
@@ -183,15 +183,16 @@
                 <audio id="wrong" src="sound/wrong.mp3"></audio>
                 <audio id="audio" src="sound/song.mp3"></audio>
                 <input type="button" class="button" id="playpausebtn" value="Background music"/>
+                <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');"/>
                 <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
 
 
-            <input type="button" class="button" id="setting1" value="How to play" onclick="show('howToPlay','setting');"/>
-            <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');"/>
-            <div class="w-100"></div>
+            
+            
             <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');"/>
+            
             <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');"/>
             </p>
             <input type="button" type="button" id="backToMenu" class="button" value="Back to menu"onclick="show('indexPage','setting');"/>
@@ -217,7 +218,7 @@
             </p>
             </p>
             <h3 id="instuction">111111</h3>
-            <input type="button" value="Back to setting" id="backToSetting" class="button" onclick="show('setting','howToPlay');"/>
+            <input type="button" value="Back to Menu" id="backToSetting" class="button" onclick="show('indexPage','howToPlay');"/>
 
             </p>
 

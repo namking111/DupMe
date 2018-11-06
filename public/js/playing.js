@@ -600,7 +600,7 @@ function changeLanguage(){
     document.getElementById("setting1").value = "วิธีเล่น";
     document.getElementById("bg").value = "เปลี่ยนสีพื้นหลัง";
     document.getElementById("avatar1").value = "เปลี่ยนตัวละคร";
-    document.getElementById("backToSetting").value = "กลับไปหน้าตั้งค่า";
+    document.getElementById("backToSetting").value = "กลับไปหน้าเมนู";
     document.getElementById("white").value = "ขาว";
     document.getElementById("pink").value = "ชมพู";
     document.getElementById("blue").value = "ฟ้า";
@@ -642,7 +642,7 @@ function changeLanguage2(){
     document.getElementById("setting1").value = "How to play";
     document.getElementById("bg").value = "Change background";
     document.getElementById("avatar1").value = "Change your avatar";
-    document.getElementById("backToSetting").value = "Back to setting";
+    document.getElementById("backToSetting").value = "Back to menu";
     document.getElementById("white").value = "White";
     document.getElementById("pink").value = "Pink";
     document.getElementById("blue").value = "Blue";

@@ -563,6 +563,7 @@ function changeLanguage(){
     document.getElementById("backToSetting4").value = "กลับไปหน้าตั้งค่า";
    // document.getElementById("readyB").value = "พร้อม";
     document.getElementById("resetB").value = "รีเซ็ต";
+    document.getElementById("ready").value = "พร้อม";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("mottoText").innerHTML = "โปรดใส่คำขวัญเพื่อข่มขวัญศัตรู";
@@ -595,6 +596,7 @@ function changeLanguage2(){
     document.getElementById("backToSetting4").value = "Back to setting";
     //document.getElementById("readyB").value = "Ready";
     document.getElementById("resetB").value = "Reset";
+    document.getElementById("ready").value = "Ready";
 
     document.getElementById("firstDupMe").innerHTML = "ีDup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";

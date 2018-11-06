@@ -29,7 +29,8 @@ var pattern = [];
 //var max = minusernumber;
 //var randomItem = 0;
 //users[Math.floor(Math.random() * users.length)];
-
+//if น้อยกว่า useindex เป้น 0
+//if มากกว่า userindex เป็น 1
 function randomIntInRange(min, max){
     return (Math.ceil(Math.random()*(max - min)+min));
   }

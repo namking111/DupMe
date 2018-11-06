@@ -355,11 +355,13 @@ function setReady() {
 function setlevele(){
     socket.emit('easy',socket.id);
     alert("You choose EASY!");
+    setlevel = 0; // easy = 0
 }
 
 function setlevelh(){
     socket.emit('easy',socket.id);
     alert("You choose HARD!");
+    setlevel = 1; // hard = 1
 }
 //save value into array
 var data = [];

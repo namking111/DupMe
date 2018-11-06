@@ -622,6 +622,7 @@ function changeLanguage() {
     document.getElementById("gameHowText").innerHTML = "วิธีเล่น";
     document.getElementById("l1").innerHTML = " ภาษาไทย";
     document.getElementById("l2").innerHTML = " ภาษาอังกฤษ";
+    document.getElementById("wait").innerHTML = "โปรดรอ";
    
 
 }
@@ -674,6 +675,7 @@ function changeLanguage2() {
     document.getElementById("gameHowText").innerHTML = "Game Tutorial";
     document.getElementById("l1").innerHTML = " Thai";
     document.getElementById("l2").innerHTML = " English";
+    document.getElementById("wait").innerHTML = "waiting";
     
 }
 

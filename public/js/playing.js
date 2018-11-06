@@ -573,7 +573,7 @@ function color() {
 }
 var lan = 2;
 function changeLanguage() {
-    lan = document.getElementById("language1").value.toString();
+    lan = "1";
     document.getElementById("usernameSubmit").value = "ไป";
     document.getElementById("settingb").value = "ตั้งค่า";
     document.getElementById("language1").value = "ไทย";
@@ -626,7 +626,7 @@ function changeLanguage() {
 
 }
 function changeLanguage2() {
-    lan = document.getElementById("language2").value.toString();
+    lan = "2";
     document.getElementById("usernameSubmit").value = "Go";
     document.getElementById("settingb").value = "Setting";
     document.getElementById("playpausebtn").value = "Background Music";

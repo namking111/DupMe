@@ -18,6 +18,7 @@ var showdata = "";
 var score = 0;
 var userIndex = 1;
 var setlevel = 0;
+var hintValue = 1;
 
 
 //Listening for call from server
@@ -150,6 +151,7 @@ function countDown(secs, elem) {
     // statusIndex=3  1st player copy array
     if (secs < 0) {
         document.getElementById("notturn").style.visibility = 'hidden';
+        document.getElementById("hint").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             disableAllButton();
@@ -232,9 +234,13 @@ function myStopFunction() {
 }
 
 function showAndHideArray() {
+    if (timerIndex == 0 && userIndex == 1) {
+        document.getElementById("hint").style.visibility = 'hidden';
+    }
     if (timerIndex == 0 && userIndex == 2) {
         document.getElementById('notturn').style = 'display:visible;';
-        // document.getElementById("showdata").style.visibility = 'hidden';
+        document.getElementById("hint").style.visibility = 'hidden';
+         document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
     } else if (timerIndex == 1 && userIndex == 1) {
         document.getElementById("showdataTemp").style = 'display:visible;';
@@ -244,16 +250,19 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
+        document.getElementById("hint").style = 'display:visible;';
     } else if (timerIndex == 2) {
         if (userIndex == 1) {
             document.getElementById("notturn").style = 'display:visible;';
         }
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style.visibility = 'hidden';
+        document.getElementById("hint").style.visibility = 'hidden';
     } else if (timerIndex == 3 && userIndex == 1) {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
+        document.getElementById("hint").style = 'display:visible;';
     } else if (timerIndex == 3 && userIndex == 2) {
         document.getElementById("notturn").style = 'display:visible;';
         document.getElementById("showdataTemp").style = 'display:visible;';
@@ -688,4 +697,15 @@ function setLevel() {
         level = "easy";
     }
     socket.emit('level', level);
+}
+
+function hint() {
+    var hint = pattern[copyPattern.length];
+    // if (timerIndex == 0 || timerIndex == 2) {
+
+    // } else {
+    if (hintValue > 0) {
+        socket.emit("pattern", { btn: hint, round: 1 });
+        hintValue--;
+    }
 }

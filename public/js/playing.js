@@ -17,6 +17,7 @@ var showdataTemp = "";
 var showdata = "";
 var score = 0;
 var userIndex = 1;
+var setlevel=0;
 
 
 //Listening for call from server
@@ -351,6 +352,15 @@ function setReady() {
     document.getElementById('wait').style = 'display:visible;';
 }
 
+function setlevele(){
+    socket.emit('easy',socket.id);
+    alert("You choose EASY!");
+}
+
+function setlevelh(){
+    socket.emit('easy',socket.id);
+    alert("You choose HARD!");
+}
 //save value into array
 var data = [];
 //Check whether it his/her turn
@@ -370,6 +380,7 @@ function enableAllButton() {
     document.getElementById('C').disabled = false;
     document.getElementById('D').disabled = false;
     document.getElementById('E').disabled = false;
+    document.getElementById('F').disabled = false;
 }
 
 function disableAllButton() {
@@ -378,6 +389,7 @@ function disableAllButton() {
     document.getElementById('C').disabled = true;
     document.getElementById('D').disabled = true;
     document.getElementById('E').disabled = true;
+    document.getElementById('F').disabled = true;
 }
 
 function myFunctionA() {
@@ -417,6 +429,14 @@ function myFunctionE() {
     if (isTurn) {
         sound.play();
         socket.emit("pattern", { btn: "E", round: statusIndex });
+    } else {
+
+    }
+}
+function myFunctionF() {
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", { btn: "F", round: statusIndex });
     } else {
 
     }

@@ -629,7 +629,7 @@ function changeLanguage2(){
     document.getElementById("ready").value = "Ready";
     document.getElementById("languageP").value = "Change Language";
 
-    document.getElementById("firstDupMe").innerHTML = "ีDup Me";
+    document.getElementById("firstDupMe").innerHTML = "Dup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";
     document.getElementById("nameText").innerHTML = "Please enter your nickname.";
     document.getElementById("settingText").innerHTML = "Setting";

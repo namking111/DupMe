@@ -605,6 +605,7 @@ function changeLanguage() {
     document.getElementById("color3").innerHTML = " ชมพู";
     document.getElementById("color4").innerHTML = " เขียว";
     document.getElementById("levelText").innerHTML = "ระดับ";
+    document.getElementById("notturn").innerHTML = "โปรดรอรอบถัดไป";
 
 }
 function changeLanguage2() {
@@ -647,6 +648,7 @@ function changeLanguage2() {
     document.getElementById("color3").innerHTML = " Pink";
     document.getElementById("color4").innerHTML = " Green";
     document.getElementById("levelText").innerHTML = "Level";
+    document.getElementById("notturn").innerHTML = "Not your turn";
 }
 var level;
 function hide() {

@@ -564,6 +564,7 @@ function changeLanguage(){
    // document.getElementById("readyB").value = "พร้อม";
     document.getElementById("resetB").value = "รีเซ็ต";
     document.getElementById("ready").value = "พร้อม";
+    document.getElementById("languageP").value = "เปลี่ยนภาษา";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
@@ -597,6 +598,7 @@ function changeLanguage2(){
     //document.getElementById("readyB").value = "Ready";
     document.getElementById("resetB").value = "Reset";
     document.getElementById("ready").value = "Ready";
+    document.getElementById("languageP").value = "Change Language";
 
     document.getElementById("firstDupMe").innerHTML = "ีDup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";

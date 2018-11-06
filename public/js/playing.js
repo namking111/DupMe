@@ -573,7 +573,7 @@ function color() {
 }
 var lan = 2;
 function changeLanguage() {
-    lan = document.getElementById("language1").value;
+    lan = document.getElementById("language1").value.toString();
     document.getElementById("usernameSubmit").value = "ไป";
     document.getElementById("settingb").value = "ตั้งค่า";
     document.getElementById("language1").value = "ไทย";
@@ -620,11 +620,13 @@ function changeLanguage() {
     document.getElementById("notturn").innerHTML = "โปรดรอรอบถัดไป";
     document.getElementById("setHowText").innerHTML = "วิธีตั้งค่า";
     document.getElementById("gameHowText").innerHTML = "วิธีเล่น";
+    document.getElementById("l1").innerHTML = " ภาษาไทย";
+    document.getElementById("l2").innerHTML = " ภาษาอังกฤษ";
    
 
 }
 function changeLanguage2() {
-    lan = document.getElementById("language2").value;
+    lan = document.getElementById("language2").value.toString();
     document.getElementById("usernameSubmit").value = "Go";
     document.getElementById("settingb").value = "Setting";
     document.getElementById("playpausebtn").value = "Background Music";
@@ -670,6 +672,8 @@ function changeLanguage2() {
     document.getElementById("notturn").innerHTML = "Not your turn";
     document.getElementById("setHowText").innerHTML = "setting Tutorial";
     document.getElementById("gameHowText").innerHTML = "Game Tutorial";
+    document.getElementById("l1").innerHTML = " Thai";
+    document.getElementById("l2").innerHTML = " English";
     
 }
 

@@ -92,6 +92,11 @@ socket.on('ready', function (data) {
     }
 })
 
+socket.on('surrend', function (data){
+    alert("Surrender!!");
+    show('endingPage', 'game');
+})
+
 socket.on('avatar', function (data) {
     users = data;
     for (i = 0; i < users.length; i++) {
@@ -432,6 +437,10 @@ function playAgain() {
     document.getElementById("showScore").innerHTML = score;
     gameStart();
     console.log(showdataTemp)
+}
+
+function surrend(){
+    socket.emit('surrend', socket.id);
 }
 
 // function mute(){

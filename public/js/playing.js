@@ -443,6 +443,22 @@ function myFunctionF() {
 
     }
 }
+function myFunctionG() {
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", { btn: "G", round: statusIndex });
+    } else {
+
+    }
+}
+function myFunctionH() {
+    if (isTurn) {
+        sound.play();
+        socket.emit("pattern", { btn: "H", round: statusIndex });
+    } else {
+
+    }
+}
 
 function playAgain() {
     show('welcomePage', 'endingPage');
@@ -608,6 +624,14 @@ function changeLanguage(){
     document.getElementById("lastDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("scoreText").innerHTML = "ตารางคะแนน";
     document.getElementById("languageText").innerHTML = "เปลี่ยนภาษา";
+    document.getElementById("levelText1").innerHTML = "ยาก";
+    document.getElementById("levelText2").innerHTML = "ง่าย";
+    document.getElementById("color1").innerHTML = " เหลือง";
+    document.getElementById("color2").innerHTML = " ฟ้า";
+    document.getElementById("color3").innerHTML = " ชมพู";
+    document.getElementById("color4").innerHTML = " เขียว";
+    document.getElementById("levelText").innerHTML = "ระดับ";
+    
 }
 function changeLanguage2(){
     lan = document.getElementById("language2").value;
@@ -642,4 +666,24 @@ function changeLanguage2(){
     document.getElementById("lastDupMe").innerHTML = "Dup Me";
     document.getElementById("scoreText").innerHTML = "Scoreboard";
     document.getElementById("languageText").innerHTML = "Change Language";
+    document.getElementById("levelText1").innerHTML = "Hard";
+    document.getElementById("levelText2").innerHTML = "Easy";
+    document.getElementById("color1").innerHTML = " Yellow";
+    document.getElementById("color2").innerHTML = " Blue";
+    document.getElementById("color3").innerHTML = " Pink";
+    document.getElementById("color4").innerHTML = " Green";
+    document.getElementById("levelText").innerHTML = "Level";
 }
+var level;
+    function hide(){
+        level = document.getElementById("easy").value.toString();
+        document.getElementById("F").style.display="none";
+        document.getElementById("G").style.display="none";
+        document.getElementById("H").style.display="none";
+    }
+    function showB(){
+        level = document.getElementById("hard").value.toString();
+        document.getElementById("F").style.display="inline";
+        document.getElementById("G").style.display="inline";
+        document.getElementById("H").style.display="inline";
+    }

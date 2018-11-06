@@ -148,11 +148,11 @@ function countDown(secs, elem) {
     // statusIndex=1  2st player copy array
     // statusIndex=2  2st player create array
     // statusIndex=3  1st player copy array
-    if (secs < 0) {
+    if (secs < 0) {    
+        document.getElementById("notturn").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             disableAllButton();
-
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
@@ -164,6 +164,7 @@ function countDown(secs, elem) {
         }
     }
     if (secs < -1) {
+        document.getElementById("notturn").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "SET" }, 1000);
         }
@@ -230,22 +231,30 @@ function myStopFunction() {
 }
 
 function showAndHideArray() {
-    if (timerIndex == 0) {
+    if (timerIndex == 0 && userIndex == 2) {
+        document.getElementById('notturn').style = 'display:visible;';        
         // document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
-    } else if (timerIndex == 1 && userIndex == 1) {
+    } else if (timerIndex == 1 && userIndex == 1) { 
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style = 'display:visible;';
+        document.getElementById("notturn").style = 'display:visible;';
     } else if (timerIndex == 1 && userIndex == 2) {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
+        document.getElementById("notturn").style.visibility = 'hidden';
     } else if (timerIndex == 2) {
+        if (userIndex == 1) {
+            document.getElementById("notturn").style = 'display:visible;';
+        }
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style.visibility = 'hidden';
     } else if (timerIndex == 3 && userIndex == 1) {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
+        document.getElementById("notturn").style.visibility = 'hidden';
     } else if (timerIndex == 3 && userIndex == 2) {
+        document.getElementById("notturn").style = 'display:visible;';
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style = 'display:visible;';
     }

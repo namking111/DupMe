@@ -15,15 +15,16 @@ var data = [];
 var dataTemp = [];
 var showdataTemp = "";
 var showdata = "";
-var score1 = 0;
-var score2 = 0;
-
+var score = 0;
 var userIndex = 1;
 
 
 //Listening for call from server
 socket.on('username', function (data) {
     users = data;
+    let user = users.find(obj => obj.socketId == socket.id);
+    userIndex = user.index;
+    console.log(userIndex);
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
@@ -33,7 +34,6 @@ socket.on('username', function (data) {
             document.getElementById("player2").innerHTML = users[i].name;
         }
     }
-
     // if (users.length%2==0) {
     //    document.getElementById("playername2").innerHTML= data[users.length-1].name ;
     // }else{
@@ -62,7 +62,7 @@ socket.on('motto', function (data) {
 });
 
 socket.on('pattern', function (data) {
-    console.log(pattern + " data: " + data);
+    //console.log(pattern + " data: " + data);
 
     if (data.round == 0) {
         pattern = data.pattern;
@@ -72,10 +72,14 @@ socket.on('pattern', function (data) {
         copyPattern = data.copyPattern;
         showdata = copyPattern.toString();
         document.getElementById("showdata").innerHTML = showdata;
-        // score = calculateScore(pattern);
-        // document.getElementById("showScore").innerHTML = score;
+        score = calculateScore(pattern, copyPattern);
     }
+})
 
+socket.on('resetCopyPattern', function(data){
+    console.log("reset on front");
+    copyPattern = [];
+    document.getElementById("showdata").innerHTML = "";
 })
 
 
@@ -150,7 +154,6 @@ function countDown(secs, elem) {
 
         }
         if (timerIndex == 1) {
-            score1 = calculateScore(pattern, copyPattern, score1);
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             pattern = [];
             copyPattern = [];
@@ -168,7 +171,6 @@ function countDown(secs, elem) {
             disableAllButton();
         }
         if (timerIndex == 3) {
-            score2 = calculateScore(pattern, copyPattern, score2);
             pattern = [];
             copyPattern = [];
             socket.emit('resetPattern');
@@ -216,10 +218,6 @@ function countDown(secs, elem) {
         }
         //ไว้เปลี่ยนหน้า      
     }
-    console.log(secs)
-    console.log(score1 + "   " + score2);
-    console.log(showdataTemp);
-    console.log(showdata);
 
 }
 function myStopFunction() {
@@ -231,7 +229,6 @@ function myStopFunction() {
 }
 
 function showAndHideArray() {
-    userIndex = 2;
     if (timerIndex == 0) {
         // document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
@@ -281,15 +278,14 @@ function gameStart() {
 // var length = dataTemp.length + 1;
 var i = 0;  //index
 
-function calculateScore(pattern, copyPattern, score) {
-    for (i = 0; i < pattern.length; i++) {
-        if (pattern[i] == copyPattern[i]) {
-            score++;
-        } else {
-            break;
-        }
+function calculateScore(pattern, copyPattern) {
+    if(pattern[copyPattern.length-1]==copyPattern[copyPattern.length-1]){
+        score++;
+    }else{
+        score = 0;
+        socket.emit('resetCopyPattern');
     }
-    //console.log(score);
+    
     return score;
 }
 

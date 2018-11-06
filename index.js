@@ -105,6 +105,13 @@ io.on('connection', function (socket) {
         copyPattern = [];
     });
 
+    socket.on('resetCopyPattern', function (data) {
+        console.log("reset pattern");
+        copyPattern = [];
+        socket.emit('resetCopyPattern');
+    });
+        
+
     socket.on('ready', function (data) {
         pattern = [];
         let user = users.find(obj => obj.socketId == data);

@@ -60,6 +60,7 @@ socket.on('pattern', function (data) {
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern, copyPattern);
     }
+        document.getElementById("allCorrect").style.visibility = 'hidden';        
 })
 
 socket.on('resetCopyPattern', function (data) {
@@ -653,7 +654,14 @@ function setLevel() {
 
 function hint() {
     var hint = pattern[copyPattern.length];
-    if (hintValue > 0) {
+    if(pattern.length==copyPattern.length){
+        document.getElementById("allCorrect").style = 'display:visible;';
+        document.getElementById("hint").style.visibility = 'hidden';
+        hintValue--;
+    }else if (hintValue > 0) {
+        if(copyPattern[copyPattern.length-1] != pattern[copyPattern.length-1]){
+            hint = pattern[0];
+        }
         socket.emit("pattern", { btn: hint, round: 1 });
         hintValue--;
         document.getElementById("hint").style.visibility = 'hidden';

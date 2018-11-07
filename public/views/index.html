@@ -4,102 +4,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 <style>
     /* Large desktops and laptops */
-@media (min-width: 1200px) {
-    .img-responsive{
-    width:20%;
-    height:auto;
-    text-align:center;
-}.button {
-    font-size:16px;
-    padding:20px;
-  }.textbox{
-    width:30%;
-    height:auto;
-    text-align:center;
-  }.video{
-    width:50%;
-    height:auto;
-  }
-}
 
-/* Landscape tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .img-responsive{
-    width:20%;
-    height:auto;
-    text-align:center;
-}.button {
-    font-size:16px;
-    padding:20px;
-  }.textbox{
-    width:30%;
-    height:auto;
-    text-align:center;
-  }.video{
-    width:50%;
-    height:auto;
-  }
+    @media (min-width: 1200px) {
+        .img-responsive {
+            width: 20%;
+            height: auto;
+            text-align: center;
+        }
+        .button {
+            font-size: 16px;
+            padding: 20px;
+        }
+        .textbox {
+            width: 30%;
+            height: auto;
+            text-align: center;
+        }
+        .video {
+            width: 50%;
+            height: auto;
+        }
+    }
 
-}
+    /* Landscape tablets and medium desktops */
 
-/* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {
-    .img-responsive{
-    width:20%;
-    height:auto;
-    text-align:center;
-}.button {
-    font-size:14px;
-    padding:18px;
-  }.textbox{
-    width:30%;
-    height:auto;
-    text-align:center;
-  }.video{
-    width:50%;
-    height:auto;
-  }
-}
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .img-responsive {
+            width: 20%;
+            height: auto;
+            text-align: center;
+        }
+        .button {
+            font-size: 16px;
+            padding: 20px;
+        }
+        .textbox {
+            width: 30%;
+            height: auto;
+            text-align: center;
+        }
+        .video {
+            width: 50%;
+            height: auto;
+        }
 
-/* Landscape phones and portrait tablets */
-@media (max-width: 767px) {
-    .img-responsive{
-    width:20%;
-    height:auto;
-    text-align:center;
-}.button {
-    font-size:12px;
-    padding:16px;
-  }.textbox{
-    width:30%;
-    height:auto;
-    text-align:center;
-  }.video{
-    width:50%;
-    height:auto;
-  }
-}
+    }
 
-/* Portrait phones and smaller */
-@media (max-width: 480px) {
-.img-responsive{
-    width:20%;
-    height:auto;
-    text-align:center;
-}.button {
-    font-size:10px;
-    padding:14px;
-  }.textbox{
-    width:30%;
-    height:auto;
-    text-align:center;
-  }.video{
-    width:50%;
-    height:auto;
-  }
-}
+    /* Portrait tablets and small desktops */
 
-   
+    @media (min-width: 768px) and (max-width: 991px) {
+        .img-responsive {
+            width: 20%;
+            height: auto;
+            text-align: center;
+        }
+        .button {
+            font-size: 14px;
+            padding: 18px;
+        }
+        .textbox {
+            width: 30%;
+            height: auto;
+            text-align: center;
+        }
+        .video {
+            width: 50%;
+            height: auto;
+        }
+    }
+
+    /* Landscape phones and portrait tablets */
+
+    @media (max-width: 767px) {
+        .img-responsive {
+            width: 20%;
+            height: auto;
+            text-align: center;
+        }
+        .button {
+            font-size: 12px;
+            padding: 16px;
+        }
+        .textbox {
+            width: 30%;
+            height: auto;
+            text-align: center;
+        }
+        .video {
+            width: 50%;
+            height: auto;
+        }
+    }
+
+    /* Portrait phones and smaller */
+
+    @media (max-width: 480px) {
+        .img-responsive {
+            width: 20%;
+            height: auto;
+            text-align: center;
+        }
+        .button {
+            font-size: 10px;
+            padding: 14px;
+        }
+        .textbox {
+            width: 30%;
+            height: auto;
+            text-align: center;
+        }
+        .video {
+            width: 50%;
+            height: auto;
+        }
+    }
+
+
     .button {
         background-color: #4CAF50;
         border: none;
@@ -112,6 +132,7 @@
         margin: 4px 2px;
         border-radius: 12px;
     }
+
     .button:active {
         background-color: rgb(255, 217, 0);
     }
@@ -146,13 +167,15 @@
                 <img src="img/alien7.jpeg" class="img-responsive" alt="alien">
                 </p>
                 <h6 id="nameText">Please enter your nickname.</h6>
-                <form id="form" onsubmit="return show('welcomePage','indexPage');"></a>
+                <form id="form" onsubmit="return show('welcomePage','indexPage');">
+                    </a>
                     <input type="text" id="username" class="textbox" />
                     <input type="submit" id="usernameSubmit" value="go" onclick="getUsername(); getMotto(); setAvatar(color);" />
                 </form>
                 </p>
                 <h6 id="mottoText">Please enter your motto.</h6>
-                <form id="form"></a>
+                <form id="form">
+                    </a>
                     <input type="text" id="motto" class="textbox" />
                     <!-- <input type="button" value="Done" onclick="getMotto()" /> -->
                 </form>
@@ -190,8 +213,7 @@
 
             </p>
             <div id="sound">
-                <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none"
-                    id="audioo"></iframe>
+                <iframe src="sound/silence.mp3" allow="autoplay" frameborder="0" style="width:0; height:0; border:0; border:none" id="audioo"></iframe>
                 <audio id="buttonsound" src="sound/button.mp3"></audio>
                 <audio id="wrong" src="sound/wrong.mp3"></audio>
                 <audio id="audio" src="sound/song.mp3"></audio>
@@ -204,7 +226,8 @@
 
             <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');" />
             </p>
-            <input type="button" type="button" id="backToMenu" class="button" value="Back to menu" onclick="show('indexPage','setting');" />
+            <input type="button" type="button" id="backToMenu" class="button" value="Back to menu" onclick="show('indexPage','setting');"
+            />
 
             <!-- <div class="button" id="setting2">Level : hard</div> -->
 
@@ -275,10 +298,10 @@
 
             </p>
             </p>
-            <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none"
-                onclick="changeBG()" />
-            <input type="button" class="button" id="pink" value="Pink" style="background-color:#FFA8A2; color:black; border:none"
-                onclick="changeBG1()" />
+            <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none" onclick="changeBG()"
+            />
+            <input type="button" class="button" id="pink" value="Pink" style="background-color:#FFA8A2; color:black; border:none" onclick="changeBG1()"
+            />
             <input type="button" class="button" id="blue" value="Blue" style="background-color:powderblue; color:black; border:none"
                 onclick="changeBG2()" />
             <input type="button" class="button" id="yellow" value="Yellow" style="background-color:#FCE476; color:black; border:none"
@@ -308,16 +331,20 @@
                 <img src="img/alien4.jpeg" alt="alien" class="img-responsive" width="180" height="156">
                 </p>
                 <input type="radio" name="char" value="yellow" onchange="changeAvatar()" id="myRadioYellow" checked="checked">
-                <h6 style="display: inline;" id="color1"> Yellow</h6><br>
+                <h6 style="display: inline;" id="color1"> Yellow</h6>
+                <br>
 
                 <input type="radio" name="char" value="blue" onchange="changeAvatar2()" id="myRadioBlue">
-                <h6 style="display: inline;" id="color2"> Blue</h6><br>
+                <h6 style="display: inline;" id="color2"> Blue</h6>
+                <br>
 
                 <input type="radio" name="char" value="pink" onchange="changeAvatar3()" id="myRadioPink">
-                <h6 style="display: inline;" id="color3"> Pink</h6><br>
+                <h6 style="display: inline;" id="color3"> Pink</h6>
+                <br>
 
                 <input type="radio" name="char" value="green" onchange="changeAvatar4()" id="myRadioGreen">
-                <h6 style="display: inline;" id="color4"> Green</h6><br>
+                <h6 style="display: inline;" id="color4"> Green</h6>
+                <br>
 
             </form>
             </p>
@@ -349,7 +376,8 @@
             <input type="radio" name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked">
             <h6 style="display: inline;" id="l2"> English</h6>
             </p>
-            <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');" />
+            <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');"
+            />
     </div>
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
@@ -389,7 +417,8 @@
                 </div>
                 <h5 id="levelText">Level</h5>
                 <input type="radio" name="radioLevel" value="hard" onchange="setLevel();" id="hard" checked="checked">
-                <h6 style="display: inline;" id="levelText1">Hard</h6><br>
+                <h6 style="display: inline;" id="levelText1">Hard</h6>
+                <br>
 
                 <input type="radio" name="radioLevel" value="easy" onchange="setLevel()" id="easy">
                 <h6 style="display: inline;" id="levelText2">Easy</h6>
@@ -428,124 +457,75 @@
                 crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
+            </div>
         </div>
-    </div>
 
 
-    <div id="game" style="display:none">
-        <h1>
-            <center>
-                <h1 id="lastDupMe">DupMe</h1>
-            </center>
-        </h1>
-        <script>
-            //send player1 name from input 
-            var queryString = "?Player 1 : " + name;
-
-        </script>
-        <!DOCTYPE html>
-
-        </p>
-        <center>
-            <div id="status"></div>
-            </p>
-
-            </head>
-
-            <body>
+        <div id="game" style="display:none">
+            <h1>
                 <center>
-                    <img id="pic11" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-                    <img id="pic22" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-
+                    <h1 id="lastDupMe">DupMe</h1>
                 </center>
-                <center>
-                    </p>
-                    <strong id="notturn" style="display:none;">Not your turn</strong>
-                    </p>
-                </center>
-
-                <form id="form1" runat="server">
-
-                </form>
-                <button class="button" onclick="myFunctionA()" id="A">A</button>
-                <button class="button" onclick="myFunctionB()" id="B">B</button>
-                <button class="button" onclick="myFunctionC()" id="C">C</button>
-                <button class="button" onclick="myFunctionD()" id="D">D</button>
-                <button class="button" onclick="myFunctionE()" id="E">E</button>
-                <button class="button" onclick="myFunctionF()" id="F">F</button>
-                <button class="button" onclick="myFunctionG()" id="G">G</button>
-                <button class="button" onclick="myFunctionH()" id="H">H</button>
-        </center>
-
-        <center>
-            <p id="textPlayer1Score" style="font-size: 16px" />
-            <p id="textPlayer2Score" style="font-size: 16px" />
-            <p id="showdataTemp" style="font-size: 16px" />
-        </center>
-        <center>
-            <p id="showdata" style="font-size: 16px" />
-        </center>
-        <center>
-            <button type="button" class="btn btn-info btn-lg " id="hint" onclick="hint()">hint</button>
-        </center>
-        <center>
-            <button type="button" class="btn btn-info btn-lg "  id="surrend" onclick="surrend()">Surrender</button>
-        </center>
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-        <script src="../js/playing.js"></script>
-    </div>
-
-
-    <div id="endingPage" style="display:none">
-        <div class="container-fluid">
-            </p>
-            <center>
-                <h1 id="scoreText">Scoreboard</h1>
-            </center>
-            </p>
-
+            </h1>
             <script>
-                //player1 name
-                var queryString = decodeURIComponent(window.location.search);
-                queryString = queryString.substring(1);
-                var queries = queryString.split("&");
-                for (var i = 0; i < queries.length; i++) { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
-                    //document.write(queries[i] + "<br>");
-                    var name2 = queries[i] + "<br>";
-                }
+                //send player1 name from input 
+                var queryString = "?Player 1 : " + name;
 
             </script>
-            <div class="container">
+            <!DOCTYPE html>
 
-                <div class="row">
-                    <div class="col" id="player1"></div>
-                    <div class="col" id="player2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="score1_p1"></div>
-                    <div class="col" id="score1_p2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="score2_p1"></div>
-                    <div class="col" id="score2_p2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="total_p1"></div>
-                    <div class="col" id="total_p2"></div>
-                </div>
-            </div>
+            </p>
             <center>
-                <img id="first" src="img/First_Place.png" width="50" height="70">
+                <div id="status"></div>
+                </p>
+
+                </head>
+
+                <body>
+                    <center>
+                        <img id="pic11" src="img/alien3.jpeg" class="img-responsive" alt="alien">
+                        <img id="pic22" src="img/alien3.jpeg" class="img-responsive" alt="alien">
+
+                    </center>
+                    <center>
+                        </p>
+                        <strong id="notturn" style="display:none;">Not your turn</strong>
+                        </p>
+                    </center>
+
+                    <form id="form1" runat="server">
+
+                    </form>
+                    <button class="button" onclick="myFunctionA()" id="A">A</button>
+                    <button class="button" onclick="myFunctionB()" id="B">B</button>
+                    <button class="button" onclick="myFunctionC()" id="C">C</button>
+                    <button class="button" onclick="myFunctionD()" id="D">D</button>
+                    <button class="button" onclick="myFunctionE()" id="E">E</button>
+                    <button class="button" onclick="myFunctionF()" id="F">F</button>
+                    <button class="button" onclick="myFunctionG()" id="G">G</button>
+                    <button class="button" onclick="myFunctionH()" id="H">H</button>
+            </center>
+
+            <center>
+                <p id="textPlayer1Score" style="font-size: 16px" />
+                <p id="textPlayer2Score" style="font-size: 16px" />
+                <p id="showdataTemp" style="font-size: 16px" />
             </center>
             <center>
-                <img id="second" src="img/second.jpg" width="55" height="60">
+                <p id="showdata" style="font-size: 16px" />
             </center>
 
+            <center>
+                <button type="button" class="btn btn-info btn-lg " id="hint" onclick="hint()">hint</button>
+            </center>
+            <center>
+                </p>
+                <strong id="allCorrect" style="display:none;">All correct!</strong>
+                </p>
+            </center>
+            <center>
+                <button type="button" class="btn btn-info btn-lg " id="surrend" onclick="surrend()">Surrender</button>
+            </center>
 
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -555,30 +535,93 @@
                 crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
-
-            <script>
-                //document.getElementById("player1").innerHTML = username;
-                //document.getElementById("player2").innerHTML = "Sew";
-
-                document.getElementById("score1_p1").innerHTML = "Score";
-                document.getElementById("score1_p2").innerHTML = "Score";
-                document.getElementById("score2_p1").innerHTML = "Score";
-                document.getElementById("score2_p2").innerHTML = "Score";
-                document.getElementById("score3_p1").innerHTML = "Score";
-                document.getElementById("score3_p2").innerHTML = "Score";
-                document.getElementById("score4_p1").innerHTML = "Score";
-                document.getElementById("score4_p2").innerHTML = "Score";
-
-                document.getElementById("total_p1").innerHTML = "Total score:  " + "total";
-                document.getElementById("total_p2").innerHTML = "Total score:  " + "total";
-
-            </script>
-            <center>
-                <input type="button" class="button" id="resetB" value="reset" onclick="reset()" />
-                <p id="demo"></p>
-            </center>
+            <script src="../js/playing.js"></script>
         </div>
-    </div>
-</body>
+
+
+        <div id="endingPage" style="display:none">
+            <div class="container-fluid">
+                </p>
+                <center>
+                    <h1 id="scoreText">Scoreboard</h1>
+                </center>
+                </p>
+
+                <script>
+                    //player1 name
+                    var queryString = decodeURIComponent(window.location.search);
+                    queryString = queryString.substring(1);
+                    var queries = queryString.split("&");
+                    for (var i = 0; i < queries.length; i++) { //document.getElementById("player1").innerHTML= queries[i] + "<br>";
+                        //document.write(queries[i] + "<br>");
+                        var name2 = queries[i] + "<br>";
+                    }
+
+                </script>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col" id="player1"></div>
+                        <div class="col" id="player2"></div>
+                        <div class="w-100"></div>
+                        <div class="col" id="score1_p1"></div>
+                        <div class="col" id="score1_p2"></div>
+                        <div class="w-100"></div>
+                        <div class="col" id="score2_p1"></div>
+                        <div class="col" id="score2_p2"></div>
+                        <div class="w-100"></div>
+                        <div class="col" id="total_p1"></div>
+                        <div class="col" id="total_p2"></div>
+                    </div>
+                </div>
+                <center>
+                    <img id="first" src="img/First_Place.png" width="50" height="70">
+                </center>
+                <center>
+                    <img id="second" src="img/second.jpg" width="55" height="60">
+                </center>
+
+                </p>
+                <center>
+                    <button type="button" class="button">
+                        <a href="#" onclick="playAgain();" style="color:aliceblue">Play Again
+                        </a>
+                    </button>
+                </center>
+                </p>
+
+                <!-- Optional JavaScript -->
+                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                    crossorigin="anonymous"></script>
+
+                <script>
+                    //document.getElementById("player1").innerHTML = username;
+                    //document.getElementById("player2").innerHTML = "Sew";
+
+                    document.getElementById("score1_p1").innerHTML = "Score";
+                    document.getElementById("score1_p2").innerHTML = "Score";
+                    document.getElementById("score2_p1").innerHTML = "Score";
+                    document.getElementById("score2_p2").innerHTML = "Score";
+                    document.getElementById("score3_p1").innerHTML = "Score";
+                    document.getElementById("score3_p2").innerHTML = "Score";
+                    document.getElementById("score4_p1").innerHTML = "Score";
+                    document.getElementById("score4_p2").innerHTML = "Score";
+
+                    document.getElementById("total_p1").innerHTML = "Total score:  " + "total";
+                    document.getElementById("total_p2").innerHTML = "Total score:  " + "total";
+
+                </script>
+                <center>
+                    <input type="button" class="button" id="resetB" value="reset" onclick="reset()" />
+                    <p id="demo"></p>
+                </center>
+            </div>
+        </div>
+        </body>
 
 </html>

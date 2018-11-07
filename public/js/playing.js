@@ -341,14 +341,6 @@ function switchPlayer() {
     checkTurn();
     socket.emit("switchPlayer", users);
 }
-function switchBack() {
-    let user1 = users.find(obj => obj.index == 1);
-    user1.isTurn = true;
-    let user2 = users.find(obj => obj.index == 2);
-    user2.isTurn = false;
-    checkTurn();
-    socket.emit("switchBack", users);
-}
 
 function playSound() {
     buttonsound.play();
@@ -627,8 +619,6 @@ function changeLanguage2() {
     document.getElementById("backToHow2").value = "Back to How to play";
     document.getElementById("hint").value = "Hint";
     document.getElementById("surrend").value = "Surrender";
-
-
     document.getElementById("firstDupMe").innerHTML = "Dup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";
     document.getElementById("nameText").innerHTML = "Please enter your nickname.";
@@ -654,9 +644,6 @@ function changeLanguage2() {
     document.getElementById("l2").innerHTML = " English";
     document.getElementById("wait").innerHTML = "waiting...";
     document.getElementById("allCorrect").innerHTML = "All correct!";
-
-
-
 }
 
 //level tell how hard the game is

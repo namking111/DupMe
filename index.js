@@ -94,7 +94,7 @@ io.on('connection', function (socket) {
         pattern = [];
         let user = users.find(obj => obj.socketId == data.socketId);
         user.isReady = true;
-        io.sockets.emit('ready', {users: users, level: data.level});
+        io.sockets.emit('ready', { users: users, level: data.level });
     });
 
     socket.on('surrend', function (data) {
@@ -108,7 +108,9 @@ io.on('connection', function (socket) {
 
     socket.on('avatar', function (data) {
         let user = users.find(obj => obj.socketId == data.socketId);
-        user.avatar = data.color;
+        if (typeof data.color !== 'undefined') {
+            user.avatar = data.color;
+        }
         io.sockets.emit('avatar', users);
     });
 

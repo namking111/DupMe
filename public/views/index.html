@@ -161,8 +161,6 @@
                 <h2 id="firstDupMe">Dup me</h2>
 
                 </p>
-
-
                 <img src="img/alien8.jpeg" class="img-responsive" alt="alien">
                 <img src="img/alien7.jpeg" class="img-responsive" alt="alien">
                 </p>
@@ -177,7 +175,6 @@
                 <form id="form">
                     </a>
                     <input type="text" id="motto" class="textbox" />
-                    <!-- <input type="button" value="Done" onclick="getMotto()" /> -->
                 </form>
                 </p>
                 <input type="button" class="button" id="settingb" value="Setting" onclick="show('setting','indexPage');" />
@@ -220,19 +217,12 @@
                 <audio id="audio" src="sound/song.mp3"></audio>
                 <input type="button" class="button" id="playpausebtn" value="Background music" />
                 <input type="button" class="button" id="bg" value="Change background" onclick="show('background','setting');" />
-                <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
             <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');" />
-
             <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');" />
             </p>
             <input type="button" type="button" id="backToMenu" class="button" value="Back to menu" onclick="show('indexPage','setting');" />
-
-            <!-- <div class="button" id="setting2">Level : hard</div> -->
-
-
-
         </center>
 
     </div>
@@ -240,8 +230,6 @@
         <center>
             </p>
             <h2 id="howText">How to play</h2>
-
-
             </p>
             </p>
             <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
@@ -262,7 +250,6 @@
             <input type="button" value="Back to How to play" id="backToHow1" class="button" onclick="show('howToPlay','howToPlay1');" />
         </center>
 
-
     </div>
     <div id="howToPlay2" style="display:none">
         <center>
@@ -275,27 +262,18 @@
             </video>
             </p>
             <input type="button" value="Back to How to play" id="backToHow2" class="button" onclick="show('howToPlay','howToPlay2');" />
-
             </p>
         </center>
-
     </div>
-
-
-
-
 
     <div id="background" style="display:none">
         <center>
             </p>
             <h2 id="bgText">Change Background Color</h2>
-
-
             </p>
             </p>
             <img src="img/alien6.jpeg" alt="alien" class="img-responsive" width="180" height="156">
             <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
-
             </p>
             </p>
             <input type="button" class="button" id="white" value="White" style="background-color:white; color:black; border:none"
@@ -306,16 +284,9 @@
                 onclick="changeBG2()" />
             <input type="button" class="button" id="yellow" value="Yellow" style="background-color:#FCE476; color:black; border:none"
                 onclick="changeBG3()" />
-
-
-
-
             </p>
             <input type="button" id="backToSetting1" value="Back to setting" class="button" onclick="show('setting','background');" />
-
             </p>
-
-
         </center>
     </div>
 
@@ -348,18 +319,9 @@
 
             </form>
             </p>
-
-
-
-
-
-
             </p>
             <input type="button" id="backToSetting3" value="Back to setting" class="button" onclick="show('setting','avatar');" />
-
             </p>
-
-
         </center>
     </div>
     <div id="languagePage" style="display:none">
@@ -381,13 +343,10 @@
     <div id="welcomePage" style="display:none">
         <div class="container-fluid">
             </p>
-
             <h1>
                 <center>
                     </p>
                     <h1 id="playerText">Player</h1>
-
-
                     </p>
                     <div class="row">
                         <div class="col" id="playername1"></div>
@@ -395,24 +354,16 @@
                         <div class="w-100"></div>
                         <div class="col" id="playername1Motto"></div>
                         <div class="col" id="playername2Motto"></div>
-                        <script>
-                                        //document.getElementById("player2").innerHTML= users[1].name;
-                        </script>
                 </center>
             </h1>
             </p>
             <center>
                 <img id="pic1" src="img/alien3.jpeg" class="img-responsive" alt="alien">
                 <img id="pic2" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-
             </center>
             </p>
-
-
-
             <center>
                 <div class="row">
-
                 </div>
                 <h5 id="levelText">Level</h5>
                 <input type="radio" name="radioLevel" value="hard" onchange="setLevel();" id="hard" checked="checked">
@@ -441,7 +392,6 @@
         </div>
     </div>
 
-
     <div id="game" style="display:none">
         <h1>
             <center>
@@ -461,19 +411,16 @@
             </p>
 
             </head>
-             <div class="row">
-             <div class="col" id="playername1P"></div>
-             <div class="col" id="playername2P"></div>
-             </div>
+            <div class="row">
+                <div class="col" id="playername1P"></div>
+                <div class="col" id="playername2P"></div>
+            </div>
             <body>
-                   
                 <center>
-                    
                     <img id="pic11" src="img/alien3.jpeg" class="img-responsive" alt="alien">
                     <img id="pic22" src="img/alien3.jpeg" class="img-responsive" alt="alien">
-
                 </center>
-                
+
                 <center>
                     </p>
                     <strong id="notturn" style="display:none;">Not your turn</strong>
@@ -494,7 +441,7 @@
         </center>
 
         <center>
-        </p>
+            </p>
             <p id="textPlayer1Score" style="font-size: 16px" />
             <p id="textPlayer2Score" style="font-size: 16px" />
             <p id="showdataTemp" style="font-size: 16px" />
@@ -504,7 +451,7 @@
         </center>
 
         <center>
-            <input type="button"value="Hint" class="button" id="hint" onclick="hint()"/>
+            <input type="button" value="Hint" class="button" id="hint" onclick="hint()" />
         </center>
         <center>
             </p>
@@ -512,7 +459,7 @@
             </p>
         </center>
         <center>
-            <input type="button" class="button" id="surrend"value="Surrender" onclick="surrend()"/>
+            <input type="button" class="button" id="surrend" value="Surrender" onclick="surrend()" />
         </center>
 
         <!-- Optional JavaScript -->

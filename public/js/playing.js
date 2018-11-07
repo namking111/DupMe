@@ -18,6 +18,7 @@ var score = 0;
 var userIndex = 1;
 var setlevel = 0;
 var hintValue = 1;
+var sur = 0;
 
 
 //Listening for call from server
@@ -81,6 +82,7 @@ socket.on('ready', function (data) {
 })
 
 socket.on('surrend', function (data) {
+    sur = 1;
     let winner;
     if(data.index == 1){
         winner = users.find(obj => obj.index == 2);
@@ -207,7 +209,9 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
-            winner();
+            if(sur == 0) {
+                winner();
+            }
         }
     }
     if (secs < -2) {
@@ -246,18 +250,19 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
-            winner();
-
+            if(sur == 0) {
+                winner();
+            }
         }
         //ไว้เปลี่ยนหน้า      
     }
 
 }
-function myStopFunction() {
-    for (i = 0; i < 100; i++) {
-        window.clearTimeout(i);
-    }
-}
+// function myStopFunction() {
+//     for (i = 0; i < 100; i++) {
+//         window.clearTimeout(i);
+//     }
+// }
 
 function showAndHideArray() {
     if (timerIndex == 0 && userIndex == 1) {
@@ -477,6 +482,7 @@ function myFunctionH() {
 }
 
 function surrend() {
+    timerIndex = 3;
     socket.emit('surrend', socket.id);
 }
 

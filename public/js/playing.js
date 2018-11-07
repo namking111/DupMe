@@ -253,8 +253,9 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
-        document.getElementById("hint").style = 'display:visible;';
-        document.getElementById("surrend").style = 'display:visible;';
+        if(hintValue>0){
+            document.getElementById("hint").style = 'display:visible;';
+        }
     } else if (timerIndex == 2) {
         if (userIndex == 1) {
             document.getElementById("notturn").style = 'display:visible;';
@@ -267,8 +268,9 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
-        document.getElementById("hint").style = 'display:visible;';
-        document.getElementById("surrend").style = 'display:visible;';
+        if(hintValue>0){
+            document.getElementById("hint").style = 'display:visible;';
+        }
     } else if (timerIndex == 3 && userIndex == 2) {
         document.getElementById("notturn").style = 'display:visible;';
         document.getElementById("showdataTemp").style = 'display:visible;';
@@ -676,11 +678,9 @@ function setLevel() {
 
 function hint() {
     var hint = pattern[copyPattern.length];
-    // if (timerIndex == 0 || timerIndex == 2) {
-
-    // } else {
     if (hintValue > 0) {
         socket.emit("pattern", { btn: hint, round: 1 });
         hintValue--;
+        document.getElementById("hint").style.visibility = 'hidden';
     }
 }

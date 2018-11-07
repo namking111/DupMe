@@ -30,8 +30,10 @@ socket.on('username', function (data) {
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
+            document.getElementById("playername1P").innerHTML = users[i].name;
         } else {
             document.getElementById("playername2").innerHTML = users[i].name;
+            document.getElementById("playername2P").innerHTML = users[i].name;
         }
     }
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
@@ -90,8 +92,15 @@ socket.on('surrend', function (data) {
         winner = users.find(obj => obj.index == 1);
     }
     document.getElementById("firstp").innerHTML = winner.name;
-    document.getElementById("secondp").innerHTML = data.name + " have surrendered";
-    alert("Surrender!!");
+    if (lan == "1") {
+        document.getElementById("secondp").innerHTML = data.name + " ได้ยอมแพ้";
+         alert("มีการยอมแพ้!!");
+    } else {
+         document.getElementById("secondp").innerHTML = data.name + " has surrendered";
+         alert("Surrender!!");
+    }
+   
+    
     show('endingPage', 'game');
 })
 socket.on('score', function (data) {
@@ -580,6 +589,8 @@ function changeLanguage() {
     document.getElementById("setT").value = "วิธีตั้งค่า";
     document.getElementById("backToHow1").value = "กลับ";
     document.getElementById("backToHow2").value = "กลับ";
+    document.getElementById("hint").value = "ตัวช่วย";
+    document.getElementById("surrend").value = "ยอมแพ้";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
@@ -605,6 +616,7 @@ function changeLanguage() {
     document.getElementById("l1").innerHTML = " ภาษาไทย";
     document.getElementById("l2").innerHTML = " ภาษาอังกฤษ";
     document.getElementById("wait").innerHTML = "โปรดรอ...";
+    document.getElementById("allCorrect").innerHTML = "ถูกหมดแล้ว!";
 
 
 }
@@ -632,6 +644,9 @@ function changeLanguage2() {
     document.getElementById("setT").value = "Setting Tutorial";
     document.getElementById("backToHow1").value = "Back to How to play";
     document.getElementById("backToHow2").value = "Back to How to play";
+    document.getElementById("hint").value = "Hint";
+    document.getElementById("surrend").value = "Surrender";
+
 
     document.getElementById("firstDupMe").innerHTML = "Dup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";
@@ -657,6 +672,9 @@ function changeLanguage2() {
     document.getElementById("l1").innerHTML = " Thai";
     document.getElementById("l2").innerHTML = " English";
     document.getElementById("wait").innerHTML = "waiting...";
+    document.getElementById("allCorrect").innerHTML = "All correct!";
+
+
 
 }
 

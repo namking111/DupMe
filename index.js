@@ -92,9 +92,9 @@ io.on('connection', function (socket) {
 
     socket.on('ready', function (data) {
         pattern = [];
-        let user = users.find(obj => obj.socketId == data);
+        let user = users.find(obj => obj.socketId == data.socketId);
         user.isReady = true;
-        io.sockets.emit('ready', users);
+        io.sockets.emit('ready', {users: users, level: data.level});
     });
 
     socket.on('surrend', function (data) {

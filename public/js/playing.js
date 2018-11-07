@@ -68,11 +68,17 @@ socket.on('resetCopyPattern', function (data) {
 })
 
 socket.on('ready', function (data) {
-    users = data;
+    users = data.users;
+    for (i = 0; i < radioLevel.length; i++) {
+        radioLevel[i].disabled = true;
+    }
     if (users.length > 1 && (users[0].isReady && users[1].isReady)) {
         show('game', 'welcomePage');
         countDown(10, "status");
         checkTurn();
+        if (data.level == "easy") {
+            hide();
+        }
     }
 })
 
@@ -344,13 +350,10 @@ function changeBG3() {
 }
 
 function setReady() {
-    socket.emit('ready', socket.id);
+    socket.emit('ready', { socketId: socket.id, level: level });
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';
     console.log(level);
-    if (level == "easy") {
-        hide();
-    }
 }
 
 //Check whether it his/her turn

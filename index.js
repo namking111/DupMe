@@ -98,7 +98,8 @@ io.on('connection', function (socket) {
     });
 
     socket.on('surrend', function (data) {
-        io.sockets.emit('surrend', users);
+        let user = users.find(obj => obj.socketId == data);
+        io.sockets.emit('surrend', user);
     });
 
     socket.on('switchPlayer', function (data) {

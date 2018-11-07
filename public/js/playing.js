@@ -81,6 +81,14 @@ socket.on('ready', function (data) {
 })
 
 socket.on('surrend', function (data) {
+    let winner;
+    if(data.index == 1){
+        winner = users.find(obj => obj.index == 2);
+    }else{
+        winner = users.find(obj => obj.index == 1);
+    }
+    document.getElementById("firstp").innerHTML = winner.name;
+    document.getElementById("secondp").innerHTML = data.name + " have surrendered";
     alert("Surrender!!");
     show('endingPage', 'game');
 })
@@ -90,14 +98,21 @@ socket.on('score', function (data) {
     document.getElementById("textPlayer1Score").innerHTML = user1.name + ' score: ' + user1.score;
     let user2 = users.find(obj => obj.index == 2);
     document.getElementById("textPlayer2Score").innerHTML = user2.name + ' score: ' + user2.score;
-    if(user1.score > user2.score){
-        document.getElementById("firstp").innerHTML = user1.name + ' score: ' + user1.score;
-        document.getElementById("secondp").innerHTML = user2.name + ' score: ' + user2.score;
-    } else {
-        document.getElementById("firstp").innerHTML = user2.name + ' score: ' + user2.score;
-        document.getElementById("secondp").innerHTML = user1.name + ' score: ' + user1.score;
-    }
 });
+
+function winner(){
+    if (users[0].score > users[1].score){
+        document.getElementById("firstp").innerHTML = users[0].name + ' score: ' + users[0].score;
+        document.getElementById("secondp").innerHTML = users[1].name + ' score: ' + users[1].score;
+    }  else if (users[1].score > users[0].score){
+        document.getElementById("firstp").innerHTML = users[1].name + ' score: ' + users[1].score;
+        document.getElementById("secondp").innerHTML = users[0].name + ' score: ' + users[0].score;
+    } else {
+        document.getElementById("firstp").innerHTML = users[0].name + ' and ' + users[1].name +  ' score: ' + users[1].score;
+        document.getElementById("secondp").style.visibility = 'hidden';
+        document.getElementById("second").style.visibility = 'hidden';
+    }
+}
 
 socket.on('avatar', function (data) {
     users = data;
@@ -192,6 +207,7 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
+            winner();
         }
     }
     if (secs < -2) {
@@ -230,6 +246,8 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
+            winner();
+
         }
         //ไว้เปลี่ยนหน้า      
     }

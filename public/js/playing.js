@@ -90,8 +90,15 @@ socket.on('surrend', function (data) {
         winner = users.find(obj => obj.index == 1);
     }
     document.getElementById("firstp").innerHTML = winner.name;
-    document.getElementById("secondp").innerHTML = data.name + " have surrendered";
-    alert("Surrender!!");
+    if (lan == "1") {
+        document.getElementById("secondp").innerHTML = data.name + " ได้ยอมแพ้";
+         alert("มีการยอมแพ้!!");
+    } else {
+         document.getElementById("secondp").innerHTML = data.name + " has surrendered";
+         alert("Surrender!!");
+    }
+   
+    
     show('endingPage', 'game');
 })
 socket.on('score', function (data) {
@@ -576,6 +583,8 @@ function changeLanguage() {
     document.getElementById("setT").value = "วิธีตั้งค่า";
     document.getElementById("backToHow1").value = "กลับ";
     document.getElementById("backToHow2").value = "กลับ";
+    document.getElementById("hint").value = "ตัวช่วย";
+    document.getElementById("surrend").value = "ยอมแพ้";
 
     document.getElementById("firstDupMe").innerHTML = "ดุ๊บมี";
     document.getElementById("mottoText").innerHTML = "โปรดใส่ข้อความเพื่อข่มขวัญศัตรู";
@@ -601,6 +610,7 @@ function changeLanguage() {
     document.getElementById("l1").innerHTML = " ภาษาไทย";
     document.getElementById("l2").innerHTML = " ภาษาอังกฤษ";
     document.getElementById("wait").innerHTML = "โปรดรอ...";
+    document.getElementById("allCorrect").innerHTML = "ถูกหมดแล้ว!";
 
 
 }
@@ -628,6 +638,9 @@ function changeLanguage2() {
     document.getElementById("setT").value = "Setting Tutorial";
     document.getElementById("backToHow1").value = "Back to How to play";
     document.getElementById("backToHow2").value = "Back to How to play";
+    document.getElementById("hint").value = "Hint";
+    document.getElementById("surrend").value = "Surrender";
+
 
     document.getElementById("firstDupMe").innerHTML = "Dup Me";
     document.getElementById("mottoText").innerHTML = "Please enter your motto.";
@@ -653,6 +666,9 @@ function changeLanguage2() {
     document.getElementById("l1").innerHTML = " Thai";
     document.getElementById("l2").innerHTML = " English";
     document.getElementById("wait").innerHTML = "waiting...";
+    document.getElementById("allCorrect").innerHTML = "All correct!";
+
+
 
 }
 

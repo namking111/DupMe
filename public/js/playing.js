@@ -29,10 +29,8 @@ socket.on('username', function (data) {
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
-            document.getElementById("player1").innerHTML = users[i].name;
         } else {
             document.getElementById("playername2").innerHTML = users[i].name;
-            document.getElementById("player2").innerHTML = users[i].name;
         }
     }
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";
@@ -92,6 +90,13 @@ socket.on('score', function (data) {
     document.getElementById("textPlayer1Score").innerHTML = user1.name + ' score: ' + user1.score;
     let user2 = users.find(obj => obj.index == 2);
     document.getElementById("textPlayer2Score").innerHTML = user2.name + ' score: ' + user2.score;
+    if(user1.score > user2.score){
+        document.getElementById("firstp").innerHTML = user1.name + ' score: ' + user1.score;
+        document.getElementById("secondp").innerHTML = user2.name + ' score: ' + user2.score;
+    } else {
+        document.getElementById("firstp").innerHTML = user2.name + ' score: ' + user2.score;
+        document.getElementById("secondp").innerHTML = user1.name + ' score: ' + user1.score;
+    }
 });
 
 socket.on('avatar', function (data) {
@@ -258,6 +263,7 @@ function showAndHideArray() {
         if (hintValue > 0) {
             document.getElementById("hint").style = 'display:visible;';
         }
+        document.getElementById("surrend").style = 'display:visible;';
     } else if (timerIndex == 2) {
         if (userIndex == 1) {
             document.getElementById("notturn").style = 'display:visible;';
@@ -273,6 +279,7 @@ function showAndHideArray() {
         if (hintValue > 0) {
             document.getElementById("hint").style = 'display:visible;';
         }
+        document.getElementById("surrend").style = 'display:visible;';
     } else if (timerIndex == 3 && userIndex == 2) {
         document.getElementById("notturn").style = 'display:visible;';
         document.getElementById("showdataTemp").style = 'display:visible;';

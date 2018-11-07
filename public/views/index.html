@@ -540,26 +540,14 @@
 
             </script>
             <div class="container">
-
-                <div class="row">
-                    <div class="col" id="player1"></div>
-                    <div class="col" id="player2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="score1_p1"></div>
-                    <div class="col" id="score1_p2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="score2_p1"></div>
-                    <div class="col" id="score2_p2"></div>
-                    <div class="w-100"></div>
-                    <div class="col" id="total_p1"></div>
-                    <div class="col" id="total_p2"></div>
-                </div>
             </div>
             <center>
                 <img id="first" src="img/First_Place.png" width="50" height="70">
+                <strong id="firstp"></strong>
             </center>
             <center>
                 <img id="second" src="img/second.jpg" width="55" height="60">
+                <strong id="secondp"></strong>
             </center>
 
             </p>
@@ -579,24 +567,6 @@
                 crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
-
-            <script>
-                //document.getElementById("player1").innerHTML = username;
-                //document.getElementById("player2").innerHTML = "Sew";
-
-                document.getElementById("score1_p1").innerHTML = "Score";
-                document.getElementById("score1_p2").innerHTML = "Score";
-                document.getElementById("score2_p1").innerHTML = "Score";
-                document.getElementById("score2_p2").innerHTML = "Score";
-                document.getElementById("score3_p1").innerHTML = "Score";
-                document.getElementById("score3_p2").innerHTML = "Score";
-                document.getElementById("score4_p1").innerHTML = "Score";
-                document.getElementById("score4_p2").innerHTML = "Score";
-
-                document.getElementById("total_p1").innerHTML = "Total score:  " + "total";
-                document.getElementById("total_p2").innerHTML = "Total score:  " + "total";
-
-            </script>
             <center>
                 <input type="button" class="button" id="resetB" value="reset" onclick="reset()" />
                 <p id="demo"></p>

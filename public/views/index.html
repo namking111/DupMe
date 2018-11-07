@@ -133,8 +133,6 @@
 </script>
 
 <body style="background-color:powderblue;">
-
-
     <div id="indexPage">
         <div class="container-fluid">
             <center>
@@ -202,10 +200,6 @@
                 <!-- <button type="button" id="mutebtn" class="btn btn-info btn-lg " >Mute</button> -->
             </div>
 
-
-
-
-
             <input type="button" class="button" id="avatar1" value="Change your avatar" onclick="show('avatar','setting');" />
 
             <input type="button" class="button" id="languageP" value="Change language" onclick="show('languagePage','setting');" />
@@ -233,37 +227,40 @@
             </p>
             <input type="button" value="Game Tutorial" id="gameT" class="button" onclick="show('howToPlay1','howToPlay');" />
             <input type="button" value="Setting Tutorial" id="setT" class="button" onclick="show('howToPlay2','howToPlay');" />
-        </p>
-        <input type="button" value="Back to Menu" id="backToSetting" class="button" onclick="show('indexPage','howToPlay');" />
-</center>
+            </p>
+            <input type="button" value="Back to Menu" id="backToSetting" class="button" onclick="show('indexPage','howToPlay');" />
+        </center>
     </div>
-            <div id="howToPlay1" style="display:none">
-                    <center></p>
-                     <h2 id="gameHowText">Game Tutorial</h2>
-                </p>
-                    <input type="button" value="Back to How to play" id="backToHow1" class="button" onclick="show('howToPlay','howToPlay1');" />   
-                    </center>
-                
-                
-            </div>
-            <div id="howToPlay2" style="display:none">
-                <center></p>
-                <h2 id="setHowText">Setting Tutorial</h2>
-                </p>
-                <video class="video" controls>
-                        <source src="img/dupMeSetting.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                      </video>
-                    </p>
-                <input type="button" value="Back to How to play" id="backToHow2" class="button" onclick="show('howToPlay','howToPlay2');" />
-    
-                </p></center>
-            
-                </div>
-        
+    <div id="howToPlay1" style="display:none">
+        <center>
+            </p>
+            <h2 id="gameHowText">Game Tutorial</h2>
+            </p>
+            <input type="button" value="Back to How to play" id="backToHow1" class="button" onclick="show('howToPlay','howToPlay1');" />
+        </center>
 
 
-        
+    </div>
+    <div id="howToPlay2" style="display:none">
+        <center>
+            </p>
+            <h2 id="setHowText">Setting Tutorial</h2>
+            </p>
+            <video class="video" controls>
+                <source src="img/dupMeSetting.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </p>
+            <input type="button" value="Back to How to play" id="backToHow2" class="button" onclick="show('howToPlay','howToPlay2');" />
+
+            </p>
+        </center>
+
+    </div>
+
+
+
+
 
     <div id="background" style="display:none">
         <center>
@@ -347,8 +344,10 @@
             <img src="img/alien5.jpeg" alt="alien" class="img-responsive" width="180" height="156">
 
             </p>
-            <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1"> <h6 style="display: inline;" id="l1"> Thai</h6><br>
-            <input type="radio" name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked"> <h6 style="display: inline;" id="l2"> English</h6>
+            <input type="radio" name="lang" value="1" onchange="changeLanguage()" id="language1">
+            <h6 style="display: inline;" id="l1"> Thai</h6><br>
+            <input type="radio" name="lang" value="2" onchange="changeLanguage2()" id="language2" checked="checked">
+            <h6 style="display: inline;" id="l2"> English</h6>
             </p>
             <input type="button" value="Back to setting" id="backToSetting4" class="button" onclick="show('setting','languagePage');" />
     </div>

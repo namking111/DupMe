@@ -11,7 +11,6 @@ var sound = document.getElementById("buttonsound");
 
 var statusIndex = 0;
 var timerIndex = 0;
-var data = [];
 var dataTemp = [];
 var showdataTemp = "";
 var showdata = "";
@@ -51,8 +50,6 @@ socket.on('motto', function (data) {
 });
 
 socket.on('pattern', function (data) {
-    //console.log(pattern + " data: " + data);
-
     if (data.round == 0) {
         pattern = data.pattern;
         showdataTemp = pattern.toString();
@@ -145,10 +142,10 @@ function countDown(secs, elem) {
     secs--;
     var timer = window.setTimeout('countDown(' + secs + ',"' + elem + '")', 1000);
     showAndHideArray();
-    // statusIndex=0  1st player create array
-    // statusIndex=1  2st player copy array
-    // statusIndex=2  2st player create array
-    // statusIndex=3  1st player copy array
+    // timerIndex=0  1st player create array
+    // timerIndex=1  2st player copy array
+    // timerIndex=2  2st player create array
+    // timerIndex=3  1st player copy array
     if (secs < 0) {
         document.getElementById("notturn").style.visibility = 'hidden';
         document.getElementById("hint").style.visibility = 'hidden';
@@ -229,8 +226,6 @@ function countDown(secs, elem) {
 function myStopFunction() {
     for (i = 0; i < 100; i++) {
         window.clearTimeout(i);
-        // document.getElementById("player1").innerHTML = users[0].name;
-        // document.getElementById("player2").innerHTML = users[1].name;
     }
 }
 
@@ -243,7 +238,7 @@ function showAndHideArray() {
         document.getElementById('notturn').style = 'display:visible;';
         document.getElementById("hint").style.visibility = 'hidden';
         document.getElementById("surrend").style.visibility = 'hidden';
-         document.getElementById("showdata").style.visibility = 'hidden';
+        document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
     } else if (timerIndex == 1 && userIndex == 1) {
         document.getElementById("showdataTemp").style = 'display:visible;';
@@ -253,7 +248,7 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
-        if(hintValue>0){
+        if (hintValue > 0) {
             document.getElementById("hint").style = 'display:visible;';
         }
     } else if (timerIndex == 2) {
@@ -268,7 +263,7 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
-        if(hintValue>0){
+        if (hintValue > 0) {
             document.getElementById("hint").style = 'display:visible;';
         }
     } else if (timerIndex == 3 && userIndex == 2) {
@@ -277,10 +272,6 @@ function showAndHideArray() {
         document.getElementById("showdata").style = 'display:visible;';
     }
 }
-
-
-//array name data
-//check with new data player clicking
 
 // var length = dataTemp.length + 1;
 var i = 0;  //index
@@ -361,19 +352,6 @@ function setReady() {
     }
 }
 
-function setlevele() {
-    socket.emit('easy', socket.id);
-    alert("You choose EASY!");
-    setlevel = 0; // easy = 0
-}
-
-function setlevelh() {
-    socket.emit('easy', socket.id);
-    alert("You choose HARD!");
-    setlevel = 1; // hard = 1
-}
-//save value into array
-var data = [];
 //Check whether it his/her turn
 function checkTurn() {
     user = users.find(obj => obj.socketId == socket.id);
@@ -469,7 +447,6 @@ function myFunctionH() {
     }
 }
 
-
 function surrend() {
     socket.emit('surrend', socket.id);
 }
@@ -561,7 +538,6 @@ function changeLanguage() {
     document.getElementById("backToSetting1").value = "กลับไปหน้าตั้งค่า";
     document.getElementById("backToSetting3").value = "กลับไปหน้าตั้งค่า";
     document.getElementById("backToSetting4").value = "กลับไปหน้าตั้งค่า";
-    // document.getElementById("readyB").value = "พร้อม";
     document.getElementById("resetB").value = "รีเซ็ต";
     document.getElementById("ready").value = "พร้อม";
     document.getElementById("languageP").value = "เปลี่ยนภาษา";
@@ -594,7 +570,7 @@ function changeLanguage() {
     document.getElementById("l1").innerHTML = " ภาษาไทย";
     document.getElementById("l2").innerHTML = " ภาษาอังกฤษ";
     document.getElementById("wait").innerHTML = "โปรดรอ...";
-   
+
 
 }
 function changeLanguage2() {
@@ -614,7 +590,6 @@ function changeLanguage2() {
     document.getElementById("backToSetting1").value = "Back to setting";
     document.getElementById("backToSetting3").value = "Back to setting";
     document.getElementById("backToSetting4").value = "Back to setting";
-    //document.getElementById("readyB").value = "Ready";
     document.getElementById("resetB").value = "Reset";
     document.getElementById("ready").value = "Ready";
     document.getElementById("languageP").value = "Change Language";
@@ -647,7 +622,7 @@ function changeLanguage2() {
     document.getElementById("l1").innerHTML = " Thai";
     document.getElementById("l2").innerHTML = " English";
     document.getElementById("wait").innerHTML = "waiting...";
-    
+
 }
 
 //level tell how hard the game is

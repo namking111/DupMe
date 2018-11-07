@@ -32,29 +32,14 @@ function randomIntInRange(min, max) {
     randomturn = (Math.ceil(Math.random() * (max - min) + min));
     return randomturn;
 }
-
 console.log('randomturn: ' + randomIntInRange(0, 2));
-//console.log('getRanMax: ' + getRandomInt(users.length));
-/*
-if น้อยกว่า useindex เป้น 0
-if มากกว่า userindex เป็น 1
-function getRandomInt(max) {
-    //return Math.floor(Math.random() * Math.floor(max));
-    dum = (Math.random() * Math.floor(max));
-    if(dum > 0.5){
-        return 1;
-    }else{
-        return 0;
-    }  
-}
- */
 
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
     user = new User(socket.id);
     users.push(user);
-    console.log('someone joins the game', socket.id);
+    console.log('someone joins the game');
     numUser++;
     console.log('Number of users: ' + numUser);
 
@@ -144,7 +129,7 @@ io.on('connection', function (socket) {
         console.log(users);
     });
 
-    socket.on('level', function(data){
+    socket.on('level', function (data) {
         io.sockets.emit('level', data);
     })
 });

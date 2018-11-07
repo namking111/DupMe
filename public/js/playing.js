@@ -26,7 +26,6 @@ socket.on('username', function (data) {
     users = data;
     let user = users.find(obj => obj.socketId == socket.id);
     userIndex = user.index;
-    console.log(userIndex);
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
@@ -61,7 +60,7 @@ socket.on('pattern', function (data) {
         document.getElementById("showdata").innerHTML = showdata;
         score = calculateScore(pattern, copyPattern);
     }
-        document.getElementById("allCorrect").style.visibility = 'hidden';        
+    document.getElementById("allCorrect").style.visibility = 'hidden';
 })
 
 socket.on('resetCopyPattern', function (data) {
@@ -86,21 +85,21 @@ socket.on('ready', function (data) {
 socket.on('surrend', function (data) {
     sur = 1;
     let winner;
-    if(data.index == 1){
+    if (data.index == 1) {
         winner = users.find(obj => obj.index == 2);
-    }else{
+    } else {
         winner = users.find(obj => obj.index == 1);
     }
     document.getElementById("firstp").innerHTML = winner.name;
     if (lan == "1") {
         document.getElementById("secondp").innerHTML = data.name + " ได้ยอมแพ้";
-         alert("มีการยอมแพ้!!");
+        alert("มีการยอมแพ้!!");
     } else {
-         document.getElementById("secondp").innerHTML = data.name + " has surrendered";
-         alert("Surrender!!");
+        document.getElementById("secondp").innerHTML = data.name + " has surrendered";
+        alert("Surrender!!");
     }
-   
-    
+
+
     show('endingPage', 'game');
 })
 socket.on('score', function (data) {
@@ -110,20 +109,6 @@ socket.on('score', function (data) {
     let user2 = users.find(obj => obj.index == 2);
     document.getElementById("textPlayer2Score").innerHTML = user2.name + ' score: ' + user2.score;
 });
-
-function winner(){
-    if (users[0].score > users[1].score){
-        document.getElementById("firstp").innerHTML = users[0].name + ' score: ' + users[0].score;
-        document.getElementById("secondp").innerHTML = users[1].name + ' score: ' + users[1].score;
-    }  else if (users[1].score > users[0].score){
-        document.getElementById("firstp").innerHTML = users[1].name + ' score: ' + users[1].score;
-        document.getElementById("secondp").innerHTML = users[0].name + ' score: ' + users[0].score;
-    } else {
-        document.getElementById("firstp").innerHTML = users[0].name + ' and ' + users[1].name +  ' score: ' + users[1].score;
-        document.getElementById("secondp").style.visibility = 'hidden';
-        document.getElementById("second").style.visibility = 'hidden';
-    }
-}
 
 socket.on('avatar', function (data) {
     users = data;
@@ -190,7 +175,6 @@ function countDown(secs, elem) {
         document.getElementById("surrend").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
-            disableAllButton();
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
@@ -209,7 +193,6 @@ function countDown(secs, elem) {
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "SET" }, 1000);
-            disableAllButton();
         }
         if (timerIndex == 3) {
             pattern = [];
@@ -218,40 +201,35 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
-            if(sur == 0) {
+            if (sur == 0) {
                 winner();
             }
         }
     }
     if (secs < -2) {
-        switchPlayer();
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "COPY" }, 1000);
-            disableAllButton();
         }
         if (timerIndex == 1) {
             setTimeout(function () { element.innerHTML = "PLAY" }, 1000);
-            disableAllButton();
         }
     }
     if (secs < -3) {
         if (timerIndex == 0) {
             statusIndex = 1;
             timerIndex = 1;
-            enableAllButton();
+            switchPlayer();
             clearTimeout(timer);
             countDown(21, "status");
         } else if (timerIndex == 1) {
             statusIndex = 0;
             timerIndex = 2;
-            enableAllButton();
             clearTimeout(timer);
             countDown(11, "status");
         } else if (timerIndex == 2) {
             statusIndex = 1;
             timerIndex = 3;
-            enableAllButton();
-            switchBack();
+            switchPlayer();
             clearTimeout(timer);
             countDown(21, "status");
         } else {
@@ -259,7 +237,7 @@ function countDown(secs, elem) {
             clearTimeout(timer);
             element.innerHTML = '<p>Time up!</p>';
             show('endingPage', 'game');
-            if(sur == 0) {
+            if (sur == 0) {
                 winner();
             }
         }
@@ -357,9 +335,9 @@ function getUsername() {
 
 function switchPlayer() {
     let user1 = users.find(obj => obj.index == 1);
-    user1.isTurn = false;
+    user1.isTurn = !user1.isTurn;
     let user2 = users.find(obj => obj.index == 2);
-    user2.isTurn = true;
+    user2.isTurn = !user2.isTurn;
     checkTurn();
     socket.emit("switchPlayer", users);
 }
@@ -392,7 +370,6 @@ function setReady() {
     socket.emit('ready', { socketId: socket.id, level: level });
     document.getElementById('ready').style.visibility = 'hidden';
     document.getElementById('wait').style = 'display:visible;';
-    console.log(level);
 }
 
 //Check whether it his/her turn
@@ -413,6 +390,8 @@ function enableAllButton() {
     document.getElementById('D').disabled = false;
     document.getElementById('E').disabled = false;
     document.getElementById('F').disabled = false;
+    document.getElementById('G').disabled = false;
+    document.getElementById('H').disabled = false;
 }
 
 function disableAllButton() {
@@ -422,6 +401,8 @@ function disableAllButton() {
     document.getElementById('D').disabled = true;
     document.getElementById('E').disabled = true;
     document.getElementById('F').disabled = true;
+    document.getElementById('G').disabled = true;
+    document.getElementById('H').disabled = true;
 }
 
 function myFunctionA() {
@@ -706,16 +687,30 @@ function setLevel() {
 
 function hint() {
     var hint = pattern[copyPattern.length];
-    if(pattern.length==copyPattern.length){
+    if (pattern.length == copyPattern.length) {
         document.getElementById("allCorrect").style = 'display:visible;';
         document.getElementById("hint").style.visibility = 'hidden';
         hintValue--;
-    }else if (hintValue > 0) {
-        if(copyPattern[copyPattern.length-1] != pattern[copyPattern.length-1]){
+    } else if (hintValue > 0) {
+        if (copyPattern[copyPattern.length - 1] != pattern[copyPattern.length - 1]) {
             hint = pattern[0];
         }
         socket.emit("pattern", { btn: hint, round: 1 });
         hintValue--;
         document.getElementById("hint").style.visibility = 'hidden';
+    }
+}
+
+function winner() {
+    if (users[0].score > users[1].score) {
+        document.getElementById("firstp").innerHTML = users[0].name + ' score: ' + users[0].score;
+        document.getElementById("secondp").innerHTML = users[1].name + ' score: ' + users[1].score;
+    } else if (users[1].score > users[0].score) {
+        document.getElementById("firstp").innerHTML = users[1].name + ' score: ' + users[1].score;
+        document.getElementById("secondp").innerHTML = users[0].name + ' score: ' + users[0].score;
+    } else {
+        document.getElementById("firstp").innerHTML = users[0].name + ' and ' + users[1].name + ' score: ' + users[1].score;
+        document.getElementById("secondp").style.visibility = 'hidden';
+        document.getElementById("second").style.visibility = 'hidden';
     }
 }

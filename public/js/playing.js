@@ -152,6 +152,7 @@ function countDown(secs, elem) {
     if (secs < 0) {
         document.getElementById("notturn").style.visibility = 'hidden';
         document.getElementById("hint").style.visibility = 'hidden';
+        document.getElementById("surrend").style.visibility = 'hidden';
         if (timerIndex == 0 || timerIndex == 2) {
             setTimeout(function () { element.innerHTML = "READY" }, 1000);
             disableAllButton();
@@ -236,10 +237,12 @@ function myStopFunction() {
 function showAndHideArray() {
     if (timerIndex == 0 && userIndex == 1) {
         document.getElementById("hint").style.visibility = 'hidden';
+        document.getElementById("surrend").style.visibility = 'hidden';
     }
     if (timerIndex == 0 && userIndex == 2) {
         document.getElementById('notturn').style = 'display:visible;';
         document.getElementById("hint").style.visibility = 'hidden';
+        document.getElementById("surrend").style.visibility = 'hidden';
          document.getElementById("showdata").style.visibility = 'hidden';
         // document.getElementById("showdataTemp").style = 'display:visible;';
     } else if (timerIndex == 1 && userIndex == 1) {
@@ -251,6 +254,7 @@ function showAndHideArray() {
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
         document.getElementById("hint").style = 'display:visible;';
+        document.getElementById("surrend").style = 'display:visible;';
     } else if (timerIndex == 2) {
         if (userIndex == 1) {
             document.getElementById("notturn").style = 'display:visible;';
@@ -258,11 +262,13 @@ function showAndHideArray() {
         document.getElementById("showdataTemp").style = 'display:visible;';
         document.getElementById("showdata").style.visibility = 'hidden';
         document.getElementById("hint").style.visibility = 'hidden';
+        document.getElementById("surrend").style.visibility = 'hidden';
     } else if (timerIndex == 3 && userIndex == 1) {
         document.getElementById("showdataTemp").style.visibility = 'hidden';
         document.getElementById("showdata").style = 'display:visible;';
         document.getElementById("notturn").style.visibility = 'hidden';
         document.getElementById("hint").style = 'display:visible;';
+        document.getElementById("surrend").style = 'display:visible;';
     } else if (timerIndex == 3 && userIndex == 2) {
         document.getElementById("notturn").style = 'display:visible;';
         document.getElementById("showdataTemp").style = 'display:visible;';
@@ -270,27 +276,7 @@ function showAndHideArray() {
     }
 }
 
-function gameStart() {
-    // start 1st 10 second
-    var queryString = "?" + name;
-    dataTemp = [];
-    showdataTemp = "";
-    score = 0;
-    i = 0;
-    pattern = [];
-    data = [];
-    pattern.length = 0;
-    data.length = 0;
-    dataTemp.length = 0;
-    showdata = "";
-    timerIndex = 0;
-    statusIndex = 0;
-    document.getElementById("showdata").innerHTML = showdata;
-    document.getElementById("showScore").innerHTML = score;
-    show('game', 'welcomePage');
-    countDown(10, "status");
 
-}
 //array name data
 //check with new data player clicking
 
@@ -481,23 +467,6 @@ function myFunctionH() {
     }
 }
 
-function playAgain() {
-    show('welcomePage', 'endingPage');
-    dataTemp = [];
-    showdataTemp = "";
-    score = 0;
-    i = 0;
-    pattern = [];
-    data = [];
-    showdata = "";
-    timerIndex = 0;
-    statusIndex = 0;
-    document.getElementById("showdata").innerHTML = showdata;
-    document.getElementById("textPlayer1Score").innerHTML = "";
-    document.getElementById("textPlayer2Score").innerHTML = "";
-    gameStart();
-    console.log(showdataTemp)
-}
 
 function surrend() {
     socket.emit('surrend', socket.id);

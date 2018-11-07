@@ -29,8 +29,10 @@ socket.on('username', function (data) {
     for (i = 0; i < users.length; i++) {
         if (users[i].index == 1) {
             document.getElementById("playername1").innerHTML = users[i].name;
+            document.getElementById("playername1P").innerHTML = users[i].name;
         } else {
             document.getElementById("playername2").innerHTML = users[i].name;
+            document.getElementById("playername2P").innerHTML = users[i].name;
         }
     }
     // div.innerHTML += "<div style='font-size:40px ;color:#ff8080; width: 10em; text-align: center; margin: 5px auto;'>Player name: " + data[data.length - 1].name + "</div>";

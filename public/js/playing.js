@@ -22,6 +22,14 @@ var sur = 0;
 
 
 //Listening for call from server
+socket.on('playerExceed', function (data) {
+    alert("Number of player exceeded! Sorry T^T");
+    document.getElementById('usernameSubmit').disabled = true;
+    document.getElementById('username').disabled = true;
+    document.getElementById('motto').disabled = true;
+    document.getElementById('avatar1').disabled = true;
+});
+
 socket.on('username', function (data) {
     users = data;
     let user = users.find(obj => obj.socketId == socket.id);

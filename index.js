@@ -37,8 +37,13 @@ console.log('randomturn: ' + randomIntInRange(0, 2));
 //listen for conn event
 io.on('connection', function (socket) {
     pattern = [];
-    user = new User(socket.id);
-    users.push(user);
+    if (users.length < 2) {
+        user = new User(socket.id);
+        users.push(user);
+    }else{
+        socket.emit('playerExceed');
+    }
+    console.log(users);
     console.log('someone joins the game');
     numUser++;
     console.log('Number of users: ' + numUser);
@@ -94,7 +99,9 @@ io.on('connection', function (socket) {
         pattern = [];
         let user = users.find(obj => obj.socketId == data.socketId);
         user.isReady = true;
-        io.sockets.emit('ready', { users: users, level: data.level });
+        socket.emit('ready', { users: users, level: data.level });
+        socket.broadcast.to(users[0].socketId).emit('ready', { users: users, level: data.level });
+        socket.broadcast.to(users[1].socketId).emit('ready', { users: users, level: data.level });
     });
 
     socket.on('surrend', function (data) {
@@ -124,7 +131,7 @@ io.on('connection', function (socket) {
         if (data.timerIndex == 1) {
             let user = users.find(obj => obj.index == 2);
             user.score = data.score;
-        } else {
+        } else if(data.timerIndex == 3){
             let user = users.find(obj => obj.index == 1);
             user.score = data.score;
         }

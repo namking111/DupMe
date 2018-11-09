@@ -6,8 +6,8 @@ Then the second player will start the next turn.
 - Scores are increased based on the continuous right steps
 
 Group Members
-Achiraya Chutisilp
-Natnicha Boonyakitjakarn
-Kachamas Techapichetvanich
-Ekkawit Wang
-Arocha Compeecharoenporn
+- Achiraya Chutisilp
+- Natnicha Boonyakitjakarn
+- Kachamas Techapichetvanich
+- Ekkawit Wang
+- Arocha Compeecharoenporn
